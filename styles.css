@@ -23,6 +23,17 @@
   src: url('./font/Rajdhani-Bold.ttf') format('truetype');
 }
 
+.fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 1s forwards;
+}
+
+@keyframes fadeInAnimation {
+  to {
+    opacity: 1;
+  }
+}
+
 body {
   font-family: 'CustomFont-Medium', sans-serif;
 }
