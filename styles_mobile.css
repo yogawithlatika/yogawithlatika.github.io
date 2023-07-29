@@ -64,21 +64,24 @@
     height: 200px;
   }
   
-  .main-image {
-    flex: 1;
-    justify-content: center;
-    display: flex;
-  }
-  
-  .main-image img {
-    width: 400px;
-    height: 400px;
-  }
-  
   .intro-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+  }
+
+  .main-image {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    display: none;
+  }
+  
+  .main-image img {
+    width: 200px;
+    height: 200px;
+    display: none;
   }
   
   .about-container {
