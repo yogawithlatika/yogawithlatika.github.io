@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let cTestimonial = 0;
 
     const showcase = getShowcase();
+    const showcaseContainer = document.querySelector(".showcase-container");
     const showcaseContent = document.querySelector(".showcase-content");
     const showcaseImage = document.querySelector(".showcase-image");
     let cShowcase = 0;
@@ -16,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const clientName = testimonials[cTestimonial].name;
         const clientCountry = testimonials[cTestimonial].country;
         clientInfo.textContent = `${clientName}, ${clientCountry}`;
+        showcaseContainer.addEventListener("click", function () {
+            const youtubeLink = showcase[cShowcase].link;
+            window.open(youtubeLink, "_blank");
+        });
 
         testimonialContent.classList.add("fade-in");
         clientInfo.classList.add("fade-in");
