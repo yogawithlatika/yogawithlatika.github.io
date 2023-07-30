@@ -107,16 +107,33 @@
   .testimonial-header {
     text-align: center;
     font-family: "CustomFont-SemiBold";
+    font-size: 1.5rem;
+  }
+
+  .testimonial-callout {
+    width: 50%;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    color: #333;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adding shadow effect for the callout */
+  }
+  
+  .testimonial-callout .client-info {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 12px;
+    color: #666;
   }
   
   .testimonial {
     width: 50%;
     font-style: italic;
     text-align: center;
-  }
-  
-  .client-info {
-    text-align: end;
   }
   
   .socail-container {
@@ -128,6 +145,7 @@
   
   .social-media-header {
     font-family: "CustomFont-SemiBold";
+    font-size: 1.5rem;
   }
   
   .social-media-container {
