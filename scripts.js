@@ -12,41 +12,56 @@ document.addEventListener("DOMContentLoaded", function () {
     let cShowcase = 0;
 
     function animateTestimonials() {
-        testimonialContent.textContent = testimonials[cTestimonial].testimonial;
+        testimonialContent.classList.add("fade-out");
+        clientInfo.classList.add("fade-out");
 
-        const clientName = testimonials[cTestimonial].name;
-        const clientCountry = testimonials[cTestimonial].country;
-        clientInfo.textContent = `${clientName}, ${clientCountry}`;
-        showcaseContainer.addEventListener("click", function () {
-            const youtubeLink = showcase[cShowcase].link;
-            window.open(youtubeLink, "_blank");
+        testimonialContent.addEventListener("animationend", function () {
+            testimonialContent.textContent = testimonials[cTestimonial].testimonial;
+
+            const clientName = testimonials[cTestimonial].name;
+            const clientCountry = testimonials[cTestimonial].country;
+            clientInfo.textContent = `${clientName}, ${clientCountry}`;
+
+            testimonialContent.classList.remove("fade-out");
+            clientInfo.classList.remove("fade-out");
+
+            setTimeout(() => {
+                testimonialContent.classList.add("fade-in");
+                clientInfo.classList.add("fade-in");
+
+                setTimeout(() => {
+                    testimonialContent.classList.remove("fade-in");
+                    clientInfo.classList.remove("fade-in");
+                    cTestimonial = (cTestimonial + 1) % testimonials.length;
+                    animateTestimonials();
+                }, 5000);
+            }, 200);
         });
-
-        testimonialContent.classList.add("fade-in");
-        clientInfo.classList.add("fade-in");
-
-        setTimeout(() => {
-            testimonialContent.classList.remove("fade-in");
-            clientInfo.classList.remove("fade-in");
-            cTestimonial = (cTestimonial + 1) % testimonials.length;
-            animateTestimonials();
-        }, 4000);
     }
 
     function animateShowcase() {
-        showcaseContent.textContent = showcase[cShowcase].title;
-        // showcaseImage.src = showcase[cShowcase].local
-        showcaseImage.style.backgroundImage = `url(${showcase[cShowcase].local})`;
+        showcaseContent.classList.add("fade-out");
+        showcaseImage.classList.add("fade-out");
 
-        showcaseContent.classList.add("fade-in");
-        clientInfo.classList.add("fade-in");
+        showcaseContent.addEventListener("animationend", function () {
+            showcaseContent.textContent = showcase[cShowcase].title;
+            showcaseImage.style.backgroundImage = `url(${showcase[cShowcase].local})`;
 
-        setTimeout(() => {
-            showcaseContent.classList.remove("fade-in");
-            clientInfo.classList.remove("fade-in");
-            cShowcase = (cShowcase + 1) % showcase.length;
-            animateShowcase();
-        }, 4000);
+            showcaseContent.classList.remove("fade-out");
+            showcaseImage.classList.remove("fade-out");
+
+            setTimeout(() => {
+                showcaseContent.classList.add("fade-in");
+                showcaseImage.classList.add("fade-in");
+
+                setTimeout(() => {
+                    showcaseContent.classList.remove("fade-in");
+                    showcaseImage.classList.remove("fade-in");
+                    cShowcase = (cShowcase + 1) % showcase.length;
+                    animateShowcase();
+                }, 5000);
+            }, 200);
+        });
     }
 
     function getTestimonials() {

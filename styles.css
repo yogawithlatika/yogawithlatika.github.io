@@ -1,189 +1,211 @@
 @font-face {
-    font-family: 'CustomFont-Light';
-    src: url('./font/Rajdhani-Light.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'CustomFont-Medium';
-    src: url('./font/Rajdhani-Medium.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'CustomFont-Regular';
-    src: url('./font/Rajdhani-Regular.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'CustomFont-SemiBold';
-    src: url('./font/Rajdhani-SemiBold.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'CustomFont-Bold';
-    src: url('./font/Rajdhani-Bold.ttf') format('truetype');
-  }
-  
-  .fade-in {
+  font-family: 'CustomFont-Light';
+  src: url('./font/Rajdhani-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CustomFont-Medium';
+  src: url('./font/Rajdhani-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CustomFont-Regular';
+  src: url('./font/Rajdhani-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CustomFont-SemiBold';
+  src: url('./font/Rajdhani-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CustomFont-Bold';
+  src: url('./font/Rajdhani-Bold.ttf') format('truetype');
+}
+
+/* For the fade-in effect */
+.fade-in {
+  animation: fadeInAnimation 1s forwards;
+}
+
+/* For the fade-out effect */
+.fade-out {
+  animation: fadeOutAnimation 1s forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
     opacity: 0;
-    animation: fadeInAnimation 1s forwards;
-  }
-  
-  @keyframes fadeInAnimation {
-    to {
-      opacity: 1;
-    }
-  }
-  
-  body {
-    font-family: 'CustomFont-Medium', sans-serif;
-    font-size: 1.1rem;
-  }
-  
-  .container {
-    background: radial-gradient(ellipse farthest-corner at center,
-        #fff29f 0%,
-        #fdfcfc 100%);
-    width: 100vw;
-    min-height: 100vh;
-    position: relative;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    padding-bottom: 64px;
-  }
-  
-  .logo-section {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .logo-section img {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .about-section {
-    height: auto;
-    text-align: center;
-    width: 50%;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
   }
 
-  .showcase-container {
-    height: auto;
-    width: auto;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    cursor: pointer;
-    transition: transform 0.2s;
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
   }
 
-  .showcase-container:hover {
-    transform: scale(1.05);
+  to {
+    opacity: 0;
   }
+}
 
-  .showcase-image {
-    width: 480px;
-    height: 360px;
-  }
+body {
+  font-family: 'CustomFont-Medium', sans-serif;
+  font-size: 1.1rem;
+}
 
-  .showcase-content {
-    text-align: center;
-    margin-top: 8px;
-    font-family: "CustomFont-SemiBold";
-  }
-  
-  .testimonial-container {
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .testimonial-header {
-    text-align: center;
-    font-family: "CustomFont-SemiBold";
-    font-size: 1.3rem;
-    margin-top: 32px;
-  }
+.container {
+  background: radial-gradient(ellipse farthest-corner at center,
+      #fff29f 0%,
+      #fdfcfc 100%);
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-bottom: 64px;
+}
 
-  .testimonial-callout {
-    width: 40%;
-    min-height: 100px;
-    top: 32px;
-    left: 32px;
-    padding: 16px;
-    color: #333;
-    background-color: #fff;
-    border-radius: 8px;
-    margin-top: 16px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
+.logo-section {
+  display: flex;
+  justify-content: center;
+}
 
-  .testimonial-callout .content {
-    width: 50%;
-    font-style: italic;
-    text-align: center;
-    margin: 0 auto;
-    margin-bottom: 16px;
-  }
-  
-  .testimonial-callout .client-info {
-    margin-top: 16px;
-    font-style: italic;
-    font-size: 12px;
-    color: #666;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .social-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 32px;
-    margin-bottom: 32px;
-  }
-  
-  .social-media-header {
-    font-family: "CustomFont-SemiBold";
-    font-size: 1.3rem;
-    text-align: center;
-  }
-  
-  .social-media-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-top: 16px;
-  }
-  
-  .social-logo {
-    height: 24px;
-    width: 24px;
-  }
-  
-  .social-link {
-    margin-left: 8px;
-    margin-right: 16px;
-    text-align: center;
-    color: blue;
-    text-decoration: underline;
-    transition: color 0.3s;
-  }
-  
-  .social-link:hover {
-    color: red;
-    text-decoration: none;
-    background-color: yellow;
-    border-radius: 4px;
-  }
+.logo-section img {
+  width: 200px;
+  height: 200px;
+}
+
+.about-section {
+  height: auto;
+  text-align: center;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.showcase-container {
+  height: auto;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.showcase-container:hover {
+  transform: scale(1.05);
+}
+
+.showcase-image {
+  width: 480px;
+  height: 360px;
+}
+
+.showcase-content {
+  text-align: center;
+  margin-top: 8px;
+  font-family: "CustomFont-SemiBold";
+}
+
+.testimonial-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-header {
+  text-align: center;
+  font-family: "CustomFont-SemiBold";
+  font-size: 1.3rem;
+  margin-top: 32px;
+}
+
+.testimonial-callout {
+  width: 40%;
+  min-height: 100px;
+  top: 32px;
+  left: 32px;
+  padding: 16px;
+  color: #333;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 16px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0.7;
+}
+
+.testimonial-callout .content {
+  width: 50%;
+  font-style: italic;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  font-family: 'CustomFont-SemiBold';
+}
+
+.testimonial-callout .client-info {
+  margin-top: 16px;
+  font-style: italic;
+  font-size: 1rem;
+  color: #666;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.social-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.social-media-header {
+  font-family: "CustomFont-SemiBold";
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.social-media-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.social-logo {
+  height: 24px;
+  width: 24px;
+}
+
+.social-link {
+  margin-left: 8px;
+  margin-right: 16px;
+  text-align: center;
+  color: #333;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.social-link:hover {
+  color: red;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: 'CustomFont-SemiBold';
+  transform: scale(1.05);
+}
