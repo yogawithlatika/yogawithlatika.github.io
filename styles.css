@@ -1,0 +1,177 @@
+@font-face {
+    font-family: 'CustomFont-Light';
+    src: url('./font/Rajdhani-Light.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'CustomFont-Medium';
+    src: url('./font/Rajdhani-Medium.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'CustomFont-Regular';
+    src: url('./font/Rajdhani-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'CustomFont-SemiBold';
+    src: url('./font/Rajdhani-SemiBold.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'CustomFont-Bold';
+    src: url('./font/Rajdhani-Bold.ttf') format('truetype');
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s forwards;
+  }
+  
+  @keyframes fadeInAnimation {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  body {
+    font-family: 'CustomFont-Medium', sans-serif;
+  }
+  
+  .container {
+    background: radial-gradient(ellipse farthest-corner at center,
+        #fff29f 0%,
+        #fdfcfc 100%);
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    padding-bottom: 64px;
+  }
+  
+  .logo-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .logo-section img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .about-section {
+    height: auto;
+    text-align: center;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .showcase-container {
+    height: auto;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .showcase-image {
+    width: 480px;
+    height: 360px;
+  }
+
+  .showcase-text {
+    text-align: center;
+  }
+  
+  .testimonial-container {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .testimonial-header {
+    text-align: center;
+    font-family: "CustomFont-SemiBold";
+    font-size: 1.3rem;
+    margin-top: 32px;
+  }
+
+  .testimonial-callout {
+    width: 50%;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    color: #333;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 16px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .testimonial-callout .client-info {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .testimonial {
+    width: 50%;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  .social-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  
+  .social-media-header {
+    font-family: "CustomFont-SemiBold";
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  
+  .social-media-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .social-logo {
+    height: 24px;
+    width: 24px;
+  }
+  
+  .social-link {
+    margin-left: 8px;
+    margin-right: 16px;
+    text-align: center;
+    color: blue;
+    text-decoration: underline;
+    transition: color 0.3s;
+  }
+  
+  .social-link:hover {
+    color: red;
+    text-decoration: none;
+    background-color: yellow;
+    border-radius: 4px;
+  }
