@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function animateTestimonials() {
         testimonialContent.textContent = testimonials[cTestimonial].testimonial;
 
-        // Combining the name and country information for client info display
         const clientName = testimonials[cTestimonial].name;
         const clientCountry = testimonials[cTestimonial].country;
         clientInfo.textContent = `${clientName}, ${clientCountry}`;
