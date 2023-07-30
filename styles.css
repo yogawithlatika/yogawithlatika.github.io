@@ -106,9 +106,8 @@
   }
 
   .testimonial-callout {
-    width: 30%;
-    min-width: 30%;
-    height: 100px;
+    width: 40%;
+    min-height: 100px;
     top: 32px;
     left: 32px;
     padding: 16px;
