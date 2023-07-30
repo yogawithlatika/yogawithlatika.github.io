@@ -71,6 +71,23 @@
     justify-content: center;
     margin: 0 auto;
   }
+
+  .showcase-container {
+    height: auto;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .showcase-image {
+    width: 480px;
+    height: 360px;
+  }
+
+  .showcase-text {
+    text-align: center;
+  }
   
   .testimonial-container {
     width: auto;
