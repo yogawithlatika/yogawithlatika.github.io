@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const testimonials = getTestimonials();
     const testimonialContent = document.getElementById("testimonial-content");
     const clientInfo = document.getElementById("client-info");
+    const clientCountry = document.getElementById("client-country");
     let cTestimonial = 0;
 
     const showcase = getShowcase();
@@ -16,9 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(() => {
             testimonialContent.textContent = testimonials[cTestimonial].testimonial;
-            const clientName = testimonials[cTestimonial].name;
-            const clientCountry = testimonials[cTestimonial].country;
-            clientInfo.textContent = `${clientName}, ${clientCountry}`;
+            clientInfo.textContent = `${testimonials[cTestimonial].name}`;
+            clientCountry.textContent = `${testimonials[cTestimonial].country}`;
             testimonialContent.classList.remove("fade-out");
             clientInfo.classList.remove("fade-out");
             cTestimonial = (cTestimonial + 1) % testimonials.length;
