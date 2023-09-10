@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const testimonials = getTestimonials();
     const testimonialContent = document.getElementById("testimonial-content");
     const clientInfo = document.getElementById("client-info");
@@ -15,54 +14,34 @@ document.addEventListener("DOMContentLoaded", function () {
         testimonialContent.classList.add("fade-out");
         clientInfo.classList.add("fade-out");
 
-        testimonialContent.addEventListener("animationend", function () {
+        setTimeout(() => {
             testimonialContent.textContent = testimonials[cTestimonial].testimonial;
-
             const clientName = testimonials[cTestimonial].name;
             const clientCountry = testimonials[cTestimonial].country;
             clientInfo.textContent = `${clientName}, ${clientCountry}`;
-
             testimonialContent.classList.remove("fade-out");
             clientInfo.classList.remove("fade-out");
-
-            setTimeout(() => {
-                testimonialContent.classList.add("fade-in");
-                clientInfo.classList.add("fade-in");
-
-                setTimeout(() => {
-                    testimonialContent.classList.remove("fade-in");
-                    clientInfo.classList.remove("fade-in");
-                    cTestimonial = (cTestimonial + 1) % testimonials.length;
-                    animateTestimonials();
-                }, 5000);
-            }, 200);
-        });
+            cTestimonial = (cTestimonial + 1) % testimonials.length;
+        }, 200);
     }
 
     function animateShowcase() {
         showcaseContent.classList.add("fade-out");
         showcaseImage.classList.add("fade-out");
 
-        showcaseContent.addEventListener("animationend", function () {
+        setTimeout(() => {
             showcaseContent.textContent = showcase[cShowcase].title;
             showcaseImage.style.backgroundImage = `url(${showcase[cShowcase].local})`;
-
             showcaseContent.classList.remove("fade-out");
             showcaseImage.classList.remove("fade-out");
-
-            setTimeout(() => {
-                showcaseContent.classList.add("fade-in");
-                showcaseImage.classList.add("fade-in");
-
-                setTimeout(() => {
-                    showcaseContent.classList.remove("fade-in");
-                    showcaseImage.classList.remove("fade-in");
-                    cShowcase = (cShowcase + 1) % showcase.length;
-                    animateShowcase();
-                }, 5000);
-            }, 200);
-        });
+            cShowcase = (cShowcase + 1) % showcase.length;
+        }, 200);
     }
+
+    setInterval(() => {
+        animateTestimonials();
+        animateShowcase();
+    }, 5000);
 
     function getTestimonials() {
         return [
