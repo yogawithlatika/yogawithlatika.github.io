@@ -1,48 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const testimonials = getTestimonials();
     const testimonialContent = document.getElementById("testimonial-content");
     const clientInfo = document.getElementById("client-info");
+    const clientCountry = document.getElementById("client-country");
     let cTestimonial = 0;
 
     const showcase = getShowcase();
+    const showcaseContainer = document.querySelector(".showcase-container");
     const showcaseContent = document.querySelector(".showcase-content");
     const showcaseImage = document.querySelector(".showcase-image");
     let cShowcase = 0;
 
     function animateTestimonials() {
-        testimonialContent.textContent = testimonials[cTestimonial].testimonial;
-
-        const clientName = testimonials[cTestimonial].name;
-        const clientCountry = testimonials[cTestimonial].country;
-        clientInfo.textContent = `${clientName}, ${clientCountry}`;
-
-        testimonialContent.classList.add("fade-in");
-        clientInfo.classList.add("fade-in");
+        testimonialContent.classList.add("fade-out");
+        clientInfo.classList.add("fade-out");
 
         setTimeout(() => {
-            testimonialContent.classList.remove("fade-in");
-            clientInfo.classList.remove("fade-in");
+            testimonialContent.textContent = testimonials[cTestimonial].testimonial;
+            clientInfo.textContent = `${testimonials[cTestimonial].name}`;
+            clientCountry.textContent = `${testimonials[cTestimonial].country}`;
+            testimonialContent.classList.remove("fade-out");
+            clientInfo.classList.remove("fade-out");
             cTestimonial = (cTestimonial + 1) % testimonials.length;
-            animateTestimonials();
-        }, 4000);
+        }, 200);
     }
 
     function animateShowcase() {
-        showcaseContent.textContent = showcase[cShowcase].title;
-        // showcaseImage.src = showcase[cShowcase].local
-        showcaseImage.style.backgroundImage = `url(${showcase[cShowcase].local})`;
-
-        showcaseContent.classList.add("fade-in");
-        clientInfo.classList.add("fade-in");
+        showcaseContent.classList.add("fade-out");
+        showcaseImage.classList.add("fade-out");
 
         setTimeout(() => {
-            showcaseContent.classList.remove("fade-in");
-            clientInfo.classList.remove("fade-in");
+            showcaseContent.textContent = showcase[cShowcase].title;
+            showcaseImage.style.backgroundImage = `url(${showcase[cShowcase].local})`;
+            showcaseContent.classList.remove("fade-out");
+            showcaseImage.classList.remove("fade-out");
             cShowcase = (cShowcase + 1) % showcase.length;
-            animateShowcase();
-        }, 4000);
+        }, 200);
     }
+
+    setInterval(() => {
+        animateTestimonials();
+        animateShowcase();
+    }, 5000);
 
     function getTestimonials() {
         return [
