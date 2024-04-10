@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'CustomFont-Medium';
+  src: url('./font/Rajdhani-Medium.ttf') format('truetype');
+}
+
+body {
+  font-family: 'CustomFont-Medium', sans-serif;
+  background-color: #eef5f9;
+  color: #3a3d40;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header, section {
+  margin: 20px 0;
+  padding: 20px;
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#logo {
+  max-width: 160px; /* adjust as needed for your logo */
+  height: auto; /* maintain aspect ratio */
+  display: block; /* makes it easier to center using margin */
+  margin: 0 auto; /* centers the image horizontally */
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+}
+
+.testimonial {
+  display: flex;
+  gap: 20px;
+}
+
+.carousel div {
+  flex: none;
+  background-color: #f9fafb;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 300px; /* Ensures width doesn't change */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  overflow: hidden; /* Ensures text doesn't overflow */
+}
+
+.testimonial div {
+  flex: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 300px; /* Ensures width doesn't change */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  justify-content: center;
+  overflow: hidden; /* Ensures text doesn't overflow */
+}
+
+.testimonial p {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0; /* Adjust margins as needed */
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+a {
+  color: #317873;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #285c5a;
+  text-decoration: underline;
+}
+
+h1, h2 {
+  color: #2a586f;
+}
