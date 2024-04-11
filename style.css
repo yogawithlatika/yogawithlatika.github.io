@@ -1,3 +1,13 @@
+/* Color theme variables */
+:root {
+  --primary-color: #345B63; /* Tranquil blue */
+  --accent-color-1: #D3E4CD; /* Soft green */
+  --accent-color-2: #9E2A2B; /* Warm red */
+  --accent-color-3: #DAD7CD; /* Light beige */
+  --text-color: #504947; /* Dark beige */
+  --background-color: #FAF3DD; /* Off white */
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #eef5f9;
@@ -8,6 +18,30 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+h1,
+h2 {
+  color: var(--primary-color);
 }
 
 header,
@@ -20,6 +54,10 @@ section {
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1, .timeline-item h3 {
+  color: var(--primary-color);
 }
 
 #logo {
@@ -46,6 +84,10 @@ section {
   margin-top: 0.5rem; /* Space between the heading and the date */
 }
 
+.timeline-item .date {
+    color: var(--accent-color-2);
+}
+
 .carousel {
   display: flex;
   overflow-x: auto;
@@ -56,6 +98,7 @@ section {
 .testimonial {
   display: flex;
   gap: 20px;
+  border-left-color: var(--primary-color);
 }
 
 .carousel div {
@@ -98,26 +141,4 @@ section {
   text-overflow: ellipsis;
   margin: 0;
   /* Adjust margins as needed */
-}
-
-img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-a {
-  color: #317873;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  color: #285c5a;
-  text-decoration: underline;
-}
-
-h1,
-h2 {
-  color: #2a586f;
 }
