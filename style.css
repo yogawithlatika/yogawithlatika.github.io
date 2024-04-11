@@ -6,9 +6,29 @@
   --background-color: #FAF3DD; /* Off white */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+nav {
+  padding: 10px 0; /* Top and bottom padding */
+  text-align: center; /* Center the links */
+}
+
+nav a {
+  text-decoration: none; /* Remove underline from links */
+  margin: 0 15px; /* Spacing between links */
+}
+
+@media (max-width: 700px) {
+  nav a {
+      margin: 10px 0; /* Adjust spacing */
+      font-size: small;
+  }
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #eef5f9;
   color: #3a3d40;
   margin: 0;
   padding: 0;
