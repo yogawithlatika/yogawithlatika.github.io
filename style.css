@@ -38,7 +38,9 @@ body {
   flex-direction: column;
   align-items: center;
   color: var(--text-color);
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
+  background-image: url('/images/ywl_bg_tiled.webp');
+  background-repeat: repeat;
 }
 
 img {
