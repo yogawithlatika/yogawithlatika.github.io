@@ -191,4 +191,15 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Testimonials array is empty.");
   }
+
+  const whatsappFab = document.getElementById('whatsapp-fab');
+  window.onscroll = function() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      whatsappFab.style.opacity = "1";
+      whatsappFab.style.visibility = "visible";
+  } else {
+      whatsappFab.style.opacity = "0";
+      whatsappFab.style.visibility = "hidden";
+  }
+  };
 });
