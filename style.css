@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+/* Color theme variables */
+:root {
+  --primary-color: #345B63; /* Tranquil blue */
+  --accent-color-1: #D3E4CD; /* Soft green */
+  --accent-color-2: #9E2A2B; /* Warm red */
+  --accent-color-3: #DAD7CD; /* Light beige */
+  --text-color: #504947; /* Dark beige */
+  --background-color: #FAF3DD; /* Off white */
+}
+
+=======
+>>>>>>> bf4f3f8689a35afbe157c573b24ea2a290e00cfb
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #eef5f9;
@@ -8,9 +21,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-header, section {
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+h1,
+h2 {
+  color: var(--primary-color);
+}
+
+header,
+section {
   margin: 20px 0;
   padding: 20px;
   width: 80%;
@@ -18,14 +56,39 @@ header, section {
   text-align: center;
   background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1, .timeline-item h3 {
+  color: var(--primary-color);
 }
 
 #logo {
-  max-width: 160px; /* adjust as needed for your logo */
-  height: auto; /* maintain aspect ratio */
-  display: block; /* makes it easier to center using margin */
-  margin: 0 auto; /* centers the image horizontally */
+  max-width: 160px;
+  /* adjust as needed for your logo */
+  height: auto;
+  /* maintain aspect ratio */
+  display: block;
+  /* makes it easier to center using margin */
+  margin: 0 auto;
+  /* centers the image horizontally */
+}
+
+.timeline-item h3 {
+  position: relative;
+  display: inline-block; /* Adjusts the h3 to fit content width */
+  margin-bottom: 0.5rem; /* Ensures spacing between title and text */
+}
+
+.date {
+  display: block; /* Ensures the date appears on a new line */
+  font-weight: normal; /* Keeps the date's font-weight consistent with its importance */
+  font-size: 0.8em; /* Slightly smaller font-size for the date for hierarchy */
+  margin-top: 0.5rem; /* Space between the heading and the date */
+}
+
+.timeline-item .date {
+    color: var(--accent-color-2);
 }
 
 .carousel {
@@ -38,6 +101,7 @@ header, section {
 .testimonial {
   display: flex;
   gap: 20px;
+  border-left-color: var(--primary-color);
 }
 
 .carousel div {
@@ -45,27 +109,31 @@ header, section {
   background-color: #f9fafb;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 300px; /* Ensures width doesn't change */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  /* Ensures width doesn't change */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: left;
-  overflow: hidden; /* Ensures text doesn't overflow */
+  overflow: hidden;
+  /* Ensures text doesn't overflow */
 }
 
 .testimonial div {
   flex: auto;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 300px; /* Ensures width doesn't change */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  /* Ensures width doesn't change */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: left;
   justify-content: center;
-  overflow: hidden; /* Ensures text doesn't overflow */
+  overflow: hidden;
+  /* Ensures text doesn't overflow */
 }
 
 .testimonial p {
@@ -74,26 +142,6 @@ header, section {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin: 0; /* Adjust margins as needed */
-}
-
-img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-a {
-  color: #317873;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  color: #285c5a;
-  text-decoration: underline;
-}
-
-h1, h2 {
-  color: #2a586f;
+  margin: 0;
+  /* Adjust margins as needed */
 }
