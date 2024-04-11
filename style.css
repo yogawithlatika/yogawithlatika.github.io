@@ -1,10 +1,5 @@
-@font-face {
-  font-family: 'CustomFont-Medium';
-  src: url('./font/Rajdhani-Medium.ttf') format('truetype');
-}
-
 body {
-  font-family: 'CustomFont-Medium', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #eef5f9;
   color: #3a3d40;
   margin: 0;
