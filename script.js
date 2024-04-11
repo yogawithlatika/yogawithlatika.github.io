@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const showcases = [
     {
       "title": "Chair Suryanamaskara",
@@ -141,37 +141,37 @@ document.addEventListener("DOMContentLoaded", function() {
     showcaseContainer.appendChild(div);
   });
 
-    // Auto-scroll logic
-    let autoScrollInterval;
-    let currentShowcase = 0;
-  
-    function autoScroll() {
-      showcaseContainer.scrollBy({left: showcaseContainer.firstChild.offsetWidth, behavior: 'smooth'});
-      currentShowcase = (currentShowcase + 1) % showcases.length;
-      if (currentShowcase === 0) {
-        setTimeout(() => showcaseContainer.scrollTo({left: 0, behavior: 'smooth'}), 1000);
-      }
+  // Auto-scroll logic
+  let autoScrollInterval;
+  let currentShowcase = 0;
+
+  function autoScroll() {
+    showcaseContainer.scrollBy({ left: showcaseContainer.firstChild.offsetWidth, behavior: 'smooth' });
+    currentShowcase = (currentShowcase + 1) % showcases.length;
+    if (currentShowcase === 0) {
+      setTimeout(() => showcaseContainer.scrollTo({ left: 0, behavior: 'smooth' }), 1000);
     }
-  
-    autoScrollInterval = setInterval(autoScroll, 3000); // Change interval as needed
-  
-    // Stop auto-scroll on user interaction
-    showcaseContainer.addEventListener('touchstart', () => {
-      clearInterval(autoScrollInterval);
-    });
+  }
+
+  autoScrollInterval = setInterval(autoScroll, 3000); // Change interval as needed
+
+  // Stop auto-scroll on user interaction
+  showcaseContainer.addEventListener('touchstart', () => {
+    clearInterval(autoScrollInterval);
+  });
 
   let testimonialIndex = 0;
   const testimonialContainer = document.getElementById('testimonial');
 
   function displayTestimonial() {
-    if(testimonialContainer) {
+    if (testimonialContainer) {
       const testimonialDiv = document.createElement('div');
       testimonialDiv.classList.add('testimonial-div');
       testimonialDiv.innerHTML = `
           <p>"${testimonials[testimonialIndex].testimonial}"</p><br>
           <p>- ${testimonials[testimonialIndex].name}, ${testimonials[testimonialIndex].country}</p>
       `;
-      
+
       // Clear previous content
       testimonialContainer.innerHTML = '';
       testimonialContainer.appendChild(testimonialDiv);
