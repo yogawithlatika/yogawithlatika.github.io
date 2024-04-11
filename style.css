@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Color theme variables */
 :root {
   --primary-color: #345B63; /* Tranquil blue */
@@ -8,6 +9,8 @@
   --background-color: #FAF3DD; /* Off white */
 }
 
+=======
+>>>>>>> bf4f3f8689a35afbe157c573b24ea2a290e00cfb
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #eef5f9;
