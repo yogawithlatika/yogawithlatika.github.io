@@ -1,17 +1,13 @@
-<<<<<<< HEAD
 /* Color theme variables */
 :root {
   --primary-color: #345B63; /* Tranquil blue */
-  --accent-color-1: #D3E4CD; /* Soft green */
-  --accent-color-2: #9E2A2B; /* Warm red */
-  --accent-color-3: #DAD7CD; /* Light beige */
+  --accent-color: #9E2A2B; /* Warm red */
   --text-color: #504947; /* Dark beige */
   --background-color: #FAF3DD; /* Off white */
 }
 
-=======
->>>>>>> bf4f3f8689a35afbe157c573b24ea2a290e00cfb
 body {
+  font-family: 'Poppins', sans-serif;
   font-family: 'Poppins', sans-serif;
   background-color: #eef5f9;
   color: #3a3d40;
@@ -88,7 +84,7 @@ header h1, .timeline-item h3 {
 }
 
 .timeline-item .date {
-    color: var(--accent-color-2);
+    color: var(--accent-color);
 }
 
 .carousel {
