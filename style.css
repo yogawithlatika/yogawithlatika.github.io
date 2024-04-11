@@ -37,6 +37,7 @@ header, section {
   display: flex;
   overflow-x: auto;
   gap: 20px;
+  overflow: hidden;
 }
 
 .testimonial {
