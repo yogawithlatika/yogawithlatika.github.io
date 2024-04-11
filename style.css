@@ -10,7 +10,8 @@ body {
   align-items: center;
 }
 
-header, section {
+header,
+section {
   margin: 20px 0;
   padding: 20px;
   width: 80%;
@@ -18,14 +19,31 @@ header, section {
   text-align: center;
   background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #logo {
-  max-width: 160px; /* adjust as needed for your logo */
-  height: auto; /* maintain aspect ratio */
-  display: block; /* makes it easier to center using margin */
-  margin: 0 auto; /* centers the image horizontally */
+  max-width: 160px;
+  /* adjust as needed for your logo */
+  height: auto;
+  /* maintain aspect ratio */
+  display: block;
+  /* makes it easier to center using margin */
+  margin: 0 auto;
+  /* centers the image horizontally */
+}
+
+.timeline-item h3 {
+  position: relative;
+  display: inline-block; /* Adjusts the h3 to fit content width */
+  margin-bottom: 0.5rem; /* Ensures spacing between title and text */
+}
+
+.date {
+  display: block; /* Ensures the date appears on a new line */
+  font-weight: normal; /* Keeps the date's font-weight consistent with its importance */
+  font-size: 0.8em; /* Slightly smaller font-size for the date for hierarchy */
+  margin-top: 0.5rem; /* Space between the heading and the date */
 }
 
 .carousel {
@@ -45,27 +63,31 @@ header, section {
   background-color: #f9fafb;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 300px; /* Ensures width doesn't change */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  /* Ensures width doesn't change */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: left;
-  overflow: hidden; /* Ensures text doesn't overflow */
+  overflow: hidden;
+  /* Ensures text doesn't overflow */
 }
 
 .testimonial div {
   flex: auto;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 300px; /* Ensures width doesn't change */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  /* Ensures width doesn't change */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: left;
   justify-content: center;
-  overflow: hidden; /* Ensures text doesn't overflow */
+  overflow: hidden;
+  /* Ensures text doesn't overflow */
 }
 
 .testimonial p {
@@ -74,7 +96,8 @@ header, section {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin: 0; /* Adjust margins as needed */
+  margin: 0;
+  /* Adjust margins as needed */
 }
 
 img {
@@ -94,6 +117,7 @@ a:hover {
   text-decoration: underline;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #2a586f;
 }
