@@ -38,8 +38,7 @@ body {
   flex-direction: column;
   align-items: center;
   color: var(--text-color);
-  /* background-color: var(--background-color); */
-  background-image: url('/images/ywl_bg_tiled.webp');
+  background-image: url('/images/ywl_bg.webp');
   background-repeat: repeat;
 }
 
@@ -120,6 +119,11 @@ header h1, .timeline-item h3 {
   display: flex;
   gap: 20px;
   border-left-color: var(--primary-color);
+  transition: opacity 0.5s ease-in-out; 
+}
+
+.testimonial.active {
+  opacity: 1;
 }
 
 .carousel div {
