@@ -31,36 +31,47 @@ document.addEventListener("DOMContentLoaded", function () {
   autoScrollInterval = setInterval(autoScroll, 3000);
 
   let testimonialIndex = 0;
-  const testimonialContainer = document.getElementById("testimonial");
+    const testimonialContainer = document.getElementById("testimonial");
 
-  function displayTestimonial() {
-    if (testimonialContainer) {
-      const testimonialDiv = document.createElement("div");
-      testimonialDiv.classList.add("testimonial-div");
-      testimonialDiv.innerHTML = `
-          <p>"${testimonials[testimonialIndex].testimonial}"</p><br>
-          <p>- ${testimonials[testimonialIndex].name}, ${testimonials[testimonialIndex].country}</p>
-      `;
+    function displayTestimonial() {
+        if (testimonialContainer && testimonials.length > 0) {
+            const testimonialDiv = document.createElement("div");
+            testimonialDiv.classList.add("testimonial-div");
+            testimonialDiv.innerHTML = `
+                <p>"${testimonials[testimonialIndex].testimonial}"</p><br>
+                <p>- ${testimonials[testimonialIndex].name}, ${testimonials[testimonialIndex].country}</p>
+            `;
 
-      // Clear previous content
-      testimonialContainer.innerHTML = "";
-      testimonialContainer.appendChild(testimonialDiv);
+            // Apply initial styles for fade in
+            testimonialDiv.style.opacity = 0;
+            testimonialDiv.style.transition = "opacity 0.5s ease-in-out";
 
-      // Immediately make the div visible
-      testimonialDiv.style.opacity = 1;
+            // Clear previous content and add new testimonial
+            testimonialContainer.innerHTML = "";
+            testimonialContainer.appendChild(testimonialDiv);
 
-      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-      setTimeout(displayTestimonial, 5000);
-    } else {
-      console.error("Testimonial container not found.");
+            // Fade in the testimonial
+            setTimeout(() => {
+                testimonialDiv.style.opacity = 1;
+            }, 100); // Short delay to ensure the transition occurs
+
+            // Update to the next testimonial
+            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+
+            // Set up the next cycle, including fade out
+            setTimeout(() => {
+                // Start fading out
+                testimonialDiv.style.opacity = 0;
+
+                // After fade out, display next testimonial
+                setTimeout(displayTestimonial, 500); // Half-second to complete fade out
+            }, 4500); // Display each testimonial for 4.5 seconds
+        } else {
+            console.error("Testimonial container not found or testimonials array is empty.");
+        }
     }
-  }
 
-  if (testimonials.length > 0) {
     displayTestimonial();
-  } else {
-    console.error("Testimonials array is empty.");
-  }
 
   const whatsappFab = document.getElementById("whatsapp-fab");
   window.onscroll = function () {

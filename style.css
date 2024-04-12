@@ -119,6 +119,11 @@ header h1, .timeline-item h3 {
   display: flex;
   gap: 20px;
   border-left-color: var(--primary-color);
+  transition: opacity 0.5s ease-in-out; 
+}
+
+.testimonial.active {
+  opacity: 1;
 }
 
 .carousel div {
