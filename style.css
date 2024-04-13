@@ -118,9 +118,10 @@ header h1, .timeline-item h3 {
 
 .carousel {
   display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  overflow-x: hidden; /* Allows horizontal scrolling */
 }
 
 .testimonial {
@@ -149,7 +150,6 @@ header h1, .timeline-item h3 {
   align-items: center;
   text-align: left;
   overflow: hidden;
-  /* Ensures text doesn't overflow */
 }
 
 .testimonial div {
