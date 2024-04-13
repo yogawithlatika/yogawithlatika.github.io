@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function displayTestimonial() {
     if (testimonialContainer && testimonials.length > 0) {
-      shuffleArray(testimonials); 
+      shuffleArray(testimonials);
       const testimonialDiv = document.createElement("div");
       testimonialDiv.classList.add("testimonial-div");
       testimonialDiv.innerHTML = `
