@@ -1,9 +1,9 @@
 /* Color theme variables */
 :root {
-  --primary-color: #345B63; /* Tranquil blue */
-  --accent-color: #9E2A2B; /* Warm red */
-  --text-color: #504947; /* Dark beige */
-  --background-color: #FAF3DD; /* Off white */
+  --primary-color: #0C251A;
+  --accent-color: #9E2A2B;
+  --text-color: #0D1110;
+  --background-color: #FAF3DD;
 }
 
 html {
@@ -71,9 +71,10 @@ section {
   width: 80%;
   max-width: 800px;
   text-align: center;
-  background: #e2ede2;
+  background: radial-gradient(circle, #dff572 0%, #ecd0e9 100%);
+  opacity: 0.95;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 header h1, .timeline-item h3 {
@@ -128,9 +129,11 @@ header h1, .timeline-item h3 {
 
 .carousel div {
   flex: none;
-  background-color: #f9fafb;
+  background: radial-gradient(circle, #dff572 0%, #ecd0e9 100%);
+  opacity: 0.95;
   padding: 20px;
   border-radius: 10px;
+  margin-bottom: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 300px;
   /* Ensures width doesn't change */
@@ -170,8 +173,8 @@ header h1, .timeline-item h3 {
 
 #whatsapp-fab {
   position: fixed;
-  bottom: 48px;
-  right: 48px;
+  bottom: 40px;
+  right: 40px;
   z-index: 16;
   border-radius: 50%;
   padding: 2px;
