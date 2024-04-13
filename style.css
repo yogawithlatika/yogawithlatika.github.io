@@ -71,10 +71,17 @@ section {
   width: 80%;
   max-width: 800px;
   text-align: center;
-  background: radial-gradient(circle, #dff572 0%, #ecd0e9 100%);
+  background: radial-gradient(circle, #e6f88e 0%, #ecd0e9 100%);
   opacity: 0.95;
   border-radius: 10px;
   box-shadow: 8px 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 900px) {
+  header,
+  section {
+    background: radial-gradient(circle, #eff7c6 0%, #ecd0e9 100%);
+  }
 }
 
 header h1, .timeline-item h3 {
