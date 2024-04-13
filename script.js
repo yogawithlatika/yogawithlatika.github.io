@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       testimonialDiv.classList.add("testimonial-div");
       testimonialDiv.innerHTML = `
                 <p>"${testimonials[testimonialIndex].testimonial}"</p><br>
-                <p>- ${testimonials[testimonialIndex].name}, ${testimonials[testimonialIndex].country}</p>
+                <p>- ${testimonials[testimonialIndex].name} (${testimonials[testimonialIndex].country})</p>
             `;
 
       // Apply initial styles for fade in

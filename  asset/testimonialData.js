@@ -7,7 +7,7 @@ const testimonials = [
   {
     "testimonial": "By profession, I sleep late, but that doesn’t stop me from attending my yoga class at 7 am. I should give this credit to Latika as she makes the class a recharging session for me. I enjoy Yoga with Latika and recommended her to my teen daughter, sister and friends.",
     "name": "Vijaya",
-    "country": "Hyderabad, India"
+    "country": "Telangana, India"
   },
   {
     "testimonial": "Latika is one of the very good yoga trainers I have come cross. She puts in the efforts to understand your needs and accordingly gets you doing yoga. She comes with good knowledge and great great attitude! I have been yoga with her for more than 3 months and I everyday look forward to her session!!!! Highly recommend her. Thanks Latika! :)",
@@ -32,7 +32,7 @@ const testimonials = [
   {
     "testimonial": "Lathika's Yoga has brought me strength, peace, stress relief and flexibility. She shares various tips/ techniques which are very effective.",
     "name": "Bhuvaneshwari",
-    "country": "Andra Pradesh, India"
+    "country": "Andhra Pradesh, India"
   },
   {
     "testimonial": "I love love love love her classes!!!! Within 45 minutes my teacher makes us feels so good mentally, and physically and also encourages us alot! Latika has somehow made us do better and feel good about ourselves through her virtual classes, that I personally did not get in-person classes in Singapore. Even the least flexible people would feel motivated to be in her class cause she teaches with so much kindness. Nowadays I look forward to her Latika yoga classes! I hate the days without my yoga sessions with her! Haha!",
@@ -52,17 +52,17 @@ const testimonials = [
   {
     "testimonial": "I can give even 10 star nd more because She gives a very detailed asanas.. for my problems, not only yoga whole body care is taken by her, my core is weakening day by day, i used have severe back pain where i can't sit in a movie theatre for 3hrs now it is reduced..she will reduce anger, depression, unecssary hungry, tq so much Lathika ji...",
     "name": "Lakshmi Devi",
-    "country": "India"
+    "country": "Andhra Pradesh, India"
   },
   {
     "testimonial": "Lovely sessions! I was able to manage anxiety of rushing for work. And my body cooperated with my mental pace, thanks to you and the Yoga session. 🤗",
     "name": "Ramalakshmi",
-    "country": "India"
+    "country": "Telangana, India"
   },
   {
     "testimonial": "I feel better with Yoga mentally. Not having any neck pain and back pain..",
     "name": "Srinidhi",
-    "country": "India"
+    "country": "Karnataka, India"
   },
   {
     "testimonial": "My friends are surprised that I have shrinked at very short periods",
@@ -77,27 +77,27 @@ const testimonials = [
   {
     "testimonial": "Doing Yoga definitely increased my flexibility, movement, and breath control that helped me in the marathon! Thank you!",
     "name": "Chandrika",
-    "country": "USA"
+    "country": "Phoenix, USA"
   },
   {
     "testimonial": "I could feel my strength has improved significantly. I could do planks with ease. All thanks to you. You are the best",
     "name": "Deepthi",
-    "country": "India"
+    "country": "Karnataka, India"
   },
   {
     "testimonial": "It is because of you that I believe in Yoga, Thank you 😊",
     "name": "Vineeta",
-    "country": "India"
+    "country": "Delhi, India"
   },
   {
     "testimonial": "Lots of improvement in health issue. Now I am not facing any pain, I feel my body is becoming flexible day by day, and my stamina has increased a lot",
     "name": "Arti",
-    "country": "India"
+    "country": "Gujarat, India"
   },
   {
     "testimonial": "I am so happy and doing housework with positive energy and flexibility. Many more thanks to you Latika 💐",
     "name": "Pratibha",
-    "country": "India"
+    "country": "Maharastra, India"
   },
   {
     "testimonial": "Thank you for bringing Yoga into my life and encouraging me at every failure",
@@ -107,7 +107,7 @@ const testimonials = [
   {
     "testimonial": "The best decision I took was to switch on to Yoga, and my Yoga coach Latika is not less than a magician. I have undergone a massive transformation in terms of fitness and agility",
     "name": "Dr. Debipreeta",
-    "country": "India"
+    "country": "West Bengal, India"
   }
 ];
 export default testimonials;
