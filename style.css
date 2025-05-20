@@ -1,51 +1,77 @@
-/* Color theme variables */
 :root {
-  --primary-color: #0C251A;
-  --accent-color: #9E2A2B;
-  --text-color: #0D1110;
-  --background-color: #FAF3DD;
+  --primary-color: #2a4d3f;
+  --accent-color: #dc4a4a;
+  --text-color: #1a1a1a;
+  --background-color: #f5f8f7;
+  --card-bg: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --gradient: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-nav {
-  padding: 10px 0; /* Top and bottom padding */
-  text-align: center; /* Center the links */
-}
-
-nav a {
-  text-decoration: none; /* Remove underline from links */
-  margin: 0 15px; /* Spacing between links */
-}
-
-@media (max-width: 700px) {
-  nav a {
-      margin: 10px 0; /* Adjust spacing */
-      font-size: small;
-  }
-}
-
 body {
   font-family: 'Poppins', sans-serif;
-  color: #3a3d40;
+  color: var(--text-color);
+  background: var(--background-color);
   margin: 0;
-  padding: 0;
   padding-bottom: 128px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--text-color);
-  background-image: url('/images/ywl_bg.webp');
-  background-repeat: repeat;
+  text-align: center;
 }
 
-img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
+nav {
+  padding: 12px 0;
+  text-align: center;
+  background: var(--gradient);
+  box-shadow: 0 2px 4px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: var(--primary-color);
+  margin: 0 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+nav a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+header,
+section {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 8px 24px var(--shadow);
+  animation: fadeInUp 0.6s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1, h2 {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 a {
@@ -53,145 +79,76 @@ a {
   text-decoration: none;
   font-weight: bold;
 }
-
 a:hover {
-  color: var(--text-color);
-  text-decoration: underline;
+  color: var(--accent-color);
 }
 
-h1,
-h2 {
-  color: var(--primary-color);
-}
-
-header,
-section {
-  margin: 20px 0;
-  padding: 20px;
-  width: 80%;
-  max-width: 800px;
-  text-align: center;
-  background: radial-gradient(circle, #e6f88e 0%, #ecd0e9 100%);
-  opacity: 0.95;
-  border-radius: 10px;
-  box-shadow: 8px 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 900px) {
-  header,
-  section {
-    background: radial-gradient(circle, #eff7c6 0%, #ecd0e9 100%);
-  }
-}
-
-header h1, .timeline-item h3 {
-  color: var(--primary-color);
-}
-
-#logo {
-  max-width: 160px;
-  /* adjust as needed for your logo */
+img {
+  border-radius: 8px;
+  max-width: 100%;
   height: auto;
-  /* maintain aspect ratio */
-  display: block;
-  /* makes it easier to center using margin */
-  margin: 0 auto;
-  /* centers the image horizontally */
+  box-shadow: 0 4px 8px var(--shadow);
 }
 
 .timeline-item h3 {
-  position: relative;
-  display: inline-block; /* Adjusts the h3 to fit content width */
-  margin-bottom: 0.5rem; /* Ensures spacing between title and text */
+  margin-bottom: 0.3rem;
+  color: var(--primary-color);
 }
-
 .date {
-  display: block; /* Ensures the date appears on a new line */
-  font-weight: normal; /* Keeps the date's font-weight consistent with its importance */
-  font-size: 0.8em; /* Slightly smaller font-size for the date for hierarchy */
-  margin-top: 0.5rem; /* Space between the heading and the date */
+  color: var(--accent-color);
+  font-size: 0.85rem;
 }
 
-.timeline-item .date {
-    color: var(--accent-color);
-}
-
-.carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  overflow-x: hidden; /* Allows horizontal scrolling */
-}
-
-.testimonial {
+.carousel, .testimonial {
   display: flex;
   gap: 20px;
-  border-left-color: var(--primary-color);
-  transition: opacity 0.5s ease-in-out; 
+  overflow-x: auto;
+  padding: 1rem;
+  scroll-behavior: smooth;
+}
+.carousel::-webkit-scrollbar,
+.testimonial::-webkit-scrollbar {
+  display: none;
 }
 
-.testimonial.active {
-  opacity: 1;
-}
-
-.carousel div {
-  flex: none;
-  background: radial-gradient(circle, #dff572 0%, #ecd0e9 100%);
-  opacity: 0.95;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  /* Ensures width doesn't change */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.carousel div, .testimonial div {
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px var(--shadow);
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 280px;
+  max-width: 320px;
   text-align: left;
-  overflow: hidden;
-}
-
-.testimonial div {
-  flex: auto;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  /* Ensures width doesn't change */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-  justify-content: center;
-  overflow: hidden;
-  /* Ensures text doesn't overflow */
-}
-
-.testimonial p {
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
-  /* Adjust margins as needed */
+  animation: fadeInUp 0.4s ease both;
 }
 
 #whatsapp-fab {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
-  z-index: 16;
-  border-radius: 50%;
-  padding: 2px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-  opacity: 0; /* Start as invisible */
-  visibility: hidden; /* Start as not visible */
-  transition: opacity 0.5s, visibility 0.5s; /* Smooth transition for opacity and visibility */
+  bottom: 24px;
+  right: 24px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
 }
 #whatsapp-fab img {
-  display: block;
-  width: 64px; /* Adjust based on your icon's size */
+  width: 64px;
   height: 64px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+@media (max-width: 768px) {
+  nav a {
+    display: inline-block;
+    margin: 8px 10px;
+  }
+
+  .carousel div, .testimonial div {
+    min-width: 90%;
+  }
+
+  header, section {
+    padding: 16px;
+  }
 }
