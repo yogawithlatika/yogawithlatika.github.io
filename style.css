@@ -137,7 +137,7 @@ nav {
 /* =============================
    Responsive
 ============================= */
-@media (max-width: 408px) {
+@media (max-width: 300px) {
   .section {
     padding: 16px;
   }
