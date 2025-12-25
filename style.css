@@ -50,7 +50,7 @@
   --gradient-gold: linear-gradient(135deg, #F9E6C5 0%, #FFFBF0 100%);
 
   /* Typography */
-  --font-heading: 'Playfair Display', serif;
+  --font-heading: 'Poppins', serif;
   --font-body: 'Poppins', sans-serif;
 }
 
