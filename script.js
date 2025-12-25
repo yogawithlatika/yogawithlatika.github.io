@@ -5,83 +5,39 @@
 const videoData = [
     {
         id: "1motM-CZZds",
-        title: "Bedtime Yoga for Deep Sleep | Evening Yoga, Guided Meditation and Relaxation | Stress & Anxiety Yoga"
-    },
-    {
-        id: "bR8ZLsPoo34",
-        title: "Chair सूर्यनमस्कार | चेयर योग | चेयर पर योगा करे #yogaforbeginners #hindi #chairyoga #seniorhealth"
+        title: "Bedtime Yoga for Deep Sleep"
     },
     {
         id: "tESmaA6Noxc",
-        title: "Chair Suryanamaskara | Chair Yoga | Yoga for Beginners #chairyoga #suryanamaskar #yogaforbeginners"
+        title: "Chair Suryanamaskara | Chair Yoga"
     },
     {
         id: "SluQJ81cJEk",
-        title: "Yoga Flow Squence | Vinyasa Flow | Yoga for Back, Arm & Core Strengthening #yogaflow #vinyasa #yoga"
+        title: "Yoga Flow Squence | Yoga for Back, Arm & Core Strengthening"
     },
     {
         id: "Nwiey4lbomM",
-        title: "Meditation benefits | Learn how to meditate : Good health & stress relief #meditation #stressrelief"
-    },
-    {
-        id: "FsIt96PCqOM",
-        title: "घर पर ध्यान की शुरुवात करे । मेडिटेशन के फायदे । Guided Meditation in Hindi #yogaforbeginners #yoga"
-    },
-    {
-        id: "mDJKGVkoVjk",
-        title: "भ्रामरी प्राणायाम कैसे करे । तनाव , गुस्सा और नींद के लिए Best Yoga | Memory और Concentration योग"
-    },
-    {
-        id: "7rMtC-EMuBM",
-        title: "Important yoga pose | Yoga asanas | Shavasana benefits #yogaforbeginners #stressrelief #relaxation"
-    },
-    {
-        id: "QA8nSykwsPg",
-        title: "Important yoga asanas | तनाव, stress और अच्छी नींद के लिए योग #yogasana #yogaforbeginners #yogapose"
-    },
-    {
-        id: "zjg9sjCp8bc",
-        title: "कमर दर्द के लिए योग । Lumbar Stretch | कमर दर्द से आराम पाये #kamardard #backpain #backpainrelief"
+        title: "Learn how to meditate : Good health & stress relief"
     },
     {
         id: "MSX6EGd1vKo",
-        title: "Back Pain Yoga | Lumbar Stretch | Post workout stretch #yogaforbeginners #backpain #backpainrelief"
-    },
-    {
-        id: "NcKyxKDMmHk",
-        title: "कब्ज और पाचन क्रिया के लिए योग । कमर दर्द भी कम करे - एक पाद पवनमुक्त आसन से #constipation #health"
+        title: "Back Pain Yoga | Lumbar Stretch | Post workout stretch"
     },
     {
         id: "D6Pz36maFVA",
-        title: "Yoga for Constipation | Pawanmuktasana | Improve digestion & reduce bloating #yogaforbeginners #yoga"
-    },
-    {
-        id: "a0mHP4V5Oow",
-        title: "कमर दर्द /पीठ दर्द योग | Cat & Cow Breathing | Back pain relief के लिए योग #backpain #yoga #yogapose"
+        title: "Yoga for Constipation | Pawanmuktasana | Improve digestion & reduce bloating"
     },
     {
         id: "T9c0JAKZlBs",
-        title: "Cat & Cow Breathing | Relief from Back Pain | Breathing Practice Yoga #backpain #yogaforbeginners"
-    },
-    {
-        id: "QmAnlXyNM98",
-        title: "भुजंगासन योग कैसे करे | पीठ दर्द के लिए योग #bhujangasana #backpain #yoga #thyroid #yogaforbeginners"
+        title: "Cat & Cow Breathing | Relief from Back Pain"
     },
     {
         id: "IDt1ZV6E15o",
-        title: "Yoga for Back Pain | Bhujangasana | Cobra Pose #yogapose #backpain #yogaforbeginners #backpainrelief"
-    },
-    {
-        id: "ZcwZFpBXma0",
-        title: "How to do Bhramari Pranayama - step by step | Yoga to reduce stress, improve sleep & increase focus"
-    },
-    {
-        id: "lRvs4xyZEGA",
-        title: "बद्धकोणासन | Butterfly Pose के फायदे | Yoga for Hips & PCOS #baddhakonasana #pcos #yogaforbeginners"
+        title: "Yoga for Back Pain | Bhujangasana | Cobra Pose"
     },
     {
         id: "AbdMmiJ5XdQ",
-        title: "Baddhakonasana | Butterfly Pose Benefits | Yoga for Hips & PCOS #pcos #pcod #yogaforbeginners #hips"
+        title: "Baddhakonasana | Butterfly Pose Benefits | Yoga for Hips & PCOS"
     }
 ];
 
