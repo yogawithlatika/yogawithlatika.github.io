@@ -125,7 +125,7 @@ img {
    3. LAYOUT & CONTAINERS
    ========================================= */
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -223,24 +223,6 @@ header h2::after {
   border: none;
   margin-bottom: 0.5rem;
   filter: drop-shadow(0 8px 16px rgba(15, 46, 39, 0.15));
-}
-
-.hashtag-container {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-}
-
-.hashtag {
-  background: rgba(15, 46, 39, 0.08);
-  color: var(--primary-color);
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
 }
 
 /* =========================================

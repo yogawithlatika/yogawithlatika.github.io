@@ -1,43 +1,38 @@
 // script.js
 
 // --- DATA CONFIGURATION ---
-
 const videoData = [
     {
         id: "1motM-CZZds",
         title: "Bedtime Yoga for Deep Sleep"
     },
     {
-        id: "tESmaA6Noxc",
-        title: "Chair Suryanamaskara | Chair Yoga"
+        id: "ZcwZFpBXma0",
+        title: "Yoga to reduce stress, improve sleep"
     },
     {
-        id: "SluQJ81cJEk",
-        title: "Yoga Flow Squence | Yoga for Back, Arm & Core Strengthening"
+        id: "rWDD0TWZXSI",
+        title: "Yoga for Long Sitting Hours"
     },
     {
-        id: "Nwiey4lbomM",
-        title: "Learn how to meditate : Good health & stress relief"
+        id: "LAYgeIKm8m0",
+        title: "Yoga for Back, Neck & Shoulder Pain Relief"
     },
     {
-        id: "MSX6EGd1vKo",
-        title: "Back Pain Yoga | Lumbar Stretch | Post workout stretch"
+        id: "ZjNRm6jCN7U",
+        title: "Chair Suryanamaskara | Desk Yoga"
     },
     {
-        id: "D6Pz36maFVA",
-        title: "Yoga for Constipation | Pawanmuktasana | Improve digestion & reduce bloating"
+        id: "WxcFTNNo3Ro",
+        title: "Yoga Stretches for Tech Neck & Upper Back Tension"
     },
     {
-        id: "T9c0JAKZlBs",
-        title: "Cat & Cow Breathing | Relief from Back Pain"
+        id: "kPH9Lo2oMj4",
+        title: "Yoga for Neck & Cervical Pain Relief"
     },
     {
-        id: "IDt1ZV6E15o",
-        title: "Yoga for Back Pain | Bhujangasana | Cobra Pose"
-    },
-    {
-        id: "AbdMmiJ5XdQ",
-        title: "Baddhakonasana | Butterfly Pose Benefits | Yoga for Hips & PCOS"
+        id: "ZuuvIa85QGI",
+        title: "Yoga to Stop Morning Knee Stiffness & Knee Pain"
     }
 ];
 
