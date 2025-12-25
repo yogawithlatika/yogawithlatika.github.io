@@ -98,6 +98,40 @@
         margin: 0 !important;
       }
     }
+
+    /* New Styles for Tulaa App Section */
+    .app-badge {
+      height: 50px;
+      /* Standard height for store badges */
+      width: auto;
+      transition: transform 0.2s;
+      margin: 5px;
+    }
+
+    .app-badge:hover {
+      transform: scale(1.05);
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "🌿";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   </style>
 </head>
 
@@ -107,7 +141,7 @@
       <a href="/#about">About Me</a>
       <a href="/#showcase">Videos</a>
       <a href="/#google-reviews">Reviews</a>
-      <a href="https://tulaalife.com" target="_blank" rel="noopener noreferrer">Tulaa</a>
+      <a href="/#tulaa">Tulaa</a>
     </div>
   </nav>
 
@@ -141,6 +175,43 @@
           <a href="https://tulaalife.com" target="_blank" rel="noopener noreferrer"
             class="cta-button animate-bounce secondary">
             Get Tulaa App
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tulaa" class="section" style="background-color: #f9fbfb;">
+      <div class="text-center">
+        <h2 class="animate-slide-in">Tulaa: Holistic Wellness in Your Pocket</h2>
+        <p class="profile-bio" style="max-width: 800px; margin: 0 auto;">
+          Take your practice anywhere with <strong>Tulaa</strong>—a free, <strong>offline-first yoga app</strong>
+          designed for your complete well-being.
+          Whether you need relief from <strong>Back Pain</strong>, specialized plans for <strong>PCOS,
+            Thyroid, Diabetes, Hypertension & more</strong>, or a guided <strong>relaxation session</strong>, Tulaa puts
+          expert care right in your hands.
+        </p>
+
+        <ul class="feature-list">
+          <li><strong>Expert-Curated Plans:</strong> Battle-tested routines for sciatica, neck pain, focus, and seniors
+            health</li>
+          <li>Smart tracker: monitor your health track your <strong>Cycle, Water, Mood, and Fasting</strong>
+            with
+            intelligent insights.</li>
+          <li><strong>Mindfulness & Rhythm:</strong> Build healthy habits and relax with guided meditation and chanting.
+          </li>
+          <li><strong>100% Privacy Focused:</strong> No login or signup required. Your data stays on your device.</li>
+        </ul>
+
+        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+          <em>Available now for free. No ads, no tracking.</em>
+        </p>
+
+        <div class="button-container">
+          <a href="https://play.google.com/store/apps/details?id=life.tulaa" target="_blank" rel="noopener noreferrer">
+            <img src="/images/download_playstore.svg" alt="Get it on Google Play" class="app-badge">
+          </a>
+          <a href="https://apps.apple.com/in/app/tulaa/id6748626498" target="_blank" rel="noopener noreferrer">
+            <img src="/images/download_appstore.svg" alt="Download on the App Store" class="app-badge">
           </a>
         </div>
       </div>
