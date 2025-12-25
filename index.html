@@ -139,9 +139,9 @@
   <nav>
     <div class="nav-container">
       <a href="/#about">About Me</a>
-      <a href="/#showcase">Videos</a>
-      <a href="/#google-reviews">Reviews</a>
       <a href="/#tulaa">Tulaa</a>
+      <a href="/#google-reviews">Reviews</a>
+      <a href="/#showcase">Videos</a>
     </div>
   </nav>
 
@@ -180,31 +180,49 @@
       </div>
     </section>
 
-    <section id="tulaa" class="section" style="background-color: #f9fbfb;">
+    <section id="tulaa" class="section">
       <div class="text-center">
-        <h2 class="animate-slide-in">Tulaa: Holistic Wellness in Your Pocket</h2>
-        <p class="profile-bio" style="max-width: 800px; margin: 0 auto;">
-          Take your practice anywhere with <strong>Tulaa</strong>—a free, <strong>offline-first yoga app</strong>
-          designed for your complete well-being.
-          Whether you need relief from <strong>Back Pain</strong>, specialized plans for <strong>PCOS,
-            Thyroid, Diabetes, Hypertension & more</strong>, or a guided <strong>relaxation session</strong>, Tulaa puts
-          expert care right in your hands.
+        <h2 class="animate-slide-in">Tulaa: Your Personal Wellness Sanctuary</h2>
+
+        <p class="tulaa-intro">
+          Take your practice anywhere with <strong>Tulaa</strong>—a free, <strong>offline-first</strong> app designed
+          for your complete well-being. No ads, no tracking, just pure yoga therapy.
         </p>
 
-        <ul class="feature-list">
-          <li><strong>Expert-Curated Plans:</strong> Battle-tested routines for sciatica, neck pain, focus, and seniors
-            health</li>
-          <li>Smart tracker: monitor your health track your <strong>Cycle, Water, Mood, and Fasting</strong>
-            with
-            intelligent insights.</li>
-          <li><strong>Mindfulness & Rhythm:</strong> Build healthy habits and relax with guided meditation and chanting.
-          </li>
-          <li><strong>100% Privacy Focused:</strong> No login or signup required. Your data stays on your device.</li>
-        </ul>
+        <div class="feature-carousel-container" id="featureCarousel">
 
-        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
-          <em>Available now for free. No ads, no tracking.</em>
-        </p>
+          <div class="feature-card active">
+            <span class="feature-icon">🌿</span>
+            <div class="feature-title">Yoga Therapy Plans</div>
+            <div class="feature-desc">Expert routines for Back Pain, PCOS, Thyroid, and Seniors.</div>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">📊</span>
+            <div class="feature-title">Holistic Tracking</div>
+            <div class="feature-desc">Monitor your Cycle, Mood, Water, and Fasting insights.</div>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">🧘‍♀️</span>
+            <div class="feature-title">Mindfulness & Rhythm</div>
+            <div class="feature-desc">Find peace with Guided Meditation and Vedic Chanting.</div>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">🔒</span>
+            <div class="feature-title">Privacy First</div>
+            <div class="feature-desc">Offline-ready. No login required. Your data stays on your device.</div>
+          </div>
+
+        </div>
+
+        <div class="carousel-indicators" id="carouselIndicators">
+          <div class="indicator active" onclick="setFeature(0)"></div>
+          <div class="indicator" onclick="setFeature(1)"></div>
+          <div class="indicator" onclick="setFeature(2)"></div>
+          <div class="indicator" onclick="setFeature(3)"></div>
+        </div>
 
         <div class="button-container">
           <a href="https://play.google.com/store/apps/details?id=life.tulaa" target="_blank" rel="noopener noreferrer">
@@ -214,6 +232,10 @@
             <img src="/images/download_appstore.svg" alt="Download on the App Store" class="app-badge">
           </a>
         </div>
+
+        <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.7;">
+          <em>Available now for free on iOS & Android.</em>
+        </p>
       </div>
     </section>
 

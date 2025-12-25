@@ -124,3 +124,45 @@ function startReviewCarousel() {
         showSlide(currentIndex);
     }, 7000);
 }
+
+/* Tulaa Feature Carousel Logic */
+document.addEventListener('DOMContentLoaded', function () {
+    const features = document.querySelectorAll('.feature-card');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentIndex = 0;
+    let carouselInterval;
+
+    function showFeature(index) {
+        // Remove active class from all
+        features.forEach(f => f.classList.remove('active'));
+        indicators.forEach(i => i.classList.remove('active'));
+
+        // Add active class to current
+        features[index].classList.add('active');
+        indicators[index].classList.add('active');
+
+        currentIndex = index;
+    }
+
+    function nextFeature() {
+        let nextIndex = (currentIndex + 1) % features.length;
+        showFeature(nextIndex);
+    }
+
+    // Start auto-rotation
+    function startCarousel() {
+        carouselInterval = setInterval(nextFeature, 3500); // Rotates every 3.5 seconds
+    }
+
+    // Allow manual clicking of dots
+    window.setFeature = function (index) {
+        clearInterval(carouselInterval); // Stop auto-rotation if user interacts
+        showFeature(index);
+        startCarousel(); // Restart timer
+    };
+
+    // Initialize
+    if (features.length > 0) {
+        startCarousel();
+    }
+});
