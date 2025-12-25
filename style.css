@@ -3,17 +3,16 @@
    ========================================= */
 :root {
   /* --- PALETTE STRATEGY ---
-     Light & Airy Theme:
-     1. Background: Light Mint/Sage gradients.
-     2. Text: Dark Forest Green for contrast.
-     3. Accent: Soft Gold.
+     Background: Light Mint/Sage gradients.
+     Text: Dark Forest Green.
+     Accent: Soft Gold.
   */
 
-  /* Primary: Deep Greens for Text */
+  /* Primary Colors */
   --primary-color: #0f2e27;
-  /* Very Dark Green */
+  /* Deep Green */
   --primary-light: #255245;
-  /* Rich Jewel Tone Green */
+  /* Jewel Tone Green */
 
   /* Accents */
   --accent-color: #dcb163;
@@ -21,7 +20,6 @@
   --accent-hover: #c49a4d;
   /* Darker Gold */
   --brand-pink: #ff8b8b;
-  /* Pink (Logo match) */
 
   /* Text Colors */
   --text-dark: #11221e;
@@ -36,17 +34,14 @@
   /* Fresh white/mint tint */
   --bg-card: #ffffff;
   --bg-glass: rgba(255, 255, 255, 0.7);
-  /* More transparent for floating feel */
 
   /* Shadows */
   --shadow-sm: 0 4px 6px rgba(15, 46, 39, 0.04);
   --shadow-md: 0 10px 20px -3px rgba(15, 46, 39, 0.08), 0 4px 6px -2px rgba(15, 46, 39, 0.04);
   --shadow-lg: 0 25px 30px -5px rgba(15, 46, 39, 0.1), 0 10px 10px -5px rgba(15, 46, 39, 0.04);
 
-  /* HERO: Fresh Lime & Lemon (Neon-ish but readable) */
+  /* Gradients */
   --gradient-hero: linear-gradient(135deg, #f9ffbd 0%, #caffbf 100%);
-
-  /* BUTTON: Soft Cream Gold */
   --gradient-gold: linear-gradient(135deg, #F9E6C5 0%, #FFFBF0 100%);
 
   /* Typography */
@@ -72,6 +67,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Shared Heading Styles */
 h1,
 h2,
 h3 {
@@ -88,20 +84,9 @@ h1 {
 }
 
 h2 {
-  color: var(--primary-color);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 0.75rem;
-
-  /* UPDATED: Center alignment settings */
   font-size: 2rem;
-  position: relative;
-  display: block;
-  /* Makes the header take up full width */
   text-align: center;
-  /* Centers the text inside */
-  width: 100%;
+  position: relative;
 }
 
 h3 {
@@ -152,13 +137,24 @@ img {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 1.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 1.5rem;
+}
+
 /* =========================================
    4. GLASSMORPHIC NAVIGATION
    ========================================= */
 nav {
   position: sticky;
   top: 1.5rem;
-  /* Space from browser top */
   z-index: 1000;
   width: 90%;
   max-width: 600px;
@@ -193,18 +189,13 @@ nav {
 }
 
 /* =========================================
-   5. HERO SECTION (UPDATED)
+   5. HERO SECTION
    ========================================= */
 header.section {
   background: var(--gradient-hero) !important;
-  /* Dark text for contrast on light background */
   color: var(--primary-color) !important;
-
-  /* Create the "Floating Card" look */
   margin-top: 1rem;
   border-radius: 2rem;
-  /* Rounded Top AND Bottom */
-
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
   box-shadow: var(--shadow-lg);
@@ -213,13 +204,11 @@ header.section {
 
 header h1 {
   color: var(--primary-color);
-  /* Ensure H1 is dark green */
   margin-bottom: 1rem;
 }
 
 header p {
   color: var(--text-dark);
-  /* Ensure body text is dark */
   font-size: 1.15rem;
   font-weight: 500;
 }
@@ -228,15 +217,12 @@ header h2::after {
   display: none;
 }
 
-/* LOGO UPDATE: Larger size */
 .hero-logo {
   width: 140px;
-  /* Increased from 140px */
   height: auto;
   border: none;
   margin-bottom: 0.5rem;
   filter: drop-shadow(0 8px 16px rgba(15, 46, 39, 0.15));
-  /* Soft shadow to pop off light bg */
 }
 
 .hashtag-container {
@@ -247,12 +233,9 @@ header h2::after {
   margin-top: 1.5rem;
 }
 
-/* UPDATED Hashtags for Light Background */
 .hashtag {
   background: rgba(15, 46, 39, 0.08);
-  /* Dark tint */
   color: var(--primary-color);
-  /* Dark text */
   padding: 0.4rem 1rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -276,7 +259,6 @@ header h2::after {
   justify-content: center;
   background: var(--gradient-gold);
   color: #3e2b06 !important;
-  /* Dark brown text for contrast on gold */
   padding: 0.9rem 2rem;
   font-size: 1rem;
   font-weight: 700;
@@ -295,9 +277,7 @@ header h2::after {
 .cta-button.secondary {
   background: transparent !important;
   border: 2px solid var(--primary-color);
-  /* Dark border */
   color: var(--primary-color) !important;
-  /* Dark text */
   box-shadow: none;
 }
 
@@ -411,7 +391,6 @@ header h2::after {
   font-family: var(--font-heading);
   font-size: 5rem;
   color: rgba(220, 177, 99, 0.2);
-  /* Light gold */
   position: absolute;
   top: -10px;
   left: 20px;
@@ -432,31 +411,8 @@ header h2::after {
 }
 
 /* =========================================
-   9. PREMIUM PROFILE CARD (ABOUT SECTION)
+   9. PREMIUM PROFILE CARD (ABOUT)
    ========================================= */
-.profile-card {
-  background: var(--bg-card);
-  border-radius: 24px;
-  padding: 3rem 2rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(15, 46, 39, 0.05);
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Decorative top border/accent */
-.profile-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: var(--gradient-gold);
-}
-
 .profile-avatar-container {
   margin-bottom: 1.5rem;
   position: relative;
@@ -475,7 +431,6 @@ header h2::after {
   color: var(--primary-color);
 }
 
-/* Remove decorative line inside the card */
 .profile-card h2::after {
   display: none;
 }
@@ -499,32 +454,8 @@ header h2::after {
   margin-right: auto;
 }
 
-.career-badges {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.badge {
-  background: rgba(15, 46, 39, 0.04);
-  color: var(--primary-light);
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border: 1px solid rgba(15, 46, 39, 0.08);
-  transition: all 0.3s ease;
-}
-
-.badge:hover {
-  background: var(--primary-color);
-  color: var(--text-light);
-  transform: translateY(-2px);
-}
-
 /* =========================================
-   10. FOOTER / SOCIAL
+   10. SOCIAL MEDIA
    ========================================= */
 .social-links {
   display: flex;
@@ -550,18 +481,6 @@ header h2::after {
   color: white;
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
-}
-
-.text-center {
-  text-align: center;
-}
-
-.mt-1 {
-  margin-top: 1.5rem;
-}
-
-.mb-1 {
-  margin-bottom: 1.5rem;
 }
 
 /* =========================================
@@ -607,20 +526,7 @@ header h2::after {
     font-size: 1.75rem;
   }
 
-  /* Adjusted review container height for mobile */
-  .review-container {
-    height: 450px;
-  }
-
-  .review-content {
-    padding: 1.5rem;
-  }
-
-  .video-card {
-    flex: 0 0 260px;
-  }
-
-  /* Mobile Nav styling */
+  /* Navigation */
   nav {
     width: 95%;
     top: 0.5rem;
@@ -635,13 +541,26 @@ header h2::after {
     padding: 0.4rem 0.6rem;
   }
 
-  /* Profile Card Mobile */
+  /* Cards */
   .profile-card {
     padding: 2rem 1.5rem;
   }
 
   .profile-name {
     font-size: 1.8rem;
+  }
+
+  .video-card {
+    flex: 0 0 260px;
+  }
+
+  /* Reviews */
+  .review-container {
+    height: 450px;
+  }
+
+  .review-content {
+    padding: 1.5rem;
   }
 }
 
@@ -650,6 +569,7 @@ header h2::after {
     padding: 3rem 1rem;
   }
 
+  /* Buttons */
   .button-container {
     flex-direction: column;
     width: 100%;
@@ -661,6 +581,7 @@ header h2::after {
     box-sizing: border-box;
   }
 
+  /* Reviews Mobile */
   .review-container {
     height: auto;
     min-height: 400px;
