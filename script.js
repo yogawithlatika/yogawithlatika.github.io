@@ -43,24 +43,28 @@ const videoData = [
 
 const reviewData = [
     {
-        name: "Neha Kashyap",
-        text: "I joined Latika’s yoga sessions just to lose weight, but she’s helped me transform my entire lifestyle. She’s guided me on everything—what and how I eat, my sleep habits, stress, posture—you name it. Her dedication is unmatched, and the personal care she brings to every session makes all the difference. It’s more than just fitness; it’s a complete mind-body reset with her! Thank You Latika!!"
+        name: "Swapna P",
+        text: "Latika's yoga classes are exceptional. She brings both expertise and passion to create a welcoming environment with clear instructions and a calming presence. She motivates me to practice regularly."
     },
     {
-        name: "payal shand",
-        text: "I’ve been attending online prenatal yoga sessions with Latika since the start of my pregnancy, and I couldn’t be happier with the experience. Latika is incredibly attentive and thoughtful, ensuring all practices are safe and tailored to my needs—especially when I mentioned my back pain. She was very careful to avoid any contraindicated practices. What sets her apart is the consistent support she offers outside of the sessions. She sends weekly messages with tips tailored to my progress, checks in on my water intake, and even provided advice for traveling while pregnant. Latika’s guidance has been a wonderful blend of care and expertise, making my prenatal journey healthier and more comfortable. Highly recommend her to anyone looking for a compassionate and skilled yoga teacher!"
+        name: "Vrinda Agrawal",
+        text: "I have been doing Prenatal yoga classes with Latika for weeks now and would highly recommend her classes. She’s extremely skilled, patient, easy to follow and curates the whole session around individual needs."
     },
     {
-        name: "Sejal Kumar",
-        text: "Yoga with Latika is something that I highly appreciate being a part of my daily routine. Her simplistic yet effective flow of practice has increased mobility in my joints while strengthening the supporting muscles. Her kind demeanour & patient efforts have been a great motivating factor in enhancing my overall health."
+        name: "Shamily Naidu",
+        text: "Excellent guide. Helped me overcome back pain and weight reduction. Very much dedicated and focused on the client's goals. Thank you Latika :)"
     },
     {
-        name: "Apps T",
-        text: "It’s been 7 months since I have started my yoga journey with Latika. I had been looking out for a yoga instructor who teaches hatha yoga and I am extremely happy to be trained by Latika. Her passion to ensure wellness is very evident by the way she approaches her students. She puts in sincere efforts to understand the needs and challenges, and then customizes the sessions to help her students achieve goal oriented results. As a result, I personally find myself motivated to work with her to achieve mindful wellbeing and look forward to her classes. I definitely feel taken care under her guidance and have greatly appreciated the knowledge she shares with me to help me improve my health and wellbeing."
+        name: "Akansha Roy",
+        text: "Very experienced and knowledgeable. Understands your concerns and targets it with gentle steps. I can see so much progress in just 3-4 weeks of classes. Totally recommend for anyone and everyone."
     },
     {
-        name: "Arushi",
-        text: "Latika is one of the very good yoga trainers I have come cross. She puts in the efforts to understand your needs and accordingly gets you doing yoga. She comes with good knowledge and great great attitude! I have been yoga with her for more than 3 months and I everyday look forward to her session!!!! Highly recommend her. Thanks Latika! :)"
+        name: "Shashank Awasthi",
+        text: "She has highly personalized the practice based on the health conditions that I have. The practice has helped me manage stress as well. She has been very accommodative with the session scheduling, which works well for my busy schedule."
+    },
+    {
+        name: "Poonguzhali Deep",
+        text: "Latika has immense knowledge. She spends a lot of time understanding individual needs. I was facing neck pain and stress, and within 2 months I am already seeing drastic improvements along with weight reduction."
     }
 ];
 
