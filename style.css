@@ -686,3 +686,58 @@ nav {
   font-weight: 600;
   font-family: sans-serif;
 }
+
+/* --- FLOATING CHAT BUTTON --- */
+.chat-float {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  width: 55px;
+  /* Slightly smaller for elegance */
+  height: 55px;
+  background-color: var(--primary-color);
+  /* Matches your website theme */
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(26, 60, 52, 0.25);
+  /* Soft shadow matching brand */
+  z-index: 9999;
+
+  /* Smooth Animations */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* HIDDEN BY DEFAULT (Desktop) */
+  display: none;
+}
+
+.chat-float svg {
+  stroke: #ffffff;
+  /* Icon is pure white */
+  fill: none;
+}
+
+.chat-float:hover {
+  background-color: var(--primary-light);
+  /* Lighter green on hover */
+  transform: scale(1.05);
+}
+
+.chat-float:active {
+  transform: scale(0.95);
+}
+
+/* --- MOBILE VISIBILITY & SCROLL LOGIC --- */
+@media (max-width: 768px) {
+  .chat-float {
+    display: flex;
+  }
+
+  /* Hidden state (triggered by JS) */
+  .chat-float.scroll-hide {
+    transform: translateY(100px) scale(0.8);
+    opacity: 0;
+  }
+}

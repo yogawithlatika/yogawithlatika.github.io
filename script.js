@@ -166,3 +166,24 @@ document.addEventListener('DOMContentLoaded', function () {
         startCarousel();
     }
 });
+
+/* Floating WhatsApp Button Logic */
+document.addEventListener('DOMContentLoaded', function () {
+    const whatsappBtn = document.getElementById('whatsappFloat');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function () {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Logic: If current scroll is greater than last scroll (Moving Down) -> Hide
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+            whatsappBtn.classList.add('scroll-hide');
+        } else {
+            // Moving Up -> Show
+            whatsappBtn.classList.remove('scroll-hide');
+        }
+
+        // Update last scroll position (prevent negative values)
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
+});
