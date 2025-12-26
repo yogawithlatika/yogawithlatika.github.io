@@ -187,3 +187,20 @@ document.addEventListener('DOMContentLoaded', function () {
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, false);
 });
+/* Hide 'Get Free App' Button based on URL Parameter */
+document.addEventListener('DOMContentLoaded', function () {
+    // 1. Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // 2. Check if 'hide_app_cta' is present and true
+    // Example URL: https://yogawithlatika.com?hide_app_cta=true
+    if (urlParams.get('hide_app_cta') === 'true') {
+
+        const appBtn = document.getElementById('getAppBtn');
+
+        // 3. Hide the button if it exists
+        if (appBtn) {
+            appBtn.style.display = 'none';
+        }
+    }
+});
