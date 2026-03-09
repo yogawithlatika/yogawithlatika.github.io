@@ -63,4 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             appBtn.style.display = 'none';
         }
     }
+
+    handleScroll();
 });

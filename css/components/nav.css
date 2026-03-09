@@ -1,62 +1,71 @@
 /* ==========================================================================
-   NAVIGATION COMPONENT (Floating Pill)
+   NAVIGATION COMPONENT (Refined Floating Pill)
    ========================================================================== */
 
 nav {
     position: sticky;
     top: 0;
+    left: 0;
     z-index: 1000;
     width: 100%;
-    /* Creates the initial floating gap from the top */
-    padding: 1rem 0;
-    /* Smooth transition if you later add a "shrunk" state via JS */
-    transition: all 0.3s ease;
+    /* Initial floating gap */
+    padding: 1.5rem 0;
+    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Essential to ensure sticky works across all browsers */
+    display: block;
+}
+
+/* Shrink the bar slightly when scrolling for a premium feel */
+nav.is-scrolled {
+    padding: 0.75rem 0;
 }
 
 .nav-container {
     background: var(--bg-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    /* Essential for Safari */
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: var(--radius-pill);
 
-    /* Centering and Sizing */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 90%;
-    max-width: 550px;
-    /* Slightly wider for better link breathing room */
+    max-width: 500px;
     margin: 0 auto;
-
-    padding: 0.6rem 1rem;
-    box-shadow: var(--shadow-md);
+    padding: 0.4rem;
+    /* Reduced padding to make active pill fit tighter */
+    box-shadow: 0 10px 30px -10px rgba(26, 60, 52, 0.15);
+    transition: all 0.4s ease;
 }
 
 /* Nav Link Styling */
 .nav-container a {
-    font-size: 0.9rem;
-    color: var(--primary-color);
-    padding: 0.6rem 1rem;
-    /* Increased padding for better touch targets */
-    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    padding: 0.6rem 1.2rem;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.01em;
+    transition: all 0.3s ease;
     white-space: nowrap;
+    border-radius: var(--radius-pill);
+    /* Needed for the active background */
 }
 
-/* Hover & Active States */
+/* Hover State */
 .nav-container a:hover {
-    color: var(--accent-hover);
-    background: rgba(26, 60, 52, 0.05);
+    color: var(--primary-color);
 }
 
-/* Highlight for the current section if needed later */
+/* REFINED ACTIVE STATE: 
+   Matches the screenshot: Subtle grey/glass background with dark text
+*/
 .nav-container a.active {
-    background: var(--primary-color);
-    color: var(--text-light);
+    background: rgba(26, 60, 52, 0.08);
+    /* Very subtle primary-tinted background */
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 /* ==========================================================================
@@ -65,21 +74,24 @@ nav {
 
 @media (max-width: 768px) {
     nav {
-        padding: 0.75rem 0;
+        padding: 1rem 0;
     }
 
     .nav-container {
-        width: 95%;
-        padding: 0.5rem 0.5rem;
-        gap: 4px;
-        /* Ensures links don't touch on very narrow screens */
+        width: calc(100% - 40px);
+        margin: 0 20px;
+        padding: 0.3rem;
+        gap: 2px;
     }
 
     .nav-container a {
-        font-size: 0.8rem;
-        padding: 0.5rem 0.6rem;
-        /* Ensures even small thumbs can click accurately */
-        min-width: 60px;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.4rem;
+        flex: 1;
         text-align: center;
+    }
+
+    .nav-container a.active {
+        background: rgba(26, 60, 52, 0.1);
     }
 }
