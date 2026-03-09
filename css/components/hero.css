@@ -44,7 +44,101 @@
     line-height: 1.8;
 }
 
-/* Layout for Action Buttons */
+/* ==========================================================================
+   FOUNDER PORTFOLIO CARD
+   ========================================================================== */
+.founder-portfolio {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    box-shadow: var(--shadow-sm);
+    /* Subtle border using the earthy primary color with low opacity */
+    border: 1px solid rgba(140, 74, 50, 0.08);
+    text-align: left;
+}
+
+.portfolio-title {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(140, 74, 50, 0.1);
+    padding-bottom: 0.75rem;
+}
+
+.portfolio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.portfolio-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.portfolio-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--bg-body-start);
+    padding: 4px;
+    /* Gives the logo breathing room inside the box */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    flex-shrink: 0;
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper svg {
+    width: 26px;
+    /* Slightly smaller to match visual weight of the images */
+    height: 26px;
+}
+
+/* Specific styling for the YouTube SVG icon */
+.yt-icon-wrapper {
+    color: #CD201F;
+    /* Classic YouTube Red */
+}
+
+/* Specific styling for the Education SVG icon */
+.edu-icon-wrapper {
+    color: var(--primary-color);
+    /* Uses your earthy rust tone */
+}
+
+.portfolio-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+.portfolio-text strong {
+    color: var(--text-dark);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.portfolio-text span {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   LAYOUT FOR ACTION BUTTONS
+   ========================================================================== */
 .button-container {
     display: flex;
     gap: 1.25rem;
@@ -65,7 +159,8 @@
 }
 
 .hero-section .cta-button.secondary:hover {
-    background: rgba(26, 60, 52, 0.05) !important;
+    background: rgba(140, 74, 50, 0.05) !important;
+    /* Matched hover background to new rust theme */
     transform: translateY(-2px);
 }
 
@@ -80,6 +175,17 @@
     .profile-avatar {
         width: 200px;
         height: 200px;
+    }
+
+    /* Portfolio card mobile adjustments */
+    .founder-portfolio {
+        padding: 1.25rem;
+        margin: 0 1rem 2rem;
+    }
+
+    .portfolio-icon {
+        width: 44px;
+        height: 44px;
     }
 
     .button-container {
