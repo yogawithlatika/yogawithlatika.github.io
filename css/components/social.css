@@ -45,25 +45,50 @@
     color: #0A66C2;
 }
 
-/* Floating WhatsApp Button */
+/* css/components/social.css */
+
 .chat-float {
     position: fixed;
     bottom: 25px;
     right: 20px;
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     background-color: var(--primary-color);
     color: #ffffff;
     border-radius: 50%;
-    display: none;
-    /* Logic in JS shows this on mobile */
+    display: flex;
+    /* Ensure it is visible by default */
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 15px rgba(26, 60, 52, 0.3);
     z-index: 9999;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
 }
 
+.chat-float svg {
+    stroke: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.chat-float:hover {
+    background-color: var(--primary-light);
+    transform: scale(1.1);
+}
+
+/* Updated Scroll Logic: Dim instead of disappear */
 .chat-float.scroll-hide {
-    transform: translateY(100px);
-    opacity: 0;
+    opacity: 0.5;
+    transform: scale(0.9);
+    filter: grayscale(0.5);
+}
+
+/* Mobile specific sizing */
+@media (max-width: 768px) {
+    .chat-float {
+        bottom: 20px;
+        right: 15px;
+        width: 55px;
+        height: 55px;
+    }
 }
