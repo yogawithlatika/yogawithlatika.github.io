@@ -1,0 +1,69 @@
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: var(--radius-pill);
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    fill: currentColor;
+}
+
+.social-item:hover {
+    transform: translateY(-3px);
+    background-color: #fff;
+}
+
+/* Brand specific colors on hover */
+.social-item.instagram:hover {
+    color: #E4405F;
+}
+
+.social-item.youtube:hover {
+    color: #FF0000;
+}
+
+.social-item.linkedin:hover {
+    color: #0A66C2;
+}
+
+/* Floating WhatsApp Button */
+.chat-float {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-radius: 50%;
+    display: none;
+    /* Logic in JS shows this on mobile */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: all 0.4s ease;
+}
+
+.chat-float.scroll-hide {
+    transform: translateY(100px);
+    opacity: 0;
+}

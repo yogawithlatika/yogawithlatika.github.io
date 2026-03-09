@@ -1,0 +1,74 @@
+/* css/components/reviews.css */
+
+.review-container {
+    position: relative;
+    max-width: 850px;
+    /* Limits width to match your screenshot */
+    margin: 2rem auto;
+    min-height: 350px;
+    /* Prevents layout jump during transitions */
+}
+
+.review-content {
+    background: var(--bg-card);
+    padding: 3rem 2.5rem;
+    border-radius: 25px;
+    box-shadow: var(--shadow-md);
+    border-top: 5px solid var(--accent-color);
+    text-align: center;
+    /* Centers all text, stars, and names */
+    position: relative;
+    margin: 10px;
+}
+
+/* The decorative opening quote mark */
+.review-content::before {
+    content: '“';
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    color: rgba(220, 177, 99, 0.15);
+    /* Subtle accent color */
+    position: absolute;
+    top: 0px;
+    left: 25px;
+    line-height: 1;
+}
+
+.review-content p:first-child {
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+.review-content p:last-child {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Animation Logic */
+.review-slide {
+    display: none;
+}
+
+.review-slide.active {
+    display: block;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,26 @@
+:root {
+    /* Core Palette */
+    --primary-color: #1a3c34;
+    --primary-light: #2c5e52;
+    --accent-color: #dcb163;
+    --accent-hover: #c49a4d;
+
+    /* Typography Colors */
+    --text-dark: #11221e;
+    --text-gray: #4a5d56;
+    --text-light: #f8fbf9;
+
+    /* Backgrounds */
+    --bg-body-start: #fdfbf7;
+    --bg-body-end: #f4f9f7;
+    --bg-card: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+
+    /* Design Tokens */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --shadow-md: 0 10px 20px -3px rgba(26, 60, 52, 0.08);
+    --gradient-gold: linear-gradient(135deg, #F9E6C5 0%, #FFFBF0 100%);
+    --radius-lg: 12px;
+    --radius-pill: 50px;
+}

@@ -1,0 +1,59 @@
+/* Hero Section Layout */
+.hero-section {
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 250px;
+    /* Adjust size as needed */
+    height: auto;
+    border-radius: 50%;
+    /* If you want it circular */
+    object-fit: cover;
+    display: block;
+}
+
+.profile-avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-name {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.2rem;
+}
+
+.profile-title {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.profile-bio {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    max-width: 700px;
+    margin: 1.5rem auto 2.5rem;
+}
+
+/* Specific button overrides for Hero */
+.button-container {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.cta-button.secondary {
+    background: transparent !important;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color) !important;
+    box-shadow: none;
+}
+
+.cta-button.secondary:hover {
+    background: rgba(26, 60, 52, 0.05) !important;
+}

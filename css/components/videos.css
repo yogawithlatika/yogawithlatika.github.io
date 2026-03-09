@@ -1,0 +1,63 @@
+.carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1.5rem 0.5rem 2.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for clean look */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.video-card {
+    flex: 0 0 280px;
+    scroll-snap-align: center;
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.video-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.video-card p {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.button-accent {
+    display: inline-block;
+    /* Crucial for centering via text-align */
+    color: var(--primary-color);
+    font-weight: 700;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 2px;
+    text-decoration: none;
+    margin: 0 auto;
+}
+
+.button-accent:hover {
+    color: var(--accent-hover);
+    border-bottom-color: var(--primary-color);
+}
