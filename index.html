@@ -19,10 +19,12 @@
   <meta property="og:title" content="YogaWithLatika | Expert Online Yoga Therapy & Prenatal Classes">
   <meta property="og:description"
     content="Transform your health with Latika, a Gold Medalist & M.Sc Yoga Therapist. Specialized sessions for Pregnancy, PCOS, and Pain Management.">
-  <meta property="og:image" content="/images/yogawithlatika_logo_512x512.png">
+  <meta property="og:image" content="https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png">
 
   <link rel="shortcut icon" href="/images/yogawithlatika_logo_favicon.png">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet">
@@ -56,14 +58,16 @@
 </head>
 
 <body>
-  <nav>
-    <div class="nav-container">
-      <a href="#about">About Me</a>
-      <a href="#tulaa">Tulaa</a>
-      <a href="#google-reviews">Reviews</a>
-      <a href="#showcase">Videos</a>
-    </div>
-  </nav>
+  <header>
+    <nav aria-label="Main Navigation">
+      <div class="nav-container">
+        <a href="#about">About Me</a>
+        <a href="#tulaa">Tulaa</a>
+        <a href="#google-reviews">Reviews</a>
+        <a href="#showcase">Videos</a>
+      </div>
+    </nav>
+  </header>
 
   <main class="container">
     <section id="about" class="section hero-section">
@@ -71,12 +75,13 @@
         <h1>Personalized Yoga Therapy & Wellness</h1>
 
         <div class="profile-avatar-container">
-          <img src="images/latika_profile_pic.webp" alt="Latika Bissa Yoga Therapist" class="profile-avatar">
+          <img src="images/latika_profile_pic.webp" alt="Latika Bissa Yoga Therapist" class="profile-avatar" width="250"
+            height="250">
         </div>
 
         <h2 class="profile-name">Latika Bissa</h2>
         <div class="profile-title">Founder, YogaWithLatika & Tulaa</div>
-        <div style="margin-top: 0.5rem; color: var(--primary-color);">
+        <div class="hero-qualifications" style="margin-top: 0.5rem; color: var(--primary-color);">
           <strong>🎓 M.Sc & B.Sc Yoga Therapy (Gold Medalist)</strong>
         </div>
 
@@ -111,42 +116,40 @@
 
         <div class="feature-carousel-container" id="featureCarousel">
           <div class="feature-card active">
-            <span class="feature-icon">🌿</span>
-            <div class="feature-title">Therapeutic Plans</div>
-            <div class="feature-desc">Specialized routines for Back Pain, PCOS, Thyroid care, and Senior wellness.</div>
+            <span class="feature-icon" aria-hidden="true">🌿</span>
+            <h3 class="feature-title">Therapeutic Plans</h3>
+            <p class="feature-desc">Specialized routines for Back Pain, PCOS, Thyroid care, and Senior wellness.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon" aria-hidden="true">📊</span>
+            <h3 class="feature-title">Holistic Tracking</h3>
+            <p class="feature-desc">Understand your body by monitoring your Cycle, Mood, Water, and Fasting.</p>
           </div>
 
           <div class="feature-card">
-            <span class="feature-icon">📊</span>
-            <div class="feature-title">Holistic Tracking</div>
-            <div class="feature-desc">Understand your body by monitoring your Cycle, Mood, Water, and Fasting.</div>
+            <span class="feature-icon" aria-hidden="true">🧘‍♀️</span>
+            <h3 class="feature-title">Mindfulness & Rhythm</h3>
+            <p class="feature-desc">Find deep relaxation with Guided Meditation and authentic Vedic Chanting.</p>
           </div>
 
           <div class="feature-card">
-            <span class="feature-icon">🧘‍♀️</span>
-            <div class="feature-title">Mindfulness & Rhythm</div>
-            <div class="feature-desc">Find deep relaxation with Guided Meditation and authentic Vedic Chanting.</div>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-icon">🔒</span>
-            <div class="feature-title">Privacy First</div>
-            <div class="feature-desc">Offline-ready with zero tracking. Your health data stays only on your device.
-            </div>
+            <span class="feature-icon" aria-hidden="true">🔒</span>
+            <h3 class="feature-title">Privacy First</h3>
+            <p class="feature-desc">Offline-ready with zero tracking. Your health data stays only on your device.</p>
           </div>
         </div>
 
         <div class="carousel-indicators" id="carouselIndicators">
-          <div class="indicator active" onclick="setFeature(0)"></div>
-          <div class="indicator" onclick="setFeature(1)"></div>
-          <div class="indicator" onclick="setFeature(2)"></div>
-          <div class="indicator" onclick="setFeature(3)"></div>
+          <button class="indicator active" onclick="setFeature(0)" aria-label="Feature 1"></button>
+          <button class="indicator" onclick="setFeature(1)" aria-label="Feature 2"></button>
+          <button class="indicator" onclick="setFeature(2)" aria-label="Feature 3"></button>
+          <button class="indicator" onclick="setFeature(3)" aria-label="Feature 4"></button>
         </div>
 
         <div class="button-container">
           <a href="https://play.google.com/store/apps/details?id=life.tulaa" target="_blank" rel="noopener noreferrer"
-            class="store-btn">
-            <img src="/images/playstore.svg" alt="Google Play" class="store-icon">
+            class="store-btn" aria-label="Get it on Google Play">
+            <img src="/images/playstore.svg" alt="" class="store-icon" width="24" height="24">
             <div class="store-text-group">
               <span class="store-text-small">GET IT ON</span>
               <span class="store-text-large">Google Play</span>
@@ -154,15 +157,15 @@
           </a>
 
           <a href="https://apps.apple.com/in/app/tulaa/id6748626498" target="_blank" rel="noopener noreferrer"
-            class="store-btn">
-            <img src="/images/appstore.svg" alt="App Store" class="store-icon">
+            class="store-btn" aria-label="Download on the App Store">
+            <img src="/images/appstore.svg" alt="" class="store-icon" width="24" height="24">
             <div class="store-text-group">
               <span class="store-text-small">Download on the</span>
               <span class="store-text-large">App Store</span>
             </div>
           </a>
         </div>
-        <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.7; text-align: center;">
+        <p class="text-small" style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.7; text-align: center;">
           <em>Free on iOS & Android. No Login Required.</em>
         </p>
       </div>
@@ -171,9 +174,8 @@
     <section id="google-reviews" class="section">
       <h2 class="text-center">Success Stories & Transformations</h2>
       <div class="review-container" id="review-wrapper"></div>
-
       <div class="text-center mt-1">
-        <a href="https://maps.app.goo.gl/atyuCod4PHRHPq9q8" target="_blank" rel="noopener noreferrer"
+        <a href="https://www.google.com/maps/search/YogaWithLatika" target="_blank" rel="noopener noreferrer"
           class="button-accent">
           💬 Read All Client Reviews →
         </a>
@@ -184,7 +186,6 @@
       <h2 class="text-center">Experience My Teaching Style</h2>
       <p class="text-center mb-1">Simple, effective, and scientifically backed yoga practices.</p>
       <div class="carousel" id="video-carousel"></div>
-
       <div class="text-center mt-1">
         <a href="https://www.youtube.com/@yogawithlatika" target="_blank" rel="noopener noreferrer"
           class="button-accent">
@@ -198,7 +199,7 @@
       <div class="social-links">
         <a href="https://www.youtube.com/@yogawithlatika" target="_blank" rel="noopener noreferrer"
           class="social-item youtube">
-          <svg class="social-icon" viewBox="0 0 24 24">
+          <svg class="social-icon" aria-hidden="true" viewBox="0 0 24 24">
             <path
               d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
           </svg>
@@ -225,9 +226,10 @@
   </main>
 
   <a href="https://api.whatsapp.com/send?phone=919663201627&text=Hi%20Latika%2C%20I%20am%20interested%20in%20starting%20my%20Yoga%20journey%20with%20you%20🙏"
-    target="_blank" rel="noopener noreferrer" class="chat-float" id="whatsappFloat" aria-label="Chat with Latika">
+    target="_blank" rel="noopener noreferrer" class="chat-float" id="whatsappFloat"
+    aria-label="Chat with Latika on WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
+      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     </svg>
   </a>

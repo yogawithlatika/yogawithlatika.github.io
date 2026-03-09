@@ -1,59 +1,110 @@
-/* Hero Section Layout */
+/* ==========================================================================
+   HERO SECTION COMPONENT
+   ========================================================================== */
+
 .hero-section {
     text-align: center;
+    /* Added padding to ensure the sticky nav doesn't overlap content on jump-links */
+    padding-top: 5rem;
 }
 
-.profile-avatar {
-    width: 250px;
-    /* Adjust size as needed */
-    height: auto;
-    border-radius: 50%;
-    /* If you want it circular */
-    object-fit: cover;
-    display: block;
-}
-
+/* Avatar Logic */
 .profile-avatar-container {
     display: flex;
     justify-content: center;
     margin-bottom: 1.5rem;
 }
 
+.profile-avatar {
+    width: 250px;
+    height: 250px;
+    /* Force square for perfect circle */
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    /* Soft shadow to lift the profile pic off the cream background */
+    box-shadow: var(--shadow-md);
+    border: 4px solid var(--bg-card);
+}
+
+/* Typography Hierarchy */
 .profile-name {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 0.2rem;
+    margin: 0.5rem 0 0.2rem;
+    font-family: var(--font-heading);
 }
 
 .profile-title {
     color: var(--accent-color);
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
 }
 
 .profile-bio {
     font-size: 1.1rem;
     color: var(--text-gray);
-    max-width: 700px;
+    max-width: 720px;
     margin: 1.5rem auto 2.5rem;
+    line-height: 1.8;
 }
 
-/* Specific button overrides for Hero */
+/* Layout for Action Buttons */
 .button-container {
     display: flex;
-    gap: 1.2rem;
+    gap: 1.25rem;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     margin-top: 2rem;
 }
 
-.cta-button.secondary {
+/* Refining the Secondary Button:
+   Using the global .cta-button class but overriding specifically for Hero 
+*/
+.hero-section .cta-button.secondary {
     background: transparent !important;
     border: 2px solid var(--primary-color);
     color: var(--primary-color) !important;
     box-shadow: none;
 }
 
-.cta-button.secondary:hover {
+.hero-section .cta-button.secondary:hover {
     background: rgba(26, 60, 52, 0.05) !important;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 768px) {
+    .profile-name {
+        font-size: 2rem;
+    }
+
+    .profile-avatar {
+        width: 200px;
+        height: 200px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+        /* Ensures buttons stay centered in the column */
+        gap: 1rem;
+        /* Adds consistent space between the stacked buttons */
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .button-container .cta-button {
+        width: 100%;
+        max-width: 280px;
+        /* Prevents them from stretching too wide on larger phones */
+        padding: 1rem 1.5rem;
+        /* Ensures a consistent "pill" height */
+        box-sizing: border-box;
+        /* Ensures padding doesn't break width */
+    }
 }

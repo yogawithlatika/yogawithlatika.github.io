@@ -1,9 +1,14 @@
+/* ==========================================================================
+   SOCIAL MEDIA COMPONENT (Footer Section)
+   ========================================================================== */
+
 .social-links {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
     margin-top: 2rem;
     flex-wrap: wrap;
+    /* Essential for mobile wrapping */
 }
 
 .social-item {
@@ -13,26 +18,31 @@
     color: var(--primary-color);
     font-weight: 600;
     font-size: 1.1rem;
-    padding: 10px 20px;
+    padding: 12px 24px;
+    /* Increased padding for better touch targets */
     border-radius: var(--radius-pill);
     background-color: var(--bg-card);
-    box-shadow: var(--shadow-md);
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle border for definition */
 }
 
 .social-icon {
     width: 24px;
     height: 24px;
-    margin-right: 10px;
+    margin-right: 12px;
     fill: currentColor;
 }
 
+/* Hover States with Elevation */
 .social-item:hover {
-    transform: translateY(-3px);
-    background-color: #fff;
+    transform: translateY(-4px);
+    background-color: #ffffff;
+    box-shadow: var(--shadow-md);
 }
 
-/* Brand specific colors on hover */
+/* Brand-Specific Color Signatures on Hover */
 .social-item.instagram:hover {
     color: #E4405F;
 }
@@ -45,50 +55,26 @@
     color: #0A66C2;
 }
 
-/* css/components/social.css */
+/* ==========================================================================
+   MOBILE OPTIMIZATION
+   ========================================================================== */
 
-.chat-float {
-    position: fixed;
-    bottom: 25px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--primary-color);
-    color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    /* Ensure it is visible by default */
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(26, 60, 52, 0.3);
-    z-index: 9999;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    text-decoration: none;
-}
-
-.chat-float svg {
-    stroke: #ffffff;
-    transition: transform 0.3s ease;
-}
-
-.chat-float:hover {
-    background-color: var(--primary-light);
-    transform: scale(1.1);
-}
-
-/* Updated Scroll Logic: Dim instead of disappear */
-.chat-float.scroll-hide {
-    opacity: 0.5;
-    transform: scale(0.9);
-    filter: grayscale(0.5);
-}
-
-/* Mobile specific sizing */
 @media (max-width: 768px) {
-    .chat-float {
-        bottom: 20px;
-        right: 15px;
-        width: 55px;
-        height: 55px;
+    .social-links {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .social-item {
+        font-size: 1rem;
+        padding: 10px 20px;
+        /* Flex-grow allows buttons to sit side-by-side or stack neatly */
+        flex: 0 1 auto;
+    }
+
+    .social-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
     }
 }

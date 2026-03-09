@@ -1,40 +1,44 @@
-/* css/components/reviews.css */
+/* ==========================================================================
+   REVIEWS COMPONENT (Testimonial Slider)
+   ========================================================================== */
 
 .review-container {
     position: relative;
     max-width: 850px;
-    /* Limits width to match your screenshot */
     margin: 2rem auto;
-    min-height: 350px;
-    /* Prevents layout jump during transitions */
+    /* min-height ensures the "Read All Reviews" button doesn't jump 
+       when switching between short and long quotes */
+    min-height: 380px;
 }
 
 .review-content {
     background: var(--bg-card);
-    padding: 3rem 2.5rem;
+    padding: 3.5rem 2.5rem 2.5rem;
+    /* Extra top padding for the large quote icon */
     border-radius: 25px;
     box-shadow: var(--shadow-md);
     border-top: 5px solid var(--accent-color);
     text-align: center;
-    /* Centers all text, stars, and names */
     position: relative;
     margin: 10px;
+    transition: transform 0.3s ease;
 }
 
-/* The decorative opening quote mark */
+/* Decorative Opening Quote */
 .review-content::before {
     content: '“';
     font-family: var(--font-heading);
-    font-size: 6rem;
-    color: rgba(220, 177, 99, 0.15);
-    /* Subtle accent color */
+    font-size: 7rem;
+    color: rgba(220, 177, 99, 0.12);
     position: absolute;
-    top: 0px;
-    left: 25px;
+    top: -10px;
+    left: 20px;
     line-height: 1;
+    pointer-events: none;
 }
 
-.review-content p:first-child {
+/* The Testimonial Text */
+.review-content p:first-of-type {
     font-style: italic;
     font-size: 1.15rem;
     line-height: 1.8;
@@ -43,32 +47,59 @@
     padding: 0 1rem;
 }
 
-.review-content p:last-child {
+/* Star Ratings Container */
+.review-stars {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+/* Reviewer Name */
+.review-content p:last-of-type {
     font-weight: 700;
     color: var(--primary-color);
     font-family: var(--font-heading);
-    font-size: 1.1rem;
-    margin-top: 1rem;
+    font-size: 1.15rem;
+    margin-top: 0.5rem;
 }
 
-/* Animation Logic */
+/* ==========================================================================
+   ANIMATION & DISPLAY
+   ========================================================================== */
 .review-slide {
     display: none;
 }
 
 .review-slide.active {
     display: block;
-    animation: fadeInUp 0.6s ease-out;
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .review-container {
+        min-height: 450px;
+        /* More room for wrapping text on mobile */
+    }
+
+    .review-content {
+        padding: 3rem 1.5rem 2rem;
+    }
+
+    .review-content p:first-of-type {
+        font-size: 1.05rem;
     }
 }

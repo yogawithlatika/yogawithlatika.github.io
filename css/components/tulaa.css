@@ -1,68 +1,80 @@
-/* css/components/tulaa.css */
+/* ==========================================================================
+   TULAA APP SECTION COMPONENT
+   ========================================================================== */
 
 #tulaa {
     text-align: center;
+    overflow: hidden;
+    /* Prevents transform-related scrollbars */
 }
 
 .tulaa-intro {
     max-width: 800px;
     margin: 0 auto 3rem auto;
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    padding: 0 1rem;
 }
 
+/* CAROUSEL CONTAINER
+   Using min-height instead of fixed height to prevent content overlap 
+*/
 .feature-carousel-container {
     position: relative;
-    /* Increase height to fit the stacked icon, title, and text */
-    height: 220px;
+    min-height: 250px;
     max-width: 700px;
-    margin: 0 auto 1.5rem auto;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    align-items: center;
 }
 
 .feature-card {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
     width: 100%;
+    transform: translateY(-40%) scale(0.95);
+    /* Better entry animation */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     opacity: 0;
-    transform: translateY(15px);
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
 }
 
 .feature-card.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-50%) scale(1);
     pointer-events: all;
 }
 
 .feature-icon {
-    font-size: 3rem;
-    /* Larger icon like your screenshot */
+    font-size: 3.5rem;
+    /* Matches the prominent look in your screenshot */
     margin-bottom: 1rem;
-    display: block;
+    line-height: 1;
 }
 
 .feature-title {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 0.75rem;
 }
 
 .feature-desc {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--text-gray);
-    max-width: 500px;
-    line-height: 1.5;
+    max-width: 550px;
+    line-height: 1.6;
+    padding: 0 1.5rem;
 }
 
-/* Indicators Styling to match screenshot */
+/* INDICATORS 
+   Positioned below the min-height container
+*/
 .carousel-indicators {
     display: flex;
     justify-content: center;
@@ -83,32 +95,27 @@
 
 .indicator.active {
     background-color: var(--primary-color);
-    transform: scale(1.2);
+    transform: scale(1.3);
 }
 
-.button-container {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
+/* ==========================================================================
+   OFFICIAL APP STORE BADGES
+   ========================================================================== */
 
 .store-btn {
     display: inline-flex;
     align-items: center;
     background-color: #000000;
-    /* Deep black for official look */
     color: #ffffff !important;
     border: 1px solid #a6a6a6;
-    /* Subtle border used in official badges */
     border-radius: 8px;
-    /* Slightly sharper corners for official look */
-    padding: 6px 6px;
+    padding: 8px 16px;
+    /* Increased padding for better guideline compliance */
     text-decoration: none;
-    min-width: 150px;
+    min-width: 180px;
     transition: transform 0.2s, background-color 0.2s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 8px;
 }
 
 .store-btn:hover {
@@ -117,9 +124,8 @@
 }
 
 .store-icon {
-    width: 24px;
-    /* Official proportions */
-    height: 24px;
+    width: 26px;
+    height: 26px;
     margin-right: 12px;
     object-fit: contain;
 }
@@ -128,29 +134,35 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 .store-text-small {
     font-size: 10px;
-    /* Precise small text */
     font-weight: 400;
     text-transform: uppercase;
-    /* Using system sans-serif for official look */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    letter-spacing: 0.2px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: 0.5px;
 }
 
 .store-text-large {
-    font-size: 18px;
-    /* Precise large text */
+    font-size: 19px;
     font-weight: 600;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin-top: -2px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Specific adjustment for Apple logo alignment */
-.store-btn img[alt="App Store"] {
-    margin-top: -4px;
-    /* Apple logo sits slightly higher naturally */
+/* Responsive Overrides */
+@media (max-width: 600px) {
+    .feature-carousel-container {
+        min-height: 280px;
+        /* More room for wrapping text */
+    }
+
+    .feature-title {
+        font-size: 1.6rem;
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+    }
 }
