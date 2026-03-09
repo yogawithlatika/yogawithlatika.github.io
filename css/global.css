@@ -4,6 +4,13 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    /* Disable selection globally */
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and 11 */
+    user-select: none;
+    /* Standard syntax */
 }
 
 body {
