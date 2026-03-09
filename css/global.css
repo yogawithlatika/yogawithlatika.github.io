@@ -13,16 +13,6 @@ html {
     /* Standard syntax */
 }
 
-body {
-    margin: 0;
-    font-family: var(--font-body);
-    color: var(--text-gray);
-    background: linear-gradient(180deg, var(--bg-body-start) 0%, var(--bg-body-end) 100%);
-    background-attachment: fixed;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-}
-
 /* ==========================================================================
    2. TYPOGRAPHY
    ========================================================================== */
@@ -33,22 +23,34 @@ h3 {
     font-family: var(--font-heading);
     text-align: center;
     line-height: 1.2;
+    letter-spacing: -0.02em;
+    /* Gives an editorial feel */
+    font-weight: 600;
 }
 
-h2 {
-    position: relative;
-    margin-bottom: 2rem;
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--text-gray);
+    background: linear-gradient(180deg, var(--bg-body-start) 0%, var(--bg-body-end) 100%);
+    background-attachment: fixed;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Decorative underline for section headings */
+/* Decorative underline */
 h2::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 3px;
+    width: 40px;
+    /* Slightly narrower */
+    height: 2px;
+    /* Thinner */
     background: var(--accent-color);
-    margin: 12px auto 0;
+    margin: 16px auto 0;
     border-radius: var(--radius-pill);
+    opacity: 0.8;
 }
 
 /* ==========================================================================
@@ -80,19 +82,24 @@ h2::after {
    4. SHARED COMPONENTS (Buttons & Links)
    ========================================================================== */
 
-/* Main Pill Buttons */
 .cta-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background: var(--gradient-gold);
-    color: #3e2b06 !important;
+    color: var(--text-dark) !important;
+    /* Changed from #1a3c34 to your dark earthy tone */
     padding: 0.9rem 2rem;
+    font-size: 0.85rem;
     font-weight: 700;
+    /* Bumped up slightly to stand out on the gold */
+    border: none;
     border-radius: var(--radius-pill);
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .cta-button:hover {
@@ -131,7 +138,8 @@ h2::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(26, 60, 52, 0.25);
+    /* Updated shadow to match the rust theme */
+    box-shadow: 0 4px 15px rgba(140, 74, 50, 0.25);
     z-index: 9999;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }

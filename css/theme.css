@@ -1,26 +1,32 @@
 :root {
-    /* Core Palette */
-    --primary-color: #1a3c34;
-    --primary-light: #2c5e52;
-    --accent-color: #dcb163;
-    --accent-hover: #c49a4d;
+    /* Earthy Palette */
+    --primary-color: #8C4A32;
+    /* Deep Muted Rust */
+    --primary-light: #A8644A;
+    --accent-color: #798B75;
+    /* Soft Sage Green */
+    --accent-hover: #63755F;
 
-    /* Typography Colors */
-    --text-dark: #11221e;
-    --text-gray: #4a5d56;
-    --text-light: #f8fbf9;
+    /* Typography Colors - Softer than black */
+    --text-dark: #2C2825;
+    --text-gray: #5A544F;
+    --text-light: #F4F1ED;
 
-    /* Backgrounds */
-    --bg-body-start: #fdfbf7;
-    --bg-body-end: #f4f9f7;
-    --bg-card: #ffffff;
-    --bg-glass: rgba(255, 255, 255, 0.85);
+    /* Low-Glare Backgrounds */
+    --bg-body-start: #F7F5F0;
+    /* Warm Parchment */
+    --bg-body-end: #EFECE5;
+    --bg-card: #FCFAf6;
+    /* Off-white, not pure white */
+
+    --gradient-gold: linear-gradient(135deg, #D4C3A3 0%, #B8A37A 100%);
+
+    --shadow-sm: 0 4px 12px rgba(140, 74, 50, 0.04);
+    --shadow-md: 0 12px 30px -4px rgba(140, 74, 50, 0.08);
 
     /* Design Tokens */
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Poppins', sans-serif;
-    --shadow-md: 0 10px 20px -3px rgba(26, 60, 52, 0.08);
-    --gradient-gold: linear-gradient(135deg, #F9E6C5 0%, #FFFBF0 100%);
+    --font-heading: 'Lora', serif;
+    --font-body: 'Inter', sans-serif;
     --radius-lg: 12px;
     --radius-pill: 50px;
 }
