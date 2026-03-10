@@ -128,36 +128,60 @@ h2::after {
    ========================================================================== */
 .chat-float {
     position: fixed;
-    bottom: 25px;
-    right: 20px;
-    width: 56px;
-    height: 56px;
+    bottom: 30px;
+    right: 30px;
     background-color: var(--primary-color);
     color: #ffffff;
-    border-radius: 50%;
+    border-radius: var(--radius-pill);
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Updated shadow to match the rust theme */
-    box-shadow: 0 4px 15px rgba(140, 74, 50, 0.25);
+    padding: 0 24px;
+    /* Desktop pill padding */
+    height: 56px;
+    box-shadow: 0 4px 15px rgba(140, 74, 50, 0.3);
     z-index: 9999;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Subtle attention-grabbing pulse */
+    animation: pulse-glow 3s infinite;
 }
 
 .chat-float svg {
     stroke: #ffffff;
     fill: none;
+    flex-shrink: 0;
+}
+
+.chat-text {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 10px;
+    white-space: nowrap;
 }
 
 .chat-float:hover {
     background-color: var(--primary-light);
-    transform: scale(1.05);
+    transform: translateY(-4px) scale(1.02);
+    /* Pause the pulse on hover so it feels stable when clicking */
+    animation-play-state: paused;
 }
 
-/* Classes toggled via JS */
-.chat-float.scroll-hide {
-    opacity: 0.5;
-    transform: scale(0.9) translateY(10px);
+/* Keyframes for the soft ring pulse */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(140, 74, 50, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(140, 74, 50, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(140, 74, 50, 0);
+    }
 }
 
 @media (max-width: 768px) {
@@ -170,7 +194,15 @@ h2::after {
     .chat-float {
         bottom: 20px;
         right: 20px;
-        /* Slight scale down for mobile to reduce footprint */
-        transform: scale(0.9);
+        width: 60px;
+        /* Force circular shape */
+        height: 60px;
+        padding: 0;
+        /* Remove text padding */
+    }
+
+    .chat-text {
+        display: none;
+        /* Hide the text entirely on mobile */
     }
 }
