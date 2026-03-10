@@ -1,121 +1,149 @@
 /* ==========================================================================
-   TULAA APP SECTION COMPONENT
+   TULAA APP SECTION COMPONENT (GRID LAYOUT)
    ========================================================================== */
 
 #tulaa {
     text-align: center;
-    overflow: hidden;
-    /* Prevents transform-related scrollbars */
 }
 
 .tulaa-intro {
     max-width: 800px;
     margin: 0 auto 3rem auto;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.7;
+    padding: 0 1rem;
+    color: var(--text-gray);
+}
+
+.tulaa-intro strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   FEATURE GRID & CARDS
+   ========================================================================== */
+.tulaa-features-grid {
+    display: grid;
+    /* Lowered from 240px to 200px so it stays 3-columns on smaller laptop screens */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    max-width: 850px;
+    /* Brought in slightly from 900px to stop them stretching too wide */
+    margin: 0 auto 3rem auto;
     padding: 0 1rem;
 }
 
-/* CAROUSEL CONTAINER
-   Using min-height instead of fixed height to prevent content overlap 
-*/
-.feature-carousel-container {
+.tulaa-card {
     position: relative;
-    min-height: 250px;
-    max-width: 700px;
-    margin: 0 auto 1rem auto;
-    display: flex;
-    align-items: center;
-}
+    overflow: hidden;
+    background: var(--bg-card);
+    border-radius: 16px;
+    /* Slightly tighter border radius */
+    padding: 1.25rem 1.25rem;
+    /* Reduced padding for a more compact card */
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(140, 74, 50, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-.feature-card {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform: translateY(-40%) scale(0.95);
-    /* Better entry animation */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* Forces all content to the left inside the flexbox */
+    min-height: 80px;
+    /* Reduced from 140px to fix the excessive height */
 }
 
-.feature-card.active {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-    pointer-events: all;
+.tulaa-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
 }
 
-.feature-icon {
-    font-size: 3.5rem;
-    /* Matches the prominent look in your screenshot */
-    margin-bottom: 1rem;
-    line-height: 1;
-}
-
-.feature-title {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.75rem;
-}
-
-.feature-desc {
+/* Typography Inside Cards */
+.tulaa-card-title {
+    font-family: var(--font-body);
     font-size: 1.1rem;
+    /* Scaled down slightly */
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    /* Tighter gap between title and description */
+    text-align: left;
+    /* THE FIX: Explicitly overrides the global h3 centering */
+    position: relative;
+    z-index: 2;
+}
+
+.tulaa-card-desc {
+    font-size: 0.9rem;
+    /* Scaled down slightly */
     color: var(--text-gray);
-    max-width: 550px;
-    line-height: 1.6;
-    padding: 0 1.5rem;
+    line-height: 1.4;
+    margin: 0;
+    text-align: left;
+    /* Ensures description stays left aligned too */
+    position: relative;
+    z-index: 2;
 }
 
-/* INDICATORS 
-   Positioned below the min-height container
-*/
-.carousel-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 3rem;
+/* Large Faded Icon in bottom right */
+.tulaa-card-watermark {
+    position: absolute;
+    /* Adjusted positioning to keep the emoji better anchored in the corner */
+    bottom: -10px;
+    right: -5px;
+    font-size: 5rem;
+    opacity: 0.06;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    filter: grayscale(100%);
 }
 
-.indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #cbd5e0;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-    padding: 0;
+/* Subtle Corner Gradients to match the screenshot */
+.cycle-card {
+    background: linear-gradient(145deg, #ffffff 50%, #fff0f5 100%);
 }
 
-.indicator.active {
-    background-color: var(--primary-color);
-    transform: scale(1.3);
+.rhythm-card {
+    background: linear-gradient(145deg, #ffffff 50%, #fffbea 100%);
+}
+
+.hydration-card {
+    background: linear-gradient(145deg, #ffffff 50%, #f0f8ff 100%);
+}
+
+.fasting-card {
+    background: linear-gradient(145deg, #ffffff 50%, #f8f5ff 100%);
+}
+
+.health-card {
+    background: linear-gradient(145deg, #ffffff 50%, #fffaf0 100%);
+}
+
+.blog-card {
+    background: linear-gradient(145deg, #ffffff 50%, #f0fff4 100%);
 }
 
 /* ==========================================================================
    OFFICIAL APP STORE BADGES
    ========================================================================== */
-
 .store-btn {
     display: inline-flex;
     align-items: center;
     background-color: #000000;
     color: #ffffff !important;
     border: 1px solid #a6a6a6;
-    border-radius: 8px;
-    padding: 8px 8px;
-    /* Increased padding for better guideline compliance */
+    border-radius: 10px;
+    padding: 8px 12px;
     text-decoration: none;
-    min-width: 150px;
+    min-width: 160px;
     transition: transform 0.2s, background-color 0.2s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* margin: 6px; */
 }
 
 .store-btn:hover {
@@ -124,8 +152,8 @@
 }
 
 .store-icon {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     margin-right: 12px;
     object-fit: contain;
 }
@@ -151,18 +179,41 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Responsive Overrides */
+/* ==========================================================================
+   MOBILE RESPONSIVENESS FOR TULAA GRID
+   ========================================================================== */
 @media (max-width: 600px) {
-    .feature-carousel-container {
-        min-height: 280px;
-        /* More room for wrapping text */
+    .tulaa-features-grid {
+        /* Forces exactly 2 columns of equal width */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        /* Slightly tighter gap between cards */
+        padding: 0 0.5rem;
     }
 
-    .feature-title {
-        font-size: 1.6rem;
+    .tulaa-card {
+        padding: 1rem 0.75rem;
+        /* Reduces inner padding to maximize space for text */
+        min-height: 60px;
+        border-radius: 12px;
     }
 
-    .feature-icon {
-        font-size: 3rem;
+    .tulaa-card-title {
+        font-size: 0.95rem;
+        /* Scaled down for mobile */
+        margin-bottom: 0.15rem;
+    }
+
+    .tulaa-card-desc {
+        font-size: 0.8rem;
+        /* Scaled down for mobile */
+        line-height: 1.3;
+    }
+
+    .tulaa-card-watermark {
+        font-size: 3.5rem;
+        /* Shrinks the emoji so it doesn't overwhelm the smaller card */
+        bottom: -5px;
+        right: -5px;
     }
 }
