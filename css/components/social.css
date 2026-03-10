@@ -2,11 +2,16 @@
    SOCIAL MEDIA COMPONENT (Footer Section)
    ========================================================================== */
 
+#social-media {
+    /* Gives the bottom of your website breathing room above the WhatsApp button */
+    padding-bottom: 6rem;
+}
+
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
     flex-wrap: wrap;
     /* Essential for mobile wrapping */
 }
@@ -16,49 +21,46 @@
     align-items: center;
     text-decoration: none;
     color: var(--primary-color);
+    /* Uses your earthy rust tone */
+    font-family: var(--font-body);
     font-weight: 600;
-    font-size: 1.1rem;
-    padding: 12px 24px;
-    /* Increased padding for better touch targets */
+    font-size: 1.05rem;
+    padding: 14px 28px;
+    /* Slightly more luxurious padding */
     border-radius: var(--radius-pill);
     background-color: var(--bg-card);
     box-shadow: var(--shadow-sm);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    /* Subtle border for definition */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(140, 74, 50, 0.05);
+    /* Gentle earthy border */
 }
 
 .social-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 12px;
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
     fill: currentColor;
+    transition: transform 0.3s ease;
 }
 
-/* Hover States with Elevation */
+/* Elegant Hover State - Unified to your brand instead of jumping to Red/Blue/Pink */
 .social-item:hover {
     transform: translateY(-4px);
     background-color: #ffffff;
+    color: var(--primary-light);
+    /* Shifts slightly lighter rust on hover */
     box-shadow: var(--shadow-md);
+    border-color: rgba(140, 74, 50, 0.1);
 }
 
-/* Brand-Specific Color Signatures on Hover */
-.social-item.instagram:hover {
-    color: #E4405F;
-}
-
-.social-item.youtube:hover {
-    color: #FF0000;
-}
-
-.social-item.linkedin:hover {
-    color: #0A66C2;
+.social-item:hover .social-icon {
+    transform: scale(1.1);
+    /* Gentle icon pop on hover */
 }
 
 /* ==========================================================================
    MOBILE OPTIMIZATION
    ========================================================================== */
-
 @media (max-width: 768px) {
     .social-links {
         gap: 1rem;
@@ -66,9 +68,9 @@
     }
 
     .social-item {
-        font-size: 1rem;
-        padding: 10px 20px;
-        /* Flex-grow allows buttons to sit side-by-side or stack neatly */
+        font-size: 0.95rem;
+        padding: 12px 20px;
+        /* Allows buttons to sit side-by-side or stack neatly */
         flex: 0 1 auto;
     }
 
