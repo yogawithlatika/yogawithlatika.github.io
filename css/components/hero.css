@@ -4,8 +4,7 @@
 
 .hero-section {
     text-align: center;
-    /* Added padding to ensure the sticky nav doesn't overlap content on jump-links */
-    padding-top: 5rem;
+    padding-top: 3rem;
 }
 
 /* Avatar Logic */
