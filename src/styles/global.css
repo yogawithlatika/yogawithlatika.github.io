@@ -123,7 +123,8 @@ h2::after {
 
 /* Specific text elements using fluid sizes */
 .profile-name {
-    font-size: var(--text-xxl);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 
 .profile-bio {
@@ -164,7 +165,9 @@ h2::after {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 2rem;
+
+    /* COMPRESSION: Dropped padding from 2rem to a fluid 1rem-1.5rem for mobile breathing room */
+    padding: clamp(1rem, 3vw, 1.5rem) 1.25rem;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -212,7 +215,7 @@ h2::after {
     justify-content: center;
     background: var(--primary-color);
     color: var(--text-light) !important;
-    padding: 1.2rem 2.5rem;
+    padding: 0.95rem 2.25rem;
     font-size: var(--text-sm);
     font-weight: 500;
     border: 1px solid transparent;
@@ -254,22 +257,24 @@ h2::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 700px;
+    max-width: 650px;
     text-align: center;
+    width: 100%;
 }
 
 .profile-avatar-container {
-    margin-bottom: 2rem;
+    /* COMPRESSION: Significantly reduced margin below the avatar */
+    margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
 }
 
 .profile-avatar {
-    width: clamp(140px, 15vw, 180px);
-    height: clamp(140px, 15vw, 180px);
+    /* COMPRESSION: Slightly scaled down max avatar height on mobile viewports */
+    width: clamp(110px, 18vw, 150px);
+    height: clamp(110px, 18vw, 150px);
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid var(--bg-card);
+    border: 3px solid var(--bg-card);
     box-shadow: var(--shadow-soft);
-    transition: var(--transition-smooth);
 }
 
 .profile-avatar:hover {
@@ -286,12 +291,17 @@ h2::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.75rem;
     font-family: var(--font-heading);
     font-style: italic;
     color: var(--accent-color);
-    font-size: var(--text-md);
-    margin-bottom: 2rem;
+    font-size: var(--text-base);
+    /* Dropped from md for easier multi-column fitting */
+
+    /* COMPRESSION: Compressed vertical spacing */
+    margin-top: 0.25rem;
+    margin-bottom: clamp(1rem, 3vw, 1.75rem);
+    line-height: 1.3;
 }
 
 .credentials .dot {
@@ -301,7 +311,11 @@ h2::after {
 
 .profile-bio {
     color: var(--text-gray);
-    margin-bottom: 3rem;
+
+    /* COMPRESSION: Squeezed bottom margin to give action items priority screen space */
+    margin-top: 0;
+    margin-bottom: clamp(1.25rem, 4vw, 2.25rem);
+    padding: 0 0.5rem;
 }
 
 .profile-bio strong {
@@ -313,7 +327,8 @@ h2::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
+    /* Compact layout spacing for action stacks */
 }
 
 @media (min-width: 600px) {
@@ -734,4 +749,20 @@ h2::after {
         width: 56px;
         height: 56px;
     }
+}
+
+/* ==========================================================================
+   UTILITIES: TEXT GRADIENTS
+   ========================================================================== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 30%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+/* Ensure subheadings or lists don't feel too crowded */
+.hero-content h1 {
+    margin-bottom: 0.25rem;
 }
