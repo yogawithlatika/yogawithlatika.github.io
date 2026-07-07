@@ -1,0 +1,54 @@
+---
+// src/components/Nav.astro
+---
+
+<nav aria-label="Main Navigation">
+    <div class="nav-container">
+        <a href="#about">About Me</a>
+        <a href="#tulaa">Free App</a>
+        <a href="#google-reviews">Reviews</a>
+        <a href="#showcase">Videos</a>
+    </div>
+</nav>
+
+<script>
+    // Navigation "Scroll-Spy" & Styling Logic
+    const nav = document.querySelector("nav");
+    const sections = document.querySelectorAll("section[id]");
+
+    const handleScroll = () => {
+        const scrollY = window.pageYOffset;
+
+        // Add 'is-scrolled' class to nav for the flush-to-top look
+        if (nav) {
+            nav.classList.toggle("is-scrolled", scrollY > 50);
+        }
+
+        // Active Link Highlighting
+        sections.forEach((current) => {
+            const htmlElement = current as HTMLElement;
+            const sectionHeight = htmlElement.offsetHeight;
+            const sectionTop = htmlElement.offsetTop - 100;
+            const sectionId = htmlElement.getAttribute("id");
+            const navLink = document.querySelector(
+                `.nav-container a[href*=${sectionId}]`,
+            );
+
+            if (navLink) {
+                if (
+                    scrollY > sectionTop &&
+                    scrollY <= sectionTop + sectionHeight
+                ) {
+                    navLink.classList.add("active");
+                } else {
+                    navLink.classList.remove("active");
+                }
+            }
+        });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Trigger on initial load
+    handleScroll();
+</script>

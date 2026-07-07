@@ -1,0 +1,76 @@
+---
+// src/layouts/Layout.astro
+import "../styles/global.css";
+
+// 1. Define the props this layout accepts
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+}
+
+// 2. Set default values for the homepage
+const {
+    title = "YogaWithLatika | Online Yoga Therapy for PCOS, Prenatal & Back Pain",
+    description = "Heal naturally with Latika (M.Sc Yoga Therapy, Gold Medalist). Specialized online sessions for PCOS, Pregnancy, Thyroid, Chronic Pain, Stress and Anxiety relief. Download the free Tulaa app today.",
+    image = "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
+
+        <link
+            rel="icon"
+            type="image/webp"
+            href="/images/yogawithlatika_favicon_64.webp"
+        />
+
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <meta
+            name="keywords"
+            content="Online Yoga Classes, Yoga Therapy, Prenatal Yoga, PCOS Yoga, Back Pain Relief, Yoga for Stress, Personal Yoga Trainer, Latika Yoga, Tulaa App"
+        />
+        <link rel="canonical" href="https://yogawithlatika.com" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yogawithlatika.com" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "HealthAndWellnessBusiness",
+                "name": "YogaWithLatika",
+                "url": "https://yogawithlatika.com",
+                "logo": "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
+                "image": "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
+                "sameAs": [
+                    "https://www.instagram.com/yogawithlatika",
+                    "https://www.youtube.com/@yogawithlatika",
+                    "https://www.linkedin.com/in/latika-bissa-0a3084210/"
+                ],
+                "description": "Gold Medalist Yoga Therapist (M.Sc, B.Sc) providing personalized online yoga for prenatal care, PCOS, thyroid, chronic pain, stress and anxiety relief",
+                "priceRange": "$$"
+            }
+        </script>
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
