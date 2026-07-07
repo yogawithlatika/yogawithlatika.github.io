@@ -251,39 +251,52 @@ h2::after {
 }
 
 /* ==========================================================================
-   6. COMPONENT: HERO SECTION
+   6. COMPONENT: HERO SECTION (Highly Compressed & Cohesive)
    ========================================================================== */
 .hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 650px;
+    max-width: 580px;
     text-align: center;
     width: 100%;
 }
 
 .profile-avatar-container {
-    /* COMPRESSION: Significantly reduced margin below the avatar */
-    margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+    margin-bottom: 0.75rem;
 }
 
 .profile-avatar {
-    /* COMPRESSION: Slightly scaled down max avatar height on mobile viewports */
-    width: clamp(110px, 18vw, 150px);
-    height: clamp(110px, 18vw, 150px);
+    width: clamp(100px, 16vw, 130px);
+    height: clamp(100px, 16vw, 130px);
     object-fit: cover;
+
+    /* FIX: Adjust this percentage to control the vertical crop margin */
+    object-position: center -100%;
+
     border-radius: 50%;
     border: 3px solid var(--bg-card);
     box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
 }
 
-.profile-avatar:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-hover);
+/* Connects Name, Title, and Credentials closely */
+.profile-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero-content h1 {
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    margin: 0;
+    line-height: 1.15;
 }
 
 .profile-name {
-    margin-top: 0.5rem;
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    margin: 0;
     color: var(--primary-color);
 }
 
@@ -291,50 +304,42 @@ h2::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     font-family: var(--font-heading);
     font-style: italic;
     color: var(--accent-color);
-    font-size: var(--text-base);
-    /* Dropped from md for easier multi-column fitting */
-
-    /* COMPRESSION: Compressed vertical spacing */
-    margin-top: 0.25rem;
-    margin-bottom: clamp(1rem, 3vw, 1.75rem);
-    line-height: 1.3;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin: 0.15rem 0 0 0;
+    line-height: 1.2;
 }
 
 .credentials .dot {
-    font-size: var(--text-sm);
     opacity: 0.5;
 }
 
 .profile-bio {
     color: var(--text-gray);
-
-    /* COMPRESSION: Squeezed bottom margin to give action items priority screen space */
+    font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+    line-height: 1.5;
     margin-top: 0;
-    margin-bottom: clamp(1.25rem, 4vw, 2.25rem);
-    padding: 0 0.5rem;
-}
-
-.profile-bio strong {
-    color: var(--text-dark);
-    font-weight: 500;
+    margin-bottom: 1.5rem;
+    padding: 0 0.75rem;
+    max-width: 480px;
 }
 
 .hero-actions {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    /* Compact layout spacing for action stacks */
+    gap: 0.85rem;
+    width: 100%;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 480px) {
     .hero-actions {
         flex-direction: row;
-        gap: 2rem;
+        justify-content: center;
+        gap: 1.5rem;
     }
 }
 
