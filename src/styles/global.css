@@ -1,35 +1,58 @@
 /* ==========================================================================
-   1. CSS VARIABLES (Refined Premium Palette)
+   1. CSS VARIABLES (Theme Colors, Typography & Design Tokens)
    ========================================================================== */
 :root {
-    /* Muted, Elegant Earth Tones */
+    /* ----------------------------------------------------------------------
+       COLOR THEME (All colors centralized here for easy theming)
+       ---------------------------------------------------------------------- */
     --primary-color: #7A402B;
-    /* Deeper, richer rust */
+    /* Deep, elegant rust */
     --primary-light: #9B553D;
+    /* Softer rust for hover states */
     --accent-color: #859681;
-    /* Calmer sage */
+    /* Calming sage green */
 
-    /* High-Contrast Minimalist Typography */
     --text-dark: #1A1817;
+    /* High-contrast near black */
     --text-gray: #6B6560;
+    /* Soft reading gray */
     --text-light: #FAFAF9;
+    /* Pure off-white */
 
-    /* Ultra-Clean Backgrounds */
     --bg-body-start: #FAFAF9;
-    /* Brighter off-white */
+    /* Bright parchment top */
     --bg-body-end: #F4F2EE;
+    /* Subtle shaded bottom */
     --bg-card: #FFFFFF;
+    /* Crisp white for cards/elements */
 
-    /* Refined Shadows & Borders */
+    /* ----------------------------------------------------------------------
+       SHADOWS & BORDERS
+       ---------------------------------------------------------------------- */
     --border-light: 1px solid rgba(122, 64, 43, 0.08);
     --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 15px 35px -5px rgba(122, 64, 43, 0.15);
 
-    /* Design Tokens */
+    /* ----------------------------------------------------------------------
+       TYPOGRAPHY TOKENS (Fluid scaling using clamp)
+       ---------------------------------------------------------------------- */
     --font-heading: 'Lora', serif;
     --font-body: 'Poppins', sans-serif;
-    /* Shifted to Poppins for a rounder, modern feel */
+
+    --text-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
+    --text-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+    --text-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+    --text-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+    --text-xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
+    --text-xxl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+
+    /* ----------------------------------------------------------------------
+       STRUCTURAL TOKENS
+       ---------------------------------------------------------------------- */
     --radius-lg: 16px;
     --radius-pill: 100px;
+    --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-fast: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* ==========================================================================
@@ -38,12 +61,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
-
-    /* The Magic: Full-Page Scroll Snapping */
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-
-    /* Hide scrollbar for a cleaner app-like feel (optional) */
     scrollbar-width: none;
     /* Firefox */
 }
@@ -56,71 +75,110 @@ html::-webkit-scrollbar {
 body {
     margin: 0;
     font-family: var(--font-body);
+    font-weight: 300;
+    /* High-end, light body weight */
+    font-size: var(--text-base);
     color: var(--text-gray);
     background: linear-gradient(180deg, var(--bg-body-start) 0%, var(--bg-body-end) 100%);
     background-attachment: fixed;
-    line-height: 1.8;
-    letter-spacing: 0.02em;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 /* ==========================================================================
-   3. TYPOGRAPHY
+   3. TYPOGRAPHY & HEADINGS
    ========================================================================== */
 h1,
 h2,
 h3 {
     color: var(--text-dark);
-    /* Darker headings for premium contrast */
     font-family: var(--font-heading);
     text-align: center;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    font-weight: 500;
-    /* Lighter font weight feels more high-end */
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    /* Relaxed heading weight for elegance */
     margin-bottom: 1.5rem;
 }
 
+h1 {
+    font-size: var(--text-xxl);
+}
+
+h2 {
+    font-size: var(--text-xl);
+}
+
+h3 {
+    font-size: var(--text-lg);
+}
+
+/* Decorative underline */
 h2::after {
     content: '';
     display: block;
     width: 30px;
     height: 1px;
-    /* Ultra-thin accent line */
     background: var(--primary-color);
     margin: 24px auto 0;
-    opacity: 0.5;
+    opacity: 0.4;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.section:hover h2::after {
+    width: 60px;
+    /* Expands slightly when the user is dwelling on a section */
+}
+
+/* Specific text elements using fluid sizes */
+.profile-name {
+    font-size: var(--text-xxl);
+}
+
+.profile-bio {
+    font-size: var(--text-md);
+}
+
+.tulaa-intro {
+    font-size: var(--text-base);
+}
+
+.review-text {
+    font-size: var(--text-lg);
+}
+
+/* Luxury uppercase tracking */
+.cta-button,
+.review-author .name,
+.store-text-small,
+.social-minimal-item span {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 /* ==========================================================================
-   4. NEW FULL-PAGE LAYOUT UTILITIES
+   4. LAYOUT UTILITIES & GLOBAL ANIMATIONS
    ========================================================================== */
 .container {
     width: 100%;
 }
 
 .section {
-    /* Snap Logic */
     height: 100vh;
     min-height: 100vh;
     width: 100%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    /* Forces it to stop on every section, no skipping */
-
-    /* Centering Logic */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /* Breathing Room */
     padding: 0 2rem;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    /* Prevents stray elements from breaking the 100vh lock */
 }
 
 .text-center {
@@ -135,6 +193,27 @@ h2::after {
     margin-bottom: 2rem;
 }
 
+/* Subtle entrance animation for all main content blocks */
+@keyframes premiumFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content,
+.tulaa-content,
+.reviews-content,
+.video-content,
+.footer-content {
+    animation: premiumFadeUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
 /* ==========================================================================
    5. SHARED COMPONENTS (Minimalist Buttons)
    ========================================================================== */
@@ -144,23 +223,22 @@ h2::after {
     justify-content: center;
     background: var(--primary-color);
     color: var(--text-light) !important;
-    padding: 1rem 2.5rem;
-    font-size: 0.85rem;
+    padding: 1.2rem 2.5rem;
+    font-size: var(--text-sm);
     font-weight: 500;
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: var(--transition-smooth);
     text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    cursor: pointer;
 }
 
 .cta-button:hover {
     background: var(--bg-card);
     color: var(--primary-color) !important;
     border: 1px solid var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-soft);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
 .button-accent {
@@ -170,24 +248,24 @@ h2::after {
     border-bottom: 1px solid rgba(122, 64, 43, 0.3);
     padding-bottom: 4px;
     text-decoration: none;
-    transition: all 0.4s ease;
-    letter-spacing: 0.05em;
+    transition: var(--transition-fast);
 }
 
 .button-accent:hover {
     color: var(--text-dark);
     border-bottom-color: var(--text-dark);
+    padding-bottom: 6px;
+    /* Micro-interaction: line drops slightly */
 }
 
 /* ==========================================================================
-   COMPONENT: HERO (Centered & Elegant)
+   6. COMPONENT: HERO SECTION
    ========================================================================== */
 .hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 700px;
-    /* Tighter width for better reading lines */
     text-align: center;
 }
 
@@ -196,16 +274,21 @@ h2::after {
 }
 
 .profile-avatar {
-    width: 180px;
-    height: 180px;
+    width: clamp(140px, 15vw, 180px);
+    height: clamp(140px, 15vw, 180px);
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid var(--bg-card);
     box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-hover);
 }
 
 .profile-name {
-    font-size: 2.25rem;
     margin-top: 0.5rem;
     color: var(--primary-color);
 }
@@ -218,17 +301,16 @@ h2::after {
     font-family: var(--font-heading);
     font-style: italic;
     color: var(--accent-color);
-    font-size: 1.1rem;
+    font-size: var(--text-md);
     margin-bottom: 2rem;
 }
 
 .credentials .dot {
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     opacity: 0.5;
 }
 
 .profile-bio {
-    font-size: 1.15rem;
     color: var(--text-gray);
     margin-bottom: 3rem;
 }
@@ -253,10 +335,7 @@ h2::after {
 }
 
 /* ==========================================================================
-   COMPONENT: TULAA APP (Minimal Grid)
-   ========================================================================== */
-/* ==========================================================================
-   COMPONENT: TULAA APP (Animated Carousel)
+   7. COMPONENT: TULAA APP SECTION (Animated Carousel)
    ========================================================================== */
 .tulaa-content {
     max-width: 800px;
@@ -270,7 +349,6 @@ h2::after {
     text-align: center;
     color: var(--text-gray);
     margin-bottom: 2.5rem;
-    font-size: 1.1rem;
     max-width: 600px;
 }
 
@@ -278,8 +356,7 @@ h2::after {
     position: relative;
     width: 100%;
     max-width: 340px;
-    height: 150px;
-    /* Fixed height so layout does not jump */
+    height: 160px;
     margin: 0 auto 3rem auto;
 }
 
@@ -298,8 +375,8 @@ h2::after {
 
     /* Animation initial state */
     opacity: 0;
-    transform: translateY(10px) scale(0.98);
-    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(15px) scale(0.96);
+    transition: var(--transition-smooth);
     pointer-events: none;
 
     /* Centering content */
@@ -317,32 +394,36 @@ h2::after {
     pointer-events: auto;
 }
 
-/* Premium Watermark Styling */
 .feature-watermark {
     position: absolute;
     bottom: -15px;
     right: -10px;
     font-size: 6rem;
     opacity: 0.03;
-    /* Extremely subtle */
     line-height: 1;
     z-index: 0;
     filter: grayscale(100%);
     pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.feature-slide.active:hover .feature-watermark {
+    transform: scale(1.1) rotate(-5deg);
+    opacity: 0.05;
 }
 
 .feature-slide h3 {
     font-family: var(--font-body);
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0 0 0.25rem 0;
+    font-size: var(--text-md);
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
     color: var(--text-dark);
     position: relative;
     z-index: 1;
 }
 
 .feature-slide p {
-    font-size: 0.95rem;
+    font-size: var(--text-sm);
     margin: 0;
     color: var(--text-gray);
     position: relative;
@@ -350,15 +431,13 @@ h2::after {
 }
 
 /* ==========================================================================
-   OFFICIAL APP STORE BADGES
+   8. APP STORE BADGES
    ========================================================================== */
 .store-buttons {
     display: flex;
     flex-wrap: wrap;
-    /* Allows stacking if the screen is extremely narrow */
     justify-content: center;
-    gap: 0.75rem;
-    /* Tightened gap to keep them on one row */
+    gap: 1rem;
     margin-top: 1rem;
     width: 100%;
 }
@@ -370,23 +449,22 @@ h2::after {
     color: #ffffff !important;
     border: 1px solid #a6a6a6;
     border-radius: 8px;
-    /* Official standard radius */
-    padding: 6px 14px 6px 10px;
+    padding: 8px 16px 8px 12px;
     text-decoration: none;
-    min-width: 145px;
-    /* Ensures both buttons match in size */
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    min-width: 155px;
+    transition: var(--transition-fast);
 }
 
 .store-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     background-color: #1a1a1a;
+    box-shadow: var(--shadow-hover);
 }
 
 .store-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+    width: 26px;
+    height: 26px;
+    margin-right: 12px;
     object-fit: contain;
 }
 
@@ -400,20 +478,22 @@ h2::after {
 .store-text-small {
     font-size: 0.65rem;
     font-weight: 400;
-    text-transform: uppercase;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    letter-spacing: 0.5px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     margin-bottom: 2px;
 }
 
 .store-text-large {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: 0;
+    /* Reset for system font */
+    text-transform: none;
+    /* Reset for system font */
 }
 
 /* ==========================================================================
-   COMPONENT: REVIEWS (Editorial Slider)
+   9. COMPONENT: REVIEWS (Editorial Slider)
    ========================================================================== */
 .reviews-content {
     max-width: 700px;
@@ -423,7 +503,7 @@ h2::after {
 
 .editorial-slider {
     position: relative;
-    min-height: 250px;
+    min-height: 280px;
     margin: 3rem 0;
     display: flex;
     align-items: center;
@@ -434,8 +514,8 @@ h2::after {
     position: absolute;
     width: 100%;
     opacity: 0;
-    transform: translateY(15px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(20px);
+    transition: var(--transition-smooth);
     pointer-events: none;
 }
 
@@ -447,45 +527,41 @@ h2::after {
 
 .quote-mark {
     font-family: var(--font-heading);
-    font-size: 4rem;
+    font-size: 5rem;
     line-height: 1;
     color: var(--accent-color);
-    opacity: 0.3;
-    margin-bottom: -1rem;
+    opacity: 0.25;
+    margin-bottom: -1.5rem;
 }
 
 .review-text {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
     font-style: italic;
     color: var(--text-dark);
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .review-author {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.5rem;
 }
 
 .review-author .stars {
     color: var(--primary-light);
-    font-size: 0.9rem;
-    letter-spacing: 0.2em;
+    font-size: var(--text-sm);
+    letter-spacing: 0.25em;
 }
 
 .review-author .name {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-size: var(--text-sm);
+    font-weight: 500;
     color: var(--text-gray);
 }
 
 /* ==========================================================================
-   COMPONENT: VIDEOS (Minimal Track)
+   10. COMPONENT: VIDEOS (Minimal Track)
    ========================================================================== */
 .video-content {
     max-width: 900px;
@@ -496,96 +572,101 @@ h2::after {
 .section-subtitle {
     color: var(--text-gray);
     margin-bottom: 3rem;
-    font-size: 1.05rem;
+    font-size: var(--text-base);
 }
 
 .video-track {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     overflow-x: auto;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    /* Firefox */
 }
 
 .video-track::-webkit-scrollbar {
     display: none;
-    /* Chrome/Safari */
 }
 
 .video-card-minimal {
-    flex: 0 0 260px;
+    flex: 0 0 clamp(240px, 30vw, 300px);
     scroll-snap-align: center;
     text-decoration: none;
     text-align: left;
-    transition: transform 0.3s ease;
+    transition: var(--transition-smooth);
 }
 
 .video-card-minimal:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
 }
 
 .thumbnail-wrapper {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     aspect-ratio: 16 / 9;
     background: var(--bg-card);
     border: var(--border-light);
+    box-shadow: var(--shadow-soft);
 }
 
 .thumbnail-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s ease;
 }
 
 .video-card-minimal:hover .thumbnail-wrapper img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .play-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 48px;
-    height: 48px;
-    background: rgba(255, 255, 255, 0.9);
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--primary-color);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .play-overlay svg {
     width: 24px;
     height: 24px;
     margin-left: 4px;
-    /* Center the play triangle optically */
 }
 
 .video-card-minimal:hover .play-overlay {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .video-title {
     font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.95rem;
+    font-weight: 400;
+    font-size: var(--text-base);
     color: var(--text-dark);
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
+    transition: var(--transition-fast);
+}
+
+.video-card-minimal:hover .video-title {
+    color: var(--primary-color);
 }
 
 /* ==========================================================================
-   COMPONENT: SOCIAL & FAB (Minimalist Footer)
+   11. COMPONENT: SOCIAL & FAB (Minimalist Footer)
    ========================================================================== */
 .footer-content {
     display: flex;
@@ -596,36 +677,39 @@ h2::after {
 
 .social-minimal-links {
     display: flex;
-    gap: 3rem;
-    margin-top: 2rem;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-top: 3rem;
 }
 
 .social-minimal-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     text-decoration: none;
     color: var(--text-gray);
-    transition: all 0.3s ease;
+    transition: var(--transition-smooth);
 }
 
 .social-minimal-item:hover {
     color: var(--primary-color);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 .social-icon {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     fill: currentColor;
+    transition: var(--transition-fast);
+}
+
+.social-minimal-item:hover .social-icon {
+    transform: scale(1.1);
 }
 
 .social-minimal-item span {
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-size: var(--text-sm);
+    font-weight: 400;
 }
 
 /* Minimal WhatsApp FAB */
@@ -633,8 +717,8 @@ h2::after {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     background: var(--bg-card);
     border: var(--border-light);
     border-radius: 50%;
@@ -644,25 +728,21 @@ h2::after {
     color: var(--primary-color);
     box-shadow: var(--shadow-soft);
     z-index: 9999;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: var(--transition-smooth);
 }
 
 .fab-minimal:hover {
     background: var(--primary-color);
     color: var(--text-light);
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 15px 35px -5px rgba(122, 64, 43, 0.3);
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 20px 40px -8px rgba(122, 64, 43, 0.25);
 }
 
 @media (max-width: 600px) {
-    .social-minimal-links {
-        gap: 2rem;
-    }
-
     .fab-minimal {
         bottom: 1.5rem;
         right: 1.5rem;
-        width: 52px;
-        height: 52px;
+        width: 56px;
+        height: 56px;
     }
 }
