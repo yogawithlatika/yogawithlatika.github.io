@@ -498,7 +498,7 @@ h2::after {
     justify-content: center;
     gap: 0.65rem;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
     margin: 0 auto;
 }
 
@@ -508,8 +508,8 @@ h2::after {
     background-color: #0c0a09;
     color: #ffffff !important;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 6px 10px;
+    border-radius: 40px;
+    padding: 10px 20px;
     text-decoration: none;
     flex: 1;
     min-width: 0;
