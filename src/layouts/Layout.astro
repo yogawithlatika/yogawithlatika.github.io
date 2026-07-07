@@ -41,7 +41,6 @@ const {
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <!-- Restored clean alignment using 'Lora' matching your global typography variables -->
         <link
             href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Poppins:wght@300;400;500;600&display=swap"
             rel="stylesheet"
@@ -70,37 +69,36 @@ const {
 
         <!-- PREMIUM WEB PLATFORM INTERACTION ENGINES -->
         <script>
-            // ENGINE 1: Scroll-Reactive Geometric Background Transitions
-            const sections = document.querySelectorAll(".section");
+            // ENGINE 1: Intersection-Driven Entry/Exit Animation State Handler
+            const animateContainers = document.querySelectorAll(
+                ".hero-content, .tulaa-content, .reviews-content, .video-content, .footer-content",
+            );
 
-            const observerOptions = {
-                root: null,
-                threshold: 0.2, // Transitions graphics cleanly as boundaries intersect viewports
-            };
+            const contentObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                        } else {
+                            // Drops class on scroll exit so elements reset and re-enter fluidly next time
+                            entry.target.classList.remove("is-visible");
+                        }
+                    });
+                },
+                {
+                    root: null,
+                    threshold: 0.12, // Triggers just as the card elements clear active viewport bands
+                },
+            );
 
-            const geometricObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    const targetEl = entry.target as HTMLElement;
-                    if (entry.isIntersecting) {
-                        // Smoothly expand and true up active geometric path rules
-                        targetEl.style.setProperty("--scroll-scale", "1");
-                        targetEl.style.setProperty("--scroll-rotate", "0deg");
-                        targetEl.style.setProperty("--scroll-y", "0px");
-                    } else {
-                        // Morph parameters back to skewed offsets when sliding out of focus
-                        targetEl.style.setProperty("--scroll-scale", "0.88");
-                        targetEl.style.setProperty("--scroll-rotate", "12deg");
-                        targetEl.style.setProperty("--scroll-y", "25px");
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach((section) => geometricObserver.observe(section));
+            animateContainers.forEach((container) =>
+                contentObserver.observe(container),
+            );
 
             // ENGINE 2: Light Premium Tactical Mobile Haptic Triggers
             function triggerPremiumTap() {
                 if ("vibrate" in navigator) {
-                    navigator.vibrate(12); // Clean 12ms native impulse on supported devices
+                    navigator.vibrate(12); // Clean 12ms native impulse on supported Android devices
                 }
             }
 

@@ -96,7 +96,6 @@ h3 {
     font-family: var(--font-heading);
     text-align: center;
     line-height: 1.35;
-    /* Generous padding line height protects baseline descenders */
     letter-spacing: -0.01em;
     font-weight: 400;
     margin: 0 0 1.25rem 0;
@@ -152,7 +151,7 @@ h2::after {
 }
 
 /* ==========================================================================
-   4. LAYOUT UTILITIES & GLOBAL ANIMATIONS
+   4. LAYOUT UTILITIES & GLOBAL ANIMATIONS (Engine Controlled Shifts)
    ========================================================================== */
 .section {
     height: 100vh;
@@ -183,28 +182,47 @@ h2::after {
     margin-bottom: 1.75rem;
 }
 
-@keyframes premiumFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* Subtle state-driven transition system for all main content blocks */
 .hero-content,
 .tulaa-content,
 .reviews-content,
 .video-content,
 .footer-content {
-    animation: premiumFadeUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Activated layout states pushed dynamically by Intersection Observers */
+.hero-content.is-visible,
+.tulaa-content.is-visible,
+.reviews-content.is-visible,
+.video-content.is-visible,
+.footer-content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Luxury Staggered Text Reveal Engine */
+.is-visible>*:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.is-visible>*:nth-child(2) {
+    transition-delay: 0.18s;
+}
+
+.is-visible>*:nth-child(3) {
+    transition-delay: 0.32s;
+}
+
+.is-visible>*:nth-child(4) {
+    transition-delay: 0.45s;
 }
 
 /* ==========================================================================
-   5. SHARED COMPONENTS (Buttons & Alignment Gaps)
+   5. SHARED COMPONENTS (Pill CTAs & Micro-Interactive Accent Links)
    ========================================================================== */
 .cta-button {
     display: inline-flex;
@@ -219,14 +237,26 @@ h2::after {
     border-radius: var(--radius-pill);
     transition: var(--transition-smooth);
     text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
+/* Desktop Hover State */
 .cta-button:hover {
     background: var(--bg-card);
     color: var(--primary-color) !important;
     border: 1px solid var(--primary-color);
     transform: translateY(-3px);
     box-shadow: var(--shadow-hover);
+}
+
+/* Mobile Active Touch Feedback */
+.cta-button:active {
+    background: var(--primary-light);
+    transform: scale(0.96) translateY(0);
+    /* Compressed depth look on screen press */
+    transition: all 0.1s ease;
 }
 
 .button-accent {
@@ -236,16 +266,50 @@ h2::after {
     color: var(--primary-color);
     font-weight: 500;
     font-size: var(--text-sm);
-    border-bottom: 1px solid rgba(93, 84, 74, 0.3);
-    padding-bottom: 4px;
+    padding-bottom: 6px;
+    /* Enhanced baseline spacing layout room */
     text-decoration: none;
-    transition: var(--transition-fast);
+    position: relative;
     white-space: nowrap;
+    transition: color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
+/* Modern self-expanding indicator underline track */
+.button-accent::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--primary-color);
+    transform: scaleX(0.25);
+    /* Minimal premium underline presence by default */
+    transform-origin: center center;
+    /* Swapped to center for a balanced elegant reveal */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+/* Desktop Hover Reveal */
 .button-accent:hover {
     color: var(--text-dark);
-    border-bottom-color: var(--text-dark);
+}
+
+.button-accent:hover::after {
+    transform: scaleX(1);
+    background-color: var(--text-dark);
+}
+
+/* Mobile Active Touch Press Reveal */
+.button-accent:active {
+    color: var(--text-dark);
+}
+
+.button-accent:active::after {
+    transform: scaleX(1);
+    background-color: var(--text-dark);
+    transition: transform 0.15s ease;
 }
 
 /* ==========================================================================
@@ -328,14 +392,12 @@ h2::after {
     font-weight: 600;
 }
 
-/* Dynamic Interaction Clusters - Solves No Gap Layout bug */
 .hero-actions {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.25rem;
-    /* Guarantees layout spacing separation rules across mobile sizes */
     width: 100%;
 }
 
@@ -347,7 +409,7 @@ h2::after {
 }
 
 /* ==========================================================================
-   7. COMPONENT: TULAA APP SECTION
+   7. COMPONENT: TULAA APP SECTION (Premium Motion Updates)
    ========================================================================== */
 .tulaa-content {
     max-width: 600px;
@@ -384,8 +446,12 @@ h2::after {
     box-shadow: 0 20px 40px -15px rgba(93, 84, 74, 0.06);
     text-align: center;
     opacity: 0;
-    transform: translateY(10px) scale(0.97);
-    transition: var(--transition-smooth);
+    transform: translateY(12px) scale(0.98);
+    filter: blur(3px);
+    /* Fluid optical transition lens blur rules */
+    transition: opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.6s ease;
     pointer-events: none;
     display: flex;
     flex-direction: column;
@@ -397,6 +463,7 @@ h2::after {
 .feature-slide.active {
     opacity: 1;
     transform: translateY(0) scale(1);
+    filter: blur(0px);
     pointer-events: auto;
 }
 
@@ -509,8 +576,11 @@ h2::after {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(12px) scale(0.98);
+    filter: blur(3px);
+    transition: opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.6s ease;
     pointer-events: none;
     display: flex;
     justify-content: center;
@@ -519,7 +589,8 @@ h2::after {
 
 .editorial-slide.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
     pointer-events: auto;
 }
 
@@ -567,7 +638,6 @@ h2::after {
    ========================================================================== */
 .video-content {
     max-width: 1200px;
-    /* Expands parent container bounding limits for desktop views */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -589,15 +659,12 @@ h2::after {
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-
-    /* THE FIX: Enforces center alignment layout matrix across wide desktop resolutions */
     justify-content: flex-start;
 }
 
 @media (min-width: 1200px) {
     .video-track {
         justify-content: center;
-        /* Drops left alignment on desktop */
     }
 }
 
@@ -673,7 +740,7 @@ h2::after {
 }
 
 /* ==========================================================================
-   11. COMPONENT: SOCIAL & FOOTER (Subtle Bottom Footer Layout)
+   11. COMPONENT: SOCIAL & FOOTER (Sleek Micro-Dock Layout)
    ========================================================================== */
 .footer-content {
     max-width: 440px;
@@ -682,19 +749,17 @@ h2::after {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    /* Pushes slightly upwards away from the bottom footer line */
-    padding-bottom: 4rem;
+    padding-bottom: 3.5rem;
 }
 
 .footer-action-wrapper {
     margin-bottom: 0;
-    /* Clear internal margins since it is isolated */
 }
 
-/* New: Anchors the social links safely to the very base of the viewport */
+/* Page base dock wrapper container */
 .bottom-branding-footer {
     position: absolute;
-    bottom: clamp(1rem, 4vw, 1.75rem);
+    bottom: clamp(1.25rem, 4vw, 2rem);
     left: 0;
     width: 100%;
     display: flex;
@@ -703,56 +768,54 @@ h2::after {
     z-index: 10;
 }
 
-.social-minimal-links {
+/* Transparent pill-shaped docking system */
+.social-dock {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: clamp(1rem, 4vw, 1.75rem);
-    width: 100%;
-    max-width: 320px;
+    gap: 1.25rem;
+    padding: 8px 18px;
+    background: rgba(93, 84, 74, 0.03);
+    /* Soft tone matches your brand palette */
+    border: 1px solid rgba(93, 84, 74, 0.05);
+    border-radius: var(--radius-pill);
 }
 
-.social-minimal-item {
+.dock-item {
     display: inline-flex;
-    flex-direction: column;
     align-items: center;
-    gap: 0.35rem;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     text-decoration: none;
     color: var(--text-gray);
-    transition: var(--transition-smooth);
-    flex: 1;
-    min-width: 0;
+    border-radius: 50%;
+    transition: var(--transition-fast);
+    -webkit-tap-highlight-color: transparent;
 }
 
-.social-minimal-item:hover {
-    color: var(--primary-color);
-    transform: translateY(-1px);
-}
-
-.social-icon {
-    width: 20px;
-    /* Made slightly smaller and more muted */
-    height: 20px;
+.dock-icon {
+    width: 18px;
+    height: 18px;
     fill: currentColor;
-    opacity: 0.55;
-    /* Subtle presence until active hover states */
+    opacity: 0.6;
     transition: var(--transition-fast);
 }
 
-.social-minimal-item:hover .social-icon {
-    opacity: 0.9;
+/* Micro-interaction feedback triggers */
+.dock-item:hover .dock-icon {
+    opacity: 1;
+    color: var(--primary-color);
 }
 
-.social-minimal-item span {
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    opacity: 0.5;
+.dock-item:active {
+    transform: scale(0.9);
 }
 
-.social-minimal-item:hover span {
-    opacity: 0.8;
+.dock-item:active .dock-icon {
+    opacity: 1;
+    color: var(--primary-color);
 }
 
 /* ==========================================================================
