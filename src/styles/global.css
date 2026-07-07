@@ -716,41 +716,6 @@ h2::after {
     font-weight: 400;
 }
 
-/* Minimal WhatsApp FAB */
-.fab-minimal {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 64px;
-    height: 64px;
-    background: var(--bg-card);
-    border: var(--border-light);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
-    box-shadow: var(--shadow-soft);
-    z-index: 9999;
-    transition: var(--transition-smooth);
-}
-
-.fab-minimal:hover {
-    background: var(--primary-color);
-    color: var(--text-light);
-    transform: translateY(-6px) scale(1.05);
-    box-shadow: 0 20px 40px -8px rgba(122, 64, 43, 0.25);
-}
-
-@media (max-width: 600px) {
-    .fab-minimal {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        width: 56px;
-        height: 56px;
-    }
-}
-
 /* ==========================================================================
    UTILITIES: TEXT GRADIENTS
    ========================================================================== */
