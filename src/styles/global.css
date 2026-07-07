@@ -289,13 +289,11 @@ h2::after {
 }
 
 .hero-content h1 {
-    font-size: clamp(1.4rem, 4vw, 2.2rem);
     margin: 0;
     line-height: 1.15;
 }
 
 .profile-name {
-    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
     margin: 0;
     color: var(--primary-color);
 }
@@ -319,7 +317,6 @@ h2::after {
 
 .profile-bio {
     color: var(--text-gray);
-    font-size: clamp(0.95rem, 2.8vw, 1.1rem);
     line-height: 1.5;
     margin-top: 0;
     margin-bottom: 1.5rem;
