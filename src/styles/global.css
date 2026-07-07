@@ -268,7 +268,7 @@ h2::after {
     width: clamp(100px, 18vw, 125px);
     height: clamp(100px, 18vw, 125px);
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center -100%;
     border-radius: 50%;
     border: 3px solid var(--bg-card);
     box-shadow: var(--shadow-soft);
@@ -673,7 +673,7 @@ h2::after {
 }
 
 /* ==========================================================================
-   11. COMPONENT: SOCIAL & FOOTER
+   11. COMPONENT: SOCIAL & FOOTER (Subtle Bottom Footer Layout)
    ========================================================================== */
 .footer-content {
     max-width: 440px;
@@ -682,10 +682,25 @@ h2::after {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    /* Pushes slightly upwards away from the bottom footer line */
+    padding-bottom: 4rem;
 }
 
 .footer-action-wrapper {
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    /* Clear internal margins since it is isolated */
+}
+
+/* New: Anchors the social links safely to the very base of the viewport */
+.bottom-branding-footer {
+    position: absolute;
+    bottom: clamp(1rem, 4vw, 1.75rem);
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
 }
 
 .social-minimal-links {
@@ -693,8 +708,9 @@ h2::after {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: clamp(1rem, 4vw, 2rem);
+    gap: clamp(1rem, 4vw, 1.75rem);
     width: 100%;
+    max-width: 320px;
 }
 
 .social-minimal-item {
@@ -705,26 +721,38 @@ h2::after {
     text-decoration: none;
     color: var(--text-gray);
     transition: var(--transition-smooth);
-    min-width: 70px;
+    flex: 1;
+    min-width: 0;
 }
 
 .social-minimal-item:hover {
     color: var(--primary-color);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 .social-icon {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    /* Made slightly smaller and more muted */
+    height: 20px;
     fill: currentColor;
-    opacity: 0.8;
+    opacity: 0.55;
+    /* Subtle presence until active hover states */
+    transition: var(--transition-fast);
+}
+
+.social-minimal-item:hover .social-icon {
+    opacity: 0.9;
 }
 
 .social-minimal-item span {
     font-family: var(--font-body);
     font-size: var(--text-xs);
     font-weight: 500;
-    opacity: 0.75;
+    opacity: 0.5;
+}
+
+.social-minimal-item:hover span {
+    opacity: 0.8;
 }
 
 /* ==========================================================================
