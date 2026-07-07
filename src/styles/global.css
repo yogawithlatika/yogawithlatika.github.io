@@ -5,26 +5,15 @@
     /* ----------------------------------------------------------------------
        COLOR THEME (All colors centralized here for easy theming)
        ---------------------------------------------------------------------- */
-    --primary-color: #7A402B;
-    /* Deep, elegant rust */
-    --primary-light: #9B553D;
-    /* Softer rust for hover states */
-    --accent-color: #859681;
-    /* Calming sage green */
-
-    --text-dark: #1A1817;
-    /* High-contrast near black */
-    --text-gray: #6B6560;
-    /* Soft reading gray */
+    --primary-color: #5D544A;
+    --primary-light: #786E63;
+    --accent-color: #9AA69B;
+    --text-dark: #1C1A18;
+    --text-gray: #66615C;
     --text-light: #FAFAF9;
-    /* Pure off-white */
-
     --bg-body-start: #FAFAF9;
-    /* Bright parchment top */
-    --bg-body-end: #F4F2EE;
-    /* Subtle shaded bottom */
+    --bg-body-end: #F1F0EC;
     --bg-card: #FFFFFF;
-    /* Crisp white for cards/elements */
 
     /* ----------------------------------------------------------------------
        SHADOWS & BORDERS
