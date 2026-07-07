@@ -32,40 +32,38 @@ const reviewData = [
 
 <section id="google-reviews" class="section">
     <div class="reviews-content">
-        <h2>Client Transformations</h2>
+        <h2>Transformations</h2>
 
-        <div class="editorial-slider" id="review-wrapper">
+        <div class="editorial-slider">
             {
                 reviewData.map((review, index) => (
                     <div
                         class={`editorial-slide ${index === 0 ? "active" : ""}`}
                     >
-                        <div class="quote-mark">"</div>
-                        <p class="review-text">{review.text}</p>
-                        <div class="review-author">
+                        <div class="review-box">
                             <span class="stars">★★★★★</span>
-                            <span class="name">{review.name}</span>
+                            <p class="review-text">“{review.text}”</p>
+                            <span class="name">— {review.name}</span>
                         </div>
                     </div>
                 ))
             }
         </div>
 
-        <div class="mt-1">
+        <div class="reviews-footer">
             <a
                 href="https://www.google.com/maps/search/YogaWithLatika"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button-accent"
             >
-                Read All Reviews
+                Read All Google Reviews
             </a>
         </div>
     </div>
 </section>
 
 <script>
-    // Soft fade slider logic[cite: 1]
     const slides = document.querySelectorAll(".editorial-slide");
     let currentIndex = 0;
 
@@ -74,6 +72,6 @@ const reviewData = [
             slides[currentIndex].classList.remove("active");
             currentIndex = (currentIndex + 1) % slides.length;
             slides[currentIndex].classList.add("active");
-        }, 6000);
+        }, 5500);
     }
 </script>

@@ -4,20 +4,32 @@
 const features = [
     {
         title: "Cycle Tracker",
-        desc: "Predict periods & symptoms",
+        desc: "Predict periods and monitor symptoms",
         watermark: "🌸",
     },
-    { title: "Rhythm", desc: "Build healthy habit streaks", watermark: "⚡" },
-    { title: "Hydration", desc: "Monitor daily water intake", watermark: "💧" },
-    { title: "Fasting", desc: "Track fasting time windows", watermark: "⏳" },
     {
-        title: "Health Tips",
-        desc: "Get research-backed advice",
+        title: "Daily Rhythm",
+        desc: "Build healthy habits and wellness streaks",
+        watermark: "⚡",
+    },
+    {
+        title: "Hydration",
+        desc: "Track daily water goals effortlessly",
+        watermark: "💧",
+    },
+    {
+        title: "Fasting Timer",
+        desc: "Manage fasting intervals smoothly",
+        watermark: "⏳",
+    },
+    {
+        title: "Daily Health Tips",
+        desc: "Get research-backed natural advice",
         watermark: "💡",
     },
     {
         title: "Therapy Blog",
-        desc: "Learn expert care routines",
+        desc: "Learn expert routines for recovery",
         watermark: "📚",
     },
 ];
@@ -28,9 +40,10 @@ const features = [
         <h2>The Tulaa App</h2>
 
         <p class="tulaa-intro">
-            Your private, offline-first wellness ecosystem. Access therapeutic
-            yoga plans for over 30 conditions, track your cycle, and find deep
-            rest—completely free.
+            Science-backed plans for Back Pain, PCOS, Thyroid, and <span
+                class="text-gradient">30+ health needs</span
+            >. Reduce stress, heal naturally, and reclaim your vitality through
+            Yoga Therapy.
         </p>
 
         <div class="feature-carousel-container">
@@ -59,8 +72,8 @@ const features = [
                     src="/images/playstore.svg"
                     alt=""
                     class="store-icon"
-                    width="24"
-                    height="24"
+                    width="20"
+                    height="20"
                 />
                 <div class="store-text-group">
                     <span class="store-text-small">GET IT ON</span>
@@ -78,11 +91,11 @@ const features = [
                     src="/images/appstore.svg"
                     alt=""
                     class="store-icon"
-                    width="24"
-                    height="24"
+                    width="20"
+                    height="20"
                 />
                 <div class="store-text-group">
-                    <span class="store-text-small">Download on the</span>
+                    <span class="store-text-small">DOWNLOAD ON THE</span>
                     <span class="store-text-large">App Store</span>
                 </div>
             </a>
@@ -91,7 +104,6 @@ const features = [
 </section>
 
 <script>
-    // Feature Card Cycling Animation
     const featureSlides = document.querySelectorAll(".feature-slide");
 
     if (featureSlides.length > 1) {
@@ -100,6 +112,6 @@ const features = [
             featureSlides[currentFeature].classList.remove("active");
             currentFeature = (currentFeature + 1) % featureSlides.length;
             featureSlides[currentFeature].classList.add("active");
-        }, 3500); // Changes every 3.5 seconds
+        }, 3500);
     }
 </script>
