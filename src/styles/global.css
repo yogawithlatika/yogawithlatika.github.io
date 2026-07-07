@@ -180,57 +180,6 @@ h2::after {
 }
 
 /* ==========================================================================
-   COMPONENT: NAVIGATION (Floating & Glassy)
-   ========================================================================== */
-.floating-nav {
-    position: fixed;
-    /* Locks it to the screen over the snapping sections */
-    top: 2rem;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;
-    /* Lets you click through the empty space */
-}
-
-.nav-container {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: var(--border-light);
-    border-radius: var(--radius-pill);
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    box-shadow: var(--shadow-soft);
-    pointer-events: auto;
-    /* Re-enables clicking on the nav itself */
-}
-
-.nav-container a {
-    font-size: 0.8rem;
-    color: var(--text-gray);
-    padding: 0.6rem 1.2rem;
-    text-decoration: none;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border-radius: var(--radius-pill);
-    transition: all 0.4s ease;
-}
-
-.nav-container a:hover {
-    color: var(--primary-color);
-}
-
-.nav-container a.active {
-    background: var(--primary-color);
-    color: var(--text-light);
-}
-
-/* ==========================================================================
    COMPONENT: HERO (Centered & Elegant)
    ========================================================================== */
 .hero-content {
