@@ -306,6 +306,9 @@ h2::after {
 /* ==========================================================================
    COMPONENT: TULAA APP (Minimal Grid)
    ========================================================================== */
+/* ==========================================================================
+   COMPONENT: TULAA APP (Animated Carousel)
+   ========================================================================== */
 .tulaa-content {
     max-width: 800px;
     width: 100%;
@@ -317,95 +320,147 @@ h2::after {
 .tulaa-intro {
     text-align: center;
     color: var(--text-gray);
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     font-size: 1.1rem;
     max-width: 600px;
 }
 
-.features-minimal-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+.feature-carousel-container {
+    position: relative;
     width: 100%;
-    margin-bottom: 3rem;
+    max-width: 340px;
+    height: 150px;
+    /* Fixed height so layout does not jump */
+    margin: 0 auto 3rem auto;
 }
 
-@media (min-width: 768px) {
-    .features-minimal-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.feature-item {
-    padding: 1.5rem;
+.feature-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 1.5rem;
+    background: var(--bg-card);
     border: var(--border-light);
     border-radius: var(--radius-lg);
-    background: transparent;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.feature-item:hover {
-    background: var(--bg-card);
-    border-color: transparent;
     box-shadow: var(--shadow-soft);
-    transform: translateY(-2px);
+    text-align: center;
+
+    /* Animation initial state */
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+
+    /* Centering content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
-.feature-item h3 {
+.feature-slide.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Premium Watermark Styling */
+.feature-watermark {
+    position: absolute;
+    bottom: -15px;
+    right: -10px;
+    font-size: 6rem;
+    opacity: 0.03;
+    /* Extremely subtle */
+    line-height: 1;
+    z-index: 0;
+    filter: grayscale(100%);
+    pointer-events: none;
+}
+
+.feature-slide h3 {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.25rem 0;
     color: var(--text-dark);
+    position: relative;
+    z-index: 1;
 }
 
-.feature-item p {
-    font-size: 0.85rem;
+.feature-slide p {
+    font-size: 0.95rem;
     margin: 0;
-    line-height: 1.4;
+    color: var(--text-gray);
+    position: relative;
+    z-index: 1;
 }
 
+/* ==========================================================================
+   OFFICIAL APP STORE BADGES
+   ========================================================================== */
 .store-buttons {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    /* Allows stacking if the screen is extremely narrow */
+    justify-content: center;
+    gap: 0.75rem;
+    /* Tightened gap to keep them on one row */
+    margin-top: 1rem;
+    width: 100%;
 }
 
 .store-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    background: var(--text-dark);
-    color: var(--text-light);
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-pill);
+    background-color: #000000;
+    color: #ffffff !important;
+    border: 1px solid #a6a6a6;
+    border-radius: 8px;
+    /* Official standard radius */
+    padding: 6px 14px 6px 10px;
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    min-width: 145px;
+    /* Ensures both buttons match in size */
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .store-btn:hover {
-    background: var(--primary-color);
     transform: translateY(-2px);
+    background-color: #1a1a1a;
 }
 
-.social-proof-wrapper {
-    height: 2rem;
-    /* Reserves space so layout doesn't jump */
+.store-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.store-text-group {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
 }
 
-.social-proof-text {
-    font-size: 0.9rem;
-    color: var(--accent-color);
-    margin: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+.store-text-small {
+    font-size: 0.65rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.store-text-large {
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* ==========================================================================

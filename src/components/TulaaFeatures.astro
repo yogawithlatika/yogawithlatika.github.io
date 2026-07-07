@@ -1,5 +1,26 @@
 ---
 // src/components/TulaaFeatures.astro
+
+const features = [
+    {
+        title: "Cycle Tracker",
+        desc: "Predict periods & symptoms",
+        watermark: "🌸",
+    },
+    { title: "Rhythm", desc: "Build healthy habit streaks", watermark: "⚡" },
+    { title: "Hydration", desc: "Monitor daily water intake", watermark: "💧" },
+    { title: "Fasting", desc: "Track fasting time windows", watermark: "⏳" },
+    {
+        title: "Health Tips",
+        desc: "Get research-backed advice",
+        watermark: "💡",
+    },
+    {
+        title: "Therapy Blog",
+        desc: "Learn expert care routines",
+        watermark: "📚",
+    },
+];
 ---
 
 <section id="tulaa" class="section">
@@ -12,31 +33,18 @@
             rest—completely free.
         </p>
 
-        <div class="features-minimal-grid">
-            <div class="feature-item">
-                <h3>Cycle Tracker</h3>
-                <p>Predict periods & symptoms</p>
-            </div>
-            <div class="feature-item">
-                <h3>Rhythm</h3>
-                <p>Build healthy habit streaks</p>
-            </div>
-            <div class="feature-item">
-                <h3>Hydration</h3>
-                <p>Monitor daily water intake</p>
-            </div>
-            <div class="feature-item">
-                <h3>Fasting</h3>
-                <p>Track fasting time windows</p>
-            </div>
-            <div class="feature-item">
-                <h3>Health Tips</h3>
-                <p>Get research-backed advice</p>
-            </div>
-            <div class="feature-item">
-                <h3>Therapy Blog</h3>
-                <p>Learn expert care routines</p>
-            </div>
+        <div class="feature-carousel-container">
+            {
+                features.map((feature, index) => (
+                    <div class={`feature-slide ${index === 0 ? "active" : ""}`}>
+                        <div class="feature-watermark" aria-hidden="true">
+                            {feature.watermark}
+                        </div>
+                        <h3>{feature.title}</h3>
+                        <p>{feature.desc}</p>
+                    </div>
+                ))
+            }
         </div>
 
         <div class="store-buttons">
@@ -45,64 +53,53 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="store-btn"
+                aria-label="Get it on Google Play"
             >
                 <img
                     src="/images/playstore.svg"
-                    alt="Play Store"
-                    width="20"
-                    height="20"
+                    alt=""
+                    class="store-icon"
+                    width="24"
+                    height="24"
                 />
-                Google Play
+                <div class="store-text-group">
+                    <span class="store-text-small">GET IT ON</span>
+                    <span class="store-text-large">Google Play</span>
+                </div>
             </a>
             <a
                 href="https://apps.apple.com/in/app/tulaa/id6748626498"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="store-btn"
+                aria-label="Download on the App Store"
             >
                 <img
                     src="/images/appstore.svg"
-                    alt="App Store"
-                    width="20"
-                    height="20"
+                    alt=""
+                    class="store-icon"
+                    width="24"
+                    height="24"
                 />
-                App Store
+                <div class="store-text-group">
+                    <span class="store-text-small">Download on the</span>
+                    <span class="store-text-large">App Store</span>
+                </div>
             </a>
-        </div>
-
-        <div class="social-proof-wrapper">
-            <p id="tulaaSocialProof" class="social-proof-text">
-                <em>Join 5,000+ users healing naturally</em>
-            </p>
         </div>
     </div>
 </section>
 
 <script>
-    // Minimalist Social Proof Cycling[cite: 2]
-    const proofElement = document.getElementById("tulaaSocialProof");
+    // Feature Card Cycling Animation
+    const featureSlides = document.querySelectorAll(".feature-slide");
 
-    if (proofElement) {
-        const socialProofs = [
-            "Join 5,000+ users healing naturally",
-            "Rated 5 stars on Play Store & App Store",
-            "Yoga plans for 30+ health needs",
-            "100% Private: No account needed",
-            "Completely Free: No hidden costs",
-        ];
-
-        let currentIndex = 0;
-
+    if (featureSlides.length > 1) {
+        let currentFeature = 0;
         setInterval(() => {
-            proofElement.style.opacity = "0";
-            proofElement.style.transform = "translateY(5px)";
-
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % socialProofs.length;
-                proofElement.innerHTML = `<em>${socialProofs[currentIndex]}</em>`;
-                proofElement.style.opacity = "1";
-                proofElement.style.transform = "translateY(0)";
-            }, 500);
-        }, 4000);
+            featureSlides[currentFeature].classList.remove("active");
+            currentFeature = (currentFeature + 1) % featureSlides.length;
+            featureSlides[currentFeature].classList.add("active");
+        }, 3500); // Changes every 3.5 seconds
     }
 </script>
