@@ -1,0 +1,119 @@
+---
+// src/layouts/Layout.astro
+import "../styles/global.css";
+
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+}
+
+const {
+    title = "YogaWithLatika | Online Yoga Therapy for PCOS, Prenatal & Back Pain",
+    description = "Heal naturally with Latika (M.Sc Yoga Therapy, Gold Medalist). Specialized online sessions for PCOS, Pregnancy, Thyroid, Chronic Pain, Stress and Anxiety relief. Download the free Tulaa app today.",
+    image = "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
+
+        <link rel="icon" type="image/webp" href="/favicon.webp" />
+
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <meta
+            name="keywords"
+            content="Online Yoga Classes, Yoga Therapy, Prenatal Yoga, PCOS Yoga, Back Pain Relief, Yoga for Stress, Personal Yoga Trainer, Latika Yoga, Tulaa App"
+        />
+        <link rel="canonical" href="https://yogawithlatika.com" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yogawithlatika.com" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "HealthAndWellnessBusiness",
+                "name": "YogaWithLatika",
+                "url": "https://yogawithlatika.com",
+                "logo": "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
+                "image": "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
+                "sameAs": [
+                    "https://www.instagram.com/yogawithlatika",
+                    "https://www.youtube.com/@yogawithlatika",
+                    "https://www.linkedin.com/in/latika-bissa-0a3084210/"
+                ],
+                "description": "Gold Medalist Yoga Therapist (M.Sc, B.Sc) providing personalized online yoga for prenatal care, PCOS, thyroid, chronic pain, stress and anxiety relief",
+                "priceRange": "$$"
+            }
+        </script>
+    </head>
+    <body>
+        <slot />
+
+        <!-- PREMIUM WEB PLATFORM INTERACTION ENGINES -->
+        <script>
+            // ENGINE 1: Intersection-Driven Entry/Exit Animation State Handler
+            const animateContainers = document.querySelectorAll(
+                ".hero-content, .tulaa-content, .reviews-content, .video-content, .footer-content",
+            );
+
+            const contentObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                        } else {
+                            // Drops class on scroll exit so elements reset and re-enter fluidly next time
+                            entry.target.classList.remove("is-visible");
+                        }
+                    });
+                },
+                {
+                    root: null,
+                    threshold: 0.12, // Triggers just as the card elements clear active viewport bands
+                },
+            );
+
+            animateContainers.forEach((container) =>
+                contentObserver.observe(container),
+            );
+
+            // ENGINE 2: Light Premium Tactical Mobile Haptic Triggers
+            function triggerPremiumTap() {
+                if ("vibrate" in navigator) {
+                    navigator.vibrate(12); // Clean 12ms native impulse on supported Android devices
+                }
+            }
+
+            // Universal micro-interaction tracking listener
+            document.addEventListener("DOMContentLoaded", () => {
+                const interactiveElements = document.querySelectorAll(
+                    ".cta-button, .store-btn, .social-minimal-item, .video-card-minimal, .button-accent",
+                );
+
+                interactiveElements.forEach((element) => {
+                    element.addEventListener("click", () =>
+                        triggerPremiumTap(),
+                    );
+                });
+            });
+        </script>
+    </body>
+</html>

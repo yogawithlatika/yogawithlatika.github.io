@@ -1,0 +1,23 @@
+---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import TulaaFeatures from "../components/TulaaFeatures.astro";
+import Reviews from "../components/Reviews.astro";
+import VideoCarousel from "../components/VideoCarousel.astro";
+import SocialFooter from "../components/SocialFooter.astro";
+---
+
+<Layout
+	title="YogaWithLatika | Online Yoga Therapy for PCOS, Prenatal & Back Pain"
+>
+	<main class="container">
+		<Hero />
+		<About />
+		<TulaaFeatures />
+		<Reviews />
+		<VideoCarousel />
+		<SocialFooter />
+	</main>
+</Layout>

@@ -1,0 +1,118 @@
+---
+// src/components/TulaaFeatures.astro
+
+const features = [
+    {
+        title: "Cycle Tracker",
+        desc: "Predict periods and monitor symptoms",
+        watermark: "🌸",
+    },
+    {
+        title: "Daily Rhythm",
+        desc: "Build healthy habits and wellness streaks",
+        watermark: "⚡",
+    },
+    {
+        title: "Hydration",
+        desc: "Track daily water goals effortlessly",
+        watermark: "💧",
+    },
+    {
+        title: "Fasting Timer",
+        desc: "Manage fasting intervals smoothly",
+        watermark: "⏳",
+    },
+    {
+        title: "Daily Health Tips",
+        desc: "Get research-backed natural advice",
+        watermark: "💡",
+    },
+    {
+        title: "Therapy Blog",
+        desc: "Learn expert routines for recovery",
+        watermark: "📚",
+    },
+];
+---
+
+<section id="tulaa" class="section">
+    <div class="tulaa-content">
+        <h2>Tulaa Yoga App</h2>
+
+        <p class="tulaa-intro">
+            Download my free Yoga app for science-backed plans for Back Pain,
+            PCOS, Thyroid, and <span class="text-gradient"
+                >30+ health needs</span
+            >. Reduce stress, heal naturally, and reclaim your vitality through
+            Yoga Therapy.
+        </p>
+
+        <div class="feature-carousel-container">
+            {
+                features.map((feature, index) => (
+                    <div class={`feature-slide ${index === 0 ? "active" : ""}`}>
+                        <div class="feature-watermark" aria-hidden="true">
+                            {feature.watermark}
+                        </div>
+                        <h3>{feature.title}</h3>
+                        <p>{feature.desc}</p>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="store-buttons">
+            <a
+                href="https://play.google.com/store/apps/details?id=life.tulaa"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="store-btn"
+                aria-label="Get it on Google Play"
+            >
+                <img
+                    src="/images/playstore.svg"
+                    alt=""
+                    class="store-icon"
+                    width="20"
+                    height="20"
+                />
+                <div class="store-text-group">
+                    <span class="store-text-small">GET IT ON</span>
+                    <span class="store-text-large">Google Play</span>
+                </div>
+            </a>
+            <a
+                href="https://apps.apple.com/in/app/tulaa/id6748626498"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="store-btn"
+                aria-label="Download on the App Store"
+            >
+                <img
+                    src="/images/appstore.svg"
+                    alt=""
+                    class="store-icon"
+                    width="20"
+                    height="20"
+                />
+                <div class="store-text-group">
+                    <span class="store-text-small">DOWNLOAD ON THE</span>
+                    <span class="store-text-large">App Store</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    const featureSlides = document.querySelectorAll(".feature-slide");
+
+    if (featureSlides.length > 1) {
+        let currentFeature = 0;
+        setInterval(() => {
+            featureSlides[currentFeature].classList.remove("active");
+            currentFeature = (currentFeature + 1) % featureSlides.length;
+            featureSlides[currentFeature].classList.add("active");
+        }, 3500);
+    }
+</script>

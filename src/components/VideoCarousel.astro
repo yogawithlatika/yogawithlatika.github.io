@@ -1,0 +1,73 @@
+---
+// src/components/VideoCarousel.astro
+
+const videoData = [
+    {
+        id: "ZcwZFpBXma0",
+        title: "Yoga to reduce stress, improve sleep",
+    },
+    {
+        id: "LAYgeIKm8m0",
+        title: "Yoga for Back, Neck & Shoulder Pain Relief",
+    },
+    {
+        id: "nwK-a0FJbEU",
+        title: "Prenatal Guided Meditation",
+    },
+    {
+        id: "ZuuvIa85QGI",
+        title: "Yoga for Knee Stiffness & Pain",
+    },
+    {
+        id: "dB66ygiGTbA",
+        title: "10 minute Guided Chanting Meditation",
+    },
+];
+---
+
+<section id="showcase" class="section">
+    <div class="video-content">
+        <h2>Experience the Practice</h2>
+        <p class="section-subtitle">
+            Simple, effective, and scientifically backed routines.
+        </p>
+
+        <div class="video-track">
+            {
+                videoData.map((video) => (
+                    <a
+                        href={`https://www.youtube.com/watch?v=${video.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="video-card-minimal"
+                    >
+                        <div class="thumbnail-wrapper">
+                            <img
+                                src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+                                alt={video.title}
+                                loading="lazy"
+                            />
+                            <div class="play-overlay">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="video-title">{video.title}</p>
+                    </a>
+                ))
+            }
+        </div>
+
+        <div class="mt-1">
+            <a
+                href="https://www.youtube.com/@yogawithlatika"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cta-button"
+            >
+                Visit YouTube Channel
+            </a>
+        </div>
+    </div>
+</section>
