@@ -2,14 +2,12 @@
 // src/layouts/Layout.astro
 import "../styles/global.css";
 
-// 1. Define the props this layout accepts
 interface Props {
     title?: string;
     description?: string;
     image?: string;
 }
 
-// 2. Set default values for the homepage
 const {
     title = "YogaWithLatika | Online Yoga Therapy for PCOS, Prenatal & Back Pain",
     description = "Heal naturally with Latika (M.Sc Yoga Therapy, Gold Medalist). Specialized online sessions for PCOS, Pregnancy, Thyroid, Chronic Pain, Stress and Anxiety relief. Download the free Tulaa app today.",
@@ -43,8 +41,9 @@ const {
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- Restored clean alignment using 'Lora' matching your global typography variables -->
         <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Poppins:wght@300;400;500;600&display=swap"
             rel="stylesheet"
         />
 
@@ -68,5 +67,55 @@ const {
     </head>
     <body>
         <slot />
+
+        <!-- PREMIUM WEB PLATFORM INTERACTION ENGINES -->
+        <script>
+            // ENGINE 1: Scroll-Reactive Geometric Background Transitions
+            const sections = document.querySelectorAll(".section");
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.2, // Transitions graphics cleanly as boundaries intersect viewports
+            };
+
+            const geometricObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    const targetEl = entry.target as HTMLElement;
+                    if (entry.isIntersecting) {
+                        // Smoothly expand and true up active geometric path rules
+                        targetEl.style.setProperty("--scroll-scale", "1");
+                        targetEl.style.setProperty("--scroll-rotate", "0deg");
+                        targetEl.style.setProperty("--scroll-y", "0px");
+                    } else {
+                        // Morph parameters back to skewed offsets when sliding out of focus
+                        targetEl.style.setProperty("--scroll-scale", "0.88");
+                        targetEl.style.setProperty("--scroll-rotate", "12deg");
+                        targetEl.style.setProperty("--scroll-y", "25px");
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach((section) => geometricObserver.observe(section));
+
+            // ENGINE 2: Light Premium Tactical Mobile Haptic Triggers
+            function triggerPremiumTap() {
+                if ("vibrate" in navigator) {
+                    navigator.vibrate(12); // Clean 12ms native impulse on supported devices
+                }
+            }
+
+            // Universal micro-interaction tracking listener
+            document.addEventListener("DOMContentLoaded", () => {
+                const interactiveElements = document.querySelectorAll(
+                    ".cta-button, .store-btn, .social-minimal-item, .video-card-minimal, .button-accent",
+                );
+
+                interactiveElements.forEach((element) => {
+                    element.addEventListener("click", () =>
+                        triggerPremiumTap(),
+                    );
+                });
+            });
+        </script>
     </body>
 </html>
