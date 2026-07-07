@@ -2,53 +2,42 @@
 // src/components/Nav.astro
 ---
 
-<nav aria-label="Main Navigation">
+<nav aria-label="Main Navigation" class="floating-nav">
     <div class="nav-container">
-        <a href="#about">About Me</a>
-        <a href="#tulaa">Free App</a>
+        <a href="#about">About</a>
+        <a href="#tulaa">App</a>
         <a href="#google-reviews">Reviews</a>
         <a href="#showcase">Videos</a>
     </div>
 </nav>
 
 <script>
-    // Navigation "Scroll-Spy" & Styling Logic
-    const nav = document.querySelector("nav");
-    const sections = document.querySelectorAll("section[id]");
+    // Modern Intersection Observer for Snap-Scrolling
+    const navLinks = document.querySelectorAll(".nav-container a");
+    const sections = document.querySelectorAll(".section");
 
-    const handleScroll = () => {
-        const scrollY = window.pageYOffset;
-
-        // Add 'is-scrolled' class to nav for the flush-to-top look
-        if (nav) {
-            nav.classList.toggle("is-scrolled", scrollY > 50);
-        }
-
-        // Active Link Highlighting
-        sections.forEach((current) => {
-            const htmlElement = current as HTMLElement;
-            const sectionHeight = htmlElement.offsetHeight;
-            const sectionTop = htmlElement.offsetTop - 100;
-            const sectionId = htmlElement.getAttribute("id");
-            const navLink = document.querySelector(
-                `.nav-container a[href*=${sectionId}]`,
-            );
-
-            if (navLink) {
-                if (
-                    scrollY > sectionTop &&
-                    scrollY <= sectionTop + sectionHeight
-                ) {
-                    navLink.classList.add("active");
-                } else {
-                    navLink.classList.remove("active");
-                }
-            }
-        });
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.6, // Triggers when 60% of the section is visible
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
 
-    // Trigger on initial load
-    handleScroll();
+                // Remove active class from all
+                navLinks.forEach((link) => link.classList.remove("active"));
+
+                // Add active class to the currently visible section
+                const activeLink = document.querySelector(
+                    `.nav-container a[href="#${id}"]`,
+                );
+                if (activeLink) activeLink.classList.add("active");
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
 </script>

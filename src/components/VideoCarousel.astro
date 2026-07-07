@@ -26,39 +26,48 @@ const videoData = [
 ---
 
 <section id="showcase" class="section">
-    <h2 class="text-center">Experience My Teaching Style</h2>
-    <p class="text-center mb-1">
-        Simple, effective, and scientifically backed yoga practices.
-    </p>
+    <div class="video-content">
+        <h2>Experience the Practice</h2>
+        <p class="section-subtitle">
+            Simple, effective, and scientifically backed routines.
+        </p>
 
-    <div class="carousel" id="video-carousel">
-        {
-            videoData.map((video) => (
-                <div class="video-card">
+        <div class="video-track">
+            {
+                videoData.map((video) => (
                     <a
                         href={`https://www.youtube.com/watch?v=${video.id}`}
                         target="_blank"
+                        rel="noopener noreferrer"
+                        class="video-card-minimal"
                     >
-                        <img
-                            src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
-                            alt={video.title}
-                            loading="lazy"
-                        />
-                        <p>{video.title}</p>
+                        <div class="thumbnail-wrapper">
+                            <img
+                                src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
+                                alt={video.title}
+                                loading="lazy"
+                            />
+                            <div class="play-overlay">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="video-title">{video.title}</p>
                     </a>
-                </div>
-            ))
-        }
-    </div>
+                ))
+            }
+        </div>
 
-    <div class="text-center mt-1">
-        <a
-            href="https://www.youtube.com/@yogawithlatika"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button-accent"
-        >
-            📺 Visit YouTube Channel →
-        </a>
+        <div class="mt-1">
+            <a
+                href="https://www.youtube.com/@yogawithlatika"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button-accent"
+            >
+                Visit YouTube Channel
+            </a>
+        </div>
     </div>
 </section>

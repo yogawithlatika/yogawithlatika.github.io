@@ -1,6 +1,7 @@
 ---
 // src/components/Reviews.astro
 
+// Review data kept intact[cite: 1]
 const reviewData = [
     {
         name: "Swapna P",
@@ -30,37 +31,42 @@ const reviewData = [
 ---
 
 <section id="google-reviews" class="section">
-    <h2 class="text-center">Success Stories & Transformations</h2>
+    <div class="reviews-content">
+        <h2>Client Transformations</h2>
 
-    <div class="review-container" id="review-wrapper">
-        {
-            reviewData.map((review, index) => (
-                <div class={`review-slide ${index === 0 ? "active" : ""}`}>
-                    <div class="review-content">
-                        <p>“{review.text}”</p>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p>– {review.name}</p>
+        <div class="editorial-slider" id="review-wrapper">
+            {
+                reviewData.map((review, index) => (
+                    <div
+                        class={`editorial-slide ${index === 0 ? "active" : ""}`}
+                    >
+                        <div class="quote-mark">"</div>
+                        <p class="review-text">{review.text}</p>
+                        <div class="review-author">
+                            <span class="stars">★★★★★</span>
+                            <span class="name">{review.name}</span>
+                        </div>
                     </div>
-                </div>
-            ))
-        }
-    </div>
+                ))
+            }
+        </div>
 
-    <div class="text-center mt-1">
-        <a
-            href="https://www.google.com/maps/search/YogaWithLatika"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button-accent"
-        >
-            💬 Read All Client Reviews →
-        </a>
+        <div class="mt-1">
+            <a
+                href="https://www.google.com/maps/search/YogaWithLatika"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button-accent"
+            >
+                Read All Reviews
+            </a>
+        </div>
     </div>
 </section>
 
 <script>
-    // Slider Logic
-    const slides = document.querySelectorAll(".review-slide");
+    // Soft fade slider logic[cite: 1]
+    const slides = document.querySelectorAll(".editorial-slide");
     let currentIndex = 0;
 
     if (slides.length > 1) {
@@ -68,6 +74,6 @@ const reviewData = [
             slides[currentIndex].classList.remove("active");
             currentIndex = (currentIndex + 1) % slides.length;
             slides[currentIndex].classList.add("active");
-        }, 7000);
+        }, 6000);
     }
 </script>

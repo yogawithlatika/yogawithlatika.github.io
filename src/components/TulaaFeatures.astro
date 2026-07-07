@@ -3,108 +3,83 @@
 ---
 
 <section id="tulaa" class="section">
-    <div class="text-center">
-        <h2>Tulaa: Free Yoga & Wellness App</h2>
+    <div class="tulaa-content">
+        <h2>The Tulaa App</h2>
 
         <p class="tulaa-intro">
-            Simplify your daily wellness. Access completely free, therapeutic
-            yoga plans for over <strong>30 medical conditions</strong> and your everyday
-            needs. Unwind and find deep rest with our <strong
-                >guided meditation</strong
-            > and sleep sessions. <strong>Tulaa</strong> brings all your essential
-            health tools into one secure, offline-first ecosystem. <strong
-                >No data mining. No subscriptions.</strong
-            >
+            Your private, offline-first wellness ecosystem. Access therapeutic
+            yoga plans for over 30 conditions, track your cycle, and find deep
+            rest—completely free.
         </p>
 
-        <div class="tulaa-features-grid">
-            <div class="tulaa-card cycle-card">
-                <h3 class="tulaa-card-title">Cycle Tracker</h3>
-                <p class="tulaa-card-desc">Predict periods & symptoms.</p>
-                <div class="tulaa-card-watermark" aria-hidden="true">🌸</div>
+        <div class="features-minimal-grid">
+            <div class="feature-item">
+                <h3>Cycle Tracker</h3>
+                <p>Predict periods & symptoms</p>
             </div>
-
-            <div class="tulaa-card rhythm-card">
-                <h3 class="tulaa-card-title">Rhythm</h3>
-                <p class="tulaa-card-desc">Build healthy habit streaks.</p>
-                <div class="tulaa-card-watermark" aria-hidden="true">⚡</div>
+            <div class="feature-item">
+                <h3>Rhythm</h3>
+                <p>Build healthy habit streaks</p>
             </div>
-
-            <div class="tulaa-card hydration-card">
-                <h3 class="tulaa-card-title">Hydration</h3>
-                <p class="tulaa-card-desc">Monitor daily water intake.</p>
-                <div class="tulaa-card-watermark" aria-hidden="true">💧</div>
+            <div class="feature-item">
+                <h3>Hydration</h3>
+                <p>Monitor daily water intake</p>
             </div>
-
-            <div class="tulaa-card fasting-card">
-                <h3 class="tulaa-card-title">Fasting</h3>
-                <p class="tulaa-card-desc">Track fasting time windows.</p>
-                <div class="tulaa-card-watermark" aria-hidden="true">⏳</div>
+            <div class="feature-item">
+                <h3>Fasting</h3>
+                <p>Track fasting time windows</p>
             </div>
-
-            <div class="tulaa-card health-card">
-                <h3 class="tulaa-card-title">Health Tip</h3>
-                <p class="tulaa-card-desc">Get research-backed tips.</p>
-                <div class="tulaa-card-watermark" aria-hidden="true">💡</div>
+            <div class="feature-item">
+                <h3>Health Tips</h3>
+                <p>Get research-backed advice</p>
             </div>
-
-            <div class="tulaa-card blog-card">
-                <h3 class="tulaa-card-title">Therapy Blog</h3>
-                <p class="tulaa-card-desc">Learn expert care routines.</p>
-                <div class="tulaa-card-watermark" aria-hidden="true">📚</div>
+            <div class="feature-item">
+                <h3>Therapy Blog</h3>
+                <p>Learn expert care routines</p>
             </div>
         </div>
 
-        <div class="button-container">
+        <div class="store-buttons">
             <a
                 href="https://play.google.com/store/apps/details?id=life.tulaa"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="store-btn"
-                aria-label="Get it on Google Play"
             >
                 <img
                     src="/images/playstore.svg"
-                    alt=""
-                    class="store-icon"
-                    width="24"
-                    height="24"
+                    alt="Play Store"
+                    width="20"
+                    height="20"
                 />
-                <div class="store-text-group">
-                    <span class="store-text-small">GET IT ON</span>
-                    <span class="store-text-large">Google Play</span>
-                </div>
+                Google Play
             </a>
-
             <a
                 href="https://apps.apple.com/in/app/tulaa/id6748626498"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="store-btn"
-                aria-label="Download on the App Store"
             >
                 <img
                     src="/images/appstore.svg"
-                    alt=""
-                    class="store-icon"
-                    width="24"
-                    height="24"
+                    alt="App Store"
+                    width="20"
+                    height="20"
                 />
-                <div class="store-text-group">
-                    <span class="store-text-small">Download on the</span>
-                    <span class="store-text-large">App Store</span>
-                </div>
+                App Store
             </a>
         </div>
 
-        <p class="tulaa-social-proof" id="tulaaSocialProof">
-            <em>Join 5,000+ users healing naturally</em>
-        </p>
+        <div class="social-proof-wrapper">
+            <p id="tulaaSocialProof" class="social-proof-text">
+                <em>Join 5,000+ users healing naturally</em>
+            </p>
+        </div>
     </div>
 </section>
 
 <script>
-    // Social Proof Cycling Logic
+    // Minimalist Social Proof Cycling[cite: 2]
     const proofElement = document.getElementById("tulaaSocialProof");
 
     if (proofElement) {
@@ -114,20 +89,20 @@
             "Yoga plans for 30+ health needs",
             "100% Private: No account needed",
             "Completely Free: No hidden costs",
-            "Meditate, track, and find balance",
-            "Sleep better and relax deeply",
         ];
 
         let currentIndex = 0;
 
         setInterval(() => {
-            proofElement.classList.add("fade-out");
+            proofElement.style.opacity = "0";
+            proofElement.style.transform = "translateY(5px)";
 
             setTimeout(() => {
                 currentIndex = (currentIndex + 1) % socialProofs.length;
                 proofElement.innerHTML = `<em>${socialProofs[currentIndex]}</em>`;
-                proofElement.classList.remove("fade-out");
+                proofElement.style.opacity = "1";
+                proofElement.style.transform = "translateY(0)";
             }, 500);
-        }, 3500);
+        }, 4000);
     }
 </script>
