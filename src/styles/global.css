@@ -131,7 +131,6 @@ h2::after {
     line-height: 1.6;
     max-width: 54ch;
     text-align: center;
-    /* 🌟 Ensures copy is perfectly centered like everything else */
     margin-left: auto;
     margin-right: auto;
 }
@@ -139,7 +138,6 @@ h2::after {
 .cta-button,
 .review-author .name,
 .store-text-small,
-.social-minimal-item span,
 .credentials span {
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -151,7 +149,6 @@ h2::after {
 .section {
     height: 100vh;
     min-height: 100dvh;
-    /* Safeguards mobile address bar scaling glitches */
     width: 100%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -166,7 +163,6 @@ h2::after {
     overflow: hidden;
 }
 
-/* State Driven Transitions Optimized to prevent layout re-paint overheads */
 .hero-content,
 .tulaa-content,
 .reviews-content,
@@ -187,7 +183,6 @@ h2::after {
     transform: translateY(0);
 }
 
-/* Staggered text delays */
 .is-visible>*:nth-child(1) {
     transition-delay: 0.05s;
 }
@@ -214,19 +209,16 @@ h2::after {
     background: var(--primary-color);
     color: var(--text-light) !important;
     padding: 1rem 2.75rem;
-    /* Marginally deeper padding for luxury aesthetic */
     font-size: var(--text-sm);
     font-weight: 500;
     border-radius: var(--radius-pill);
     text-decoration: none;
     letter-spacing: 0.1em;
-    /* Increased letter spacing */
     cursor: pointer;
     user-select: none;
     will-change: transform;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 25px -5px rgba(93, 84, 74, 0.15);
-    /* Soft premium luxury shadow drop */
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
         background-color 0.3s ease,
         box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -387,12 +379,10 @@ h2::after {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    /* Relaxed gap */
     color: var(--accent-color);
     font-size: var(--text-xs);
     font-weight: 500;
     letter-spacing: 0.06em;
-    /* Elegant track expansion */
     margin-top: 0.5rem;
 }
 
@@ -436,9 +426,7 @@ h2::after {
     position: relative;
     width: 100%;
     max-width: 340px;
-    /* Marginally scaled outward for stability */
     height: 150px;
-    /* Safeguards longer descriptions without clipping */
     margin: 2rem auto;
 }
 
@@ -451,7 +439,6 @@ h2::after {
     padding: 1.5rem;
     border-radius: var(--radius-lg);
     background: var(--bg-card);
-    /* Fallback safety color */
     box-shadow: 0 10px 30px -10px rgba(93, 84, 74, 0.06);
     text-align: center;
     opacity: 0;
@@ -486,7 +473,6 @@ h2::after {
     width: 28px;
     height: 28px;
     color: var(--primary-light);
-    /* Uses your elegant theme accent color */
     opacity: 0.85;
     filter: drop-shadow(0 2px 8px rgba(93, 84, 74, 0.1));
 }
@@ -585,7 +571,6 @@ h2::after {
     position: relative;
 }
 
-/* Uses CSS Grid overlay stack layout instead of fixed heights */
 .editorial-slider {
     display: grid;
     grid-template-columns: 1fr;
@@ -594,7 +579,6 @@ h2::after {
 
 .editorial-slide {
     grid-area: 1 / 1 / 2 / 2;
-    /* Forces slides directly on top of each other */
     opacity: 0;
     transform: translateY(12px);
     pointer-events: none;
@@ -624,7 +608,6 @@ h2::after {
     color: var(--primary-light);
     font-size: var(--text-sm);
     letter-spacing: 0.25em;
-    /* Expanded print luxury layout look */
     margin-bottom: 1rem;
 }
 
@@ -653,31 +636,42 @@ h2::after {
     margin-top: 0.5rem;
 }
 
-/* --- VIDEO TRACK CAROUSEL CARDS --- */
+/* --- PREMIUM VIDEO CAROUSEL TRACK --- */
+.video-section {
+    background-color: transparent;
+}
+
 .video-content {
-    max-width: 1200px;
+    max-width: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.section-subtitle {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.video-track-container {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+}
+
 .video-track {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
     overflow-x: auto;
     width: 100%;
     padding: 0.5rem 1.5rem 1.5rem 1.5rem;
     box-sizing: border-box;
     scroll-snap-type: x mandatory;
+    scroll-padding: 1.5rem;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-}
-
-@media (min-width: 1200px) {
-    .video-track {
-        justify-content: center;
-    }
 }
 
 .video-track::-webkit-scrollbar {
@@ -685,8 +679,8 @@ h2::after {
 }
 
 .video-card-minimal {
-    flex: 0 0 240px;
-    scroll-snap-align: center;
+    flex: 0 0 250px;
+    scroll-snap-align: start;
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -695,28 +689,29 @@ h2::after {
 }
 
 .video-card-minimal:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
 .thumbnail-wrapper {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
     aspect-ratio: 16 / 9;
     border: var(--border-light);
     box-shadow: var(--shadow-soft);
+    background-color: var(--bg-body-end);
 }
 
 .thumbnail-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .video-card-minimal:hover .thumbnail-wrapper img {
-    transform: scale(1.02);
+    transform: scale(1.04);
 }
 
 .play-overlay {
@@ -724,21 +719,28 @@ h2::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--primary-color);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 4px 20px rgba(93, 84, 74, 0.15);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+.video-card-minimal:hover .play-overlay {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: #ffffff;
 }
 
 .play-overlay svg {
-    width: 14px;
-    height: 14px;
-    margin-left: 2px;
+    width: 16px;
+    height: 16px;
+    margin-left: 3px;
 }
 
 .video-title {
@@ -746,8 +748,9 @@ h2::after {
     font-weight: 500;
     font-size: var(--text-sm);
     color: var(--text-dark);
-    line-height: 1.4;
+    line-height: 1.45;
     margin: 0;
+    text-align: left;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -755,7 +758,26 @@ h2::after {
     overflow: hidden;
 }
 
+.video-actions-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 /* --- SLEEK FOOTER micro DOCK --- */
+.social-footer-section {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: clamp(3rem, 10vw, 6rem);
+    padding-bottom: clamp(2rem, 5vw, 3rem);
+    height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+}
+
 .footer-content {
     max-width: 440px;
     width: 100%;
@@ -763,17 +785,36 @@ h2::after {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-bottom: 3.5rem;
+    margin: auto;
+    /* 🌟 Fixed property from invalid margin-auto */
+    padding-bottom: 0;
+}
+
+.footer-action-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.cta-button--whatsapp {
+    gap: 10px;
+}
+
+.whatsapp-btn-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transform: translateY(0.5px);
 }
 
 .bottom-branding-footer {
-    position: absolute;
-    bottom: clamp(1.25rem, 4vw, 2rem);
-    left: 0;
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
     z-index: 10;
 }
 
@@ -782,41 +823,53 @@ h2::after {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1.25rem;
-    padding: 10px 24px;
-    background: rgba(93, 84, 74, 0.04);
+    gap: 1.5rem;
+    padding: 12px 28px;
+    background: rgba(93, 84, 74, 0.03);
     border: 1px solid rgba(93, 84, 74, 0.08);
     border-radius: var(--radius-pill);
+    box-shadow: 0 4px 20px -2px rgba(93, 84, 74, 0.02);
 }
 
 .dock-item {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 38px;
+    height: 38px;
     text-decoration: none;
     color: var(--text-gray);
+    /* Uses your elegant gray color token */
     border-radius: 50%;
     will-change: transform;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
     -webkit-tap-highlight-color: transparent;
 }
 
 .dock-icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
+    /* 🌟 Force the browser to render BOTH stroke and fill paths safely */
     fill: currentColor;
-    opacity: 0.7;
+    stroke: currentColor;
+    stroke-width: 0.5px;
+    /* Clean crisp vector layout line weight */
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
 }
 
 .dock-item:hover {
     transform: translateY(-2px);
     color: var(--primary-color);
+    /* Brightens smoothly on link focus/hover */
+}
+
+.dock-item:hover .dock-icon {
+    opacity: 1;
 }
 
 .dock-item:active {
-    transform: scale(0.92);
+    transform: scale(0.9);
 }
 
 /* --- TEXT GRADIENTS --- */
@@ -827,13 +880,11 @@ h2::after {
     -webkit-text-fill-color: transparent;
     display: inline-block;
     font-weight: 500;
-    /* Slightly bolder presence for contrast */
 }
 
 /* --- ABOUT SECTION SPECIFIC UTILITIES --- */
 .about-section {
     background-color: transparent;
-    /* Seamless blend across layout snaps */
 }
 
 .section-content-wrapper {
@@ -861,7 +912,6 @@ h2::after {
     }
 }
 
-/* Modifiers to replace the inline style perfectly */
 .credentials--languages {
     margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
     color: var(--text-gray);
