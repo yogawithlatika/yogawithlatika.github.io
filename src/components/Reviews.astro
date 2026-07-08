@@ -1,7 +1,6 @@
 ---
 // src/components/Reviews.astro
 
-// Review data kept intact[cite: 1]
 const reviewData = [
     {
         name: "Swapna P",
@@ -30,24 +29,32 @@ const reviewData = [
 ];
 ---
 
-<section id="google-reviews" class="section">
+<section id="google-reviews" class="section reviews-section">
     <div class="reviews-content">
         <h2>Transformations</h2>
 
-        <div class="editorial-slider">
-            {
-                reviewData.map((review, index) => (
-                    <div
-                        class={`editorial-slide ${index === 0 ? "active" : ""}`}
-                    >
-                        <div class="review-box">
-                            <span class="stars">★★★★★</span>
-                            <p class="review-text">“{review.text}”</p>
-                            <span class="name">— {review.name}</span>
+        <div class="editorial-slider-container">
+            <div class="editorial-slider">
+                {
+                    reviewData.map((review, index) => (
+                        <div
+                            class={`editorial-slide ${index === 0 ? "active" : ""}`}
+                        >
+                            <div class="review-box">
+                                <span
+                                    class="stars"
+                                    aria-label="5 star rating"
+                                    role="img"
+                                >
+                                    ★★★★★
+                                </span>
+                                <p class="review-text">“{review.text}”</p>
+                                <span class="name">— {review.name}</span>
+                            </div>
                         </div>
-                    </div>
-                ))
-            }
+                    ))
+                }
+            </div>
         </div>
 
         <div class="reviews-footer">
@@ -64,14 +71,24 @@ const reviewData = [
 </section>
 
 <script>
-    const slides = document.querySelectorAll(".editorial-slide");
-    let currentIndex = 0;
+    function initializeReviewCarousel() {
+        const slides = document.querySelectorAll(".editorial-slide");
+        if (slides.length <= 1) return;
 
-    if (slides.length > 1) {
-        setInterval(() => {
+        let currentIndex = 0;
+
+        const intervalId = setInterval(() => {
+            if (!document.contains(slides[currentIndex])) {
+                clearInterval(intervalId);
+                return;
+            }
+
             slides[currentIndex].classList.remove("active");
             currentIndex = (currentIndex + 1) % slides.length;
             slides[currentIndex].classList.add("active");
         }, 5500);
     }
+
+    initializeReviewCarousel();
+    document.addEventListener("astro:page-load", initializeReviewCarousel);
 </script>

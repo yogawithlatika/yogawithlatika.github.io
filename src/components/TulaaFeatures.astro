@@ -5,37 +5,43 @@ const features = [
     {
         title: "Cycle Tracker",
         desc: "Predict periods and monitor symptoms",
-        watermark: "🌸",
+        // 🌸 Icon SVG mapping
+        svgPath: `<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/>`,
     },
     {
         title: "Daily Rhythm",
         desc: "Build healthy habits and wellness streaks",
-        watermark: "⚡",
+        // ⚡ Icon SVG mapping
+        svgPath: `<path d="M13 2 L3 14 h9 l-1 8 10-12 h-9 z" stroke-linejoin="round"/>`,
     },
     {
         title: "Hydration",
         desc: "Track daily water goals effortlessly",
-        watermark: "💧",
+        // 💧 Icon SVG mapping
+        svgPath: `<path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-13-7-13S5 10.7 5 15a7 7 0 0 0 7 7z"/>`,
     },
     {
         title: "Fasting Timer",
         desc: "Manage fasting intervals smoothly",
-        watermark: "⏳",
+        // ⏳ Icon SVG mapping
+        svgPath: `<path d="M5 2h14M5 22h14M12 12l-5-5V3h10v4zl5 5v6h-10v-6z" stroke-linejoin="round"/>`,
     },
     {
         title: "Daily Health Tips",
         desc: "Get research-backed natural advice",
-        watermark: "💡",
+        // 💡 Icon SVG mapping
+        svgPath: `<path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.5-1.5 4.5-3 5.5v2.5H8V14.5c-1.5-1-3-3-3-5.5a7 7 0 0 1 7-7z"/>`,
     },
     {
         title: "Therapy Blog",
         desc: "Learn expert routines for recovery",
-        watermark: "📚",
+        // 📚 Icon SVG mapping
+        svgPath: `<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/>`,
     },
 ];
 ---
 
-<section id="tulaa" class="section">
+<section id="tulaa" class="section tulaa-section">
     <div class="tulaa-content">
         <h2>Tulaa Yoga App</h2>
 
@@ -50,9 +56,19 @@ const features = [
         <div class="feature-carousel-container">
             {
                 features.map((feature, index) => (
-                    <div class={`feature-slide ${index === 0 ? "active" : ""}`}>
+                    <div
+                        class={`feature-slide premium-gloss-surface ${index === 0 ? "active" : ""}`}
+                    >
                         <div class="feature-watermark" aria-hidden="true">
-                            {feature.watermark}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                class="feature-icon-svg"
+                                set:html={feature.svgPath}
+                            />
                         </div>
                         <h3>{feature.title}</h3>
                         <p>{feature.desc}</p>
@@ -73,8 +89,8 @@ const features = [
                     src="/images/playstore.svg"
                     alt=""
                     class="store-icon"
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
                 />
                 <div class="store-text-group">
                     <span class="store-text-small">GET IT ON</span>
@@ -92,8 +108,8 @@ const features = [
                     src="/images/appstore.svg"
                     alt=""
                     class="store-icon"
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
                 />
                 <div class="store-text-group">
                     <span class="store-text-small">DOWNLOAD ON THE</span>
@@ -105,14 +121,24 @@ const features = [
 </section>
 
 <script>
-    const featureSlides = document.querySelectorAll(".feature-slide");
+    function initializeCarousel() {
+        const featureSlides = document.querySelectorAll(".feature-slide");
+        if (featureSlides.length <= 1) return;
 
-    if (featureSlides.length > 1) {
         let currentFeature = 0;
-        setInterval(() => {
+
+        const intervalId = setInterval(() => {
+            if (!document.contains(featureSlides[currentFeature])) {
+                clearInterval(intervalId);
+                return;
+            }
+
             featureSlides[currentFeature].classList.remove("active");
             currentFeature = (currentFeature + 1) % featureSlides.length;
             featureSlides[currentFeature].classList.add("active");
-        }, 3500);
+        }, 3800);
     }
+
+    initializeCarousel();
+    document.addEventListener("astro:page-load", initializeCarousel);
 </script>
