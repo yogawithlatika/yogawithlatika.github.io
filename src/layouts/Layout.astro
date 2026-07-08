@@ -42,7 +42,7 @@ const {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
 
@@ -69,7 +69,7 @@ const {
 
         <!-- PREMIUM WEB PLATFORM INTERACTION ENGINES -->
         <script>
-            // ENGINE 1: Intersection-Driven Entry/Exit Animation State Handler
+            // ENGINE 1: One-Way Entry Animation State Handler (Prevents exit flashing)
             const animateContainers = document.querySelectorAll(
                 ".hero-content, .tulaa-content, .reviews-content, .video-content, .footer-content",
             );
@@ -79,15 +79,13 @@ const {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add("is-visible");
-                        } else {
-                            // Drops class on scroll exit so elements reset and re-enter fluidly next time
-                            entry.target.classList.remove("is-visible");
+                            contentObserver.unobserve(entry.target); // Stop tracking once smoothly revealed
                         }
                     });
                 },
                 {
                     root: null,
-                    threshold: 0.12, // Triggers just as the card elements clear active viewport bands
+                    threshold: 0.1,
                 },
             );
 
@@ -98,20 +96,17 @@ const {
             // ENGINE 2: Light Premium Tactical Mobile Haptic Triggers
             function triggerPremiumTap() {
                 if ("vibrate" in navigator) {
-                    navigator.vibrate(12); // Clean 12ms native impulse on supported Android devices
+                    navigator.vibrate(10); // Native physical impulse link
                 }
             }
 
-            // Universal micro-interaction tracking listener
-            document.addEventListener("DOMContentLoaded", () => {
+            document.addEventListener("astro:page-load", () => {
                 const interactiveElements = document.querySelectorAll(
                     ".cta-button, .store-btn, .social-minimal-item, .video-card-minimal, .button-accent",
                 );
 
                 interactiveElements.forEach((element) => {
-                    element.addEventListener("click", () =>
-                        triggerPremiumTap(),
-                    );
+                    element.addEventListener("click", triggerPremiumTap);
                 });
             });
         </script>
