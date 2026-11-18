@@ -1,11 +1,16 @@
 // src/i18n/index.ts
-import { getEnglishContent, type SiteTranslations } from "./en";
+import { getYearsOfExperience, SITE_CONFIG } from "../config/site";
+import { getEnglishContent, type SiteTranslations, type SupportedLocale } from "./en";
 import { getHindiContent } from "./hi";
 
-export type SupportedLocale = "en" | "hi";
-
-export function getTranslations(lang: SupportedLocale): SiteTranslations {
-    return lang === "hi" ? getHindiContent() : getEnglishContent();
+export function getTranslations(
+    lang: SupportedLocale,
+    ytSubs: string = SITE_CONFIG.defaultYoutubeSubscribers,
+): SiteTranslations {
+    const years = getYearsOfExperience();
+    return lang === "hi"
+        ? getHindiContent(years, ytSubs)
+        : getEnglishContent(years, ytSubs);
 }
 
-export type { SiteTranslations };
+export type { SiteTranslations, SupportedLocale };

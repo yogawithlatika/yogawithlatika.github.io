@@ -1,159 +1,164 @@
 // src/i18n/en.ts
-import { getYearsOfExperience } from "../config/site";
+import { getYearsOfExperience, SITE_CONFIG } from "../config/site";
 
-export function getEnglishContent(years = getYearsOfExperience()) {
+export type SupportedLocale = "en" | "hi";
+
+export function getEnglishContent(
+    years = getYearsOfExperience(),
+    ytSubs: string = SITE_CONFIG.defaultYoutubeSubscribers,
+) {
     return {
-        lang: "en" as const,
-        locale: "en_IN",
+        lang: "en" as SupportedLocale,
+        locale: "en_IN" as "en_IN" | "hi_IN",
         meta: {
-            title: `YogaWithLatika | 1-on-1 Online Yoga Therapy & Tulaa Wellness App`,
-            description: `Heal naturally with Latika Bissa (M.Sc Yoga Therapy, Gold Medalist, ${years}+ yrs experience since 2014). Personalized 1-on-1 online yoga therapy for PCOS, Prenatal, Back Pain & Stress, plus the private Tulaa Yoga App and 21K+ YouTube community.`,
+            title: `YogaWithLatika | 1-on-1 Online Yoga Classes & Tulaa Wellness App`,
+            description: `Feel pain-free and calm with Latika Bissa (M.Sc Yoga Therapy, Gold Medalist, ${years}+ yrs experience since 2014). Personal 1-on-1 online yoga classes for Back Pain, PCOS, Pregnancy & Stress, plus the free Tulaa App.`,
             keywords:
-                "Online Yoga Classes, 1-on-1 Yoga Therapy, Latika Bissa, Tulaa Yoga App, Prenatal Yoga, PCOS Yoga, Back Pain Relief, Yoga for Stress, Personal Yoga Therapist",
+                "Online Yoga Classes, 1-on-1 Yoga Therapy, Latika Bissa, Tulaa Yoga App, Prenatal Yoga, PCOS Yoga, Back Pain Relief, Yoga for Stress, Personal Yoga Trainer",
         },
         nav: {
-            brandSub: "Yoga Therapy & Wellness",
-            classes: "1-on-1 Therapy",
-            reviews: "Stories",
+            brandSub: "1-on-1 Yoga & Wellness",
+            classes: "1-on-1 Classes",
+            reviews: "Reviews (5★)",
             tulaa: "Tulaa App",
-            youtube: "YouTube (21K+)",
-            bookCta: "Book 1-on-1 Session",
+            youtube: `YouTube (${ytSubs})`,
+            bookCta: "Book 1-on-1 Class",
             langSwitchLabel: "हिन्दी में देखें",
             langCurrent: "EN",
             langAlt: "हिन्दी",
         },
         hero: {
-            eyebrow: `Science-Backed Yoga Therapy • Since 2014`,
-            greeting: "Heal gently, live in balance with",
+            eyebrow: `Personal Yoga Therapy • Helping Since 2014`,
+            greeting: "Live pain-free, calm & healthy with",
             name: "Latika Bissa",
             credentials: [
                 {
                     value: `${years}+ Yrs`,
-                    label: "Clinical Experience (Since 2014)",
+                    label: "Experience (Since 2014)",
                     isExperience: true,
                 },
                 {
-                    value: "M.Sc Gold Medalist",
-                    label: "Certified Yoga Therapist",
+                    value: "Gold Medalist",
+                    label: "M.Sc Yoga Therapy",
                     isExperience: false,
                 },
                 {
                     value: "5.0 ★",
-                    label: "Verified on Google Maps",
+                    label: "Rated on Google Maps",
                     isExperience: false,
                 },
                 {
-                    value: "21K+",
-                    label: "YouTube Community",
+                    value: ytSubs,
+                    label: "YouTube Subscribers",
                     isExperience: false,
                 },
             ],
             subtitle:
-                "Dedicated 1-on-1 therapeutic yoga sessions tailored to your body, complemented by the private Tulaa wellness companion app and free guided practices.",
-            primaryCta: "Book 1-on-1 Therapy Consultation",
-            secondaryCta: "Explore Tulaa App",
-            youtubeCta: "Watch Free on YouTube",
+                "Personal 1-on-1 online yoga classes tailored to your body to relieve back pain, manage PCOS & thyroid, support safe pregnancy, and calm daily stress.",
+            primaryCta: "Book Your 1-on-1 Class",
+            secondaryCta: "Get Free Tulaa App",
+            youtubeCta: "Watch Free Videos",
             portraitCaption: "M.Sc & B.Sc Yoga Therapy • Gold Medalist",
-            portraitStatus: "Accepting new 1-on-1 clients globally",
-            pillarsTitle: "Three Mindful Ways to Practice Together",
+            portraitStatus: "Open for new 1-on-1 online students",
+            pillarsTitle: "3 Simple Ways to Start Your Wellness Journey",
             pillars: [
                 {
-                    step: "01 • Most Impactful",
-                    title: "1-on-1 Online Yoga Therapy",
-                    desc: "Dedicated, customized live therapy for chronic pain, PCOS, prenatal care, and nervous system recovery.",
+                    step: "01 • Best for Fast Results",
+                    title: "1-on-1 Online Yoga Classes",
+                    desc: "Live, personal sessions designed around your exact health needs, pain points, and daily routine.",
                     href: "#online-classes",
-                    cta: "Explore 1-on-1 Sessions →",
+                    cta: "See 1-on-1 Classes →",
                 },
                 {
-                    step: "02 • Daily Companion",
+                    step: "02 • Free Daily Routine",
                     title: "Tulaa Yoga & Habit App",
-                    desc: "100% private, subscription-free wellness app with offline yoga flows, cycle & habit trackers.",
+                    desc: "100% private, free app with daily yoga videos, period diary, water & fasting trackers. No login needed.",
                     href: "#tulaa",
-                    cta: "Discover Tulaa App →",
+                    cta: "Explore Tulaa App →",
                 },
                 {
-                    step: "03 • Free Community",
-                    title: "21K+ YouTube Channel",
-                    desc: "Practice anytime with free guided therapeutic routines, pranayama, and meditations.",
+                    step: `03 • ${ytSubs} Community`,
+                    title: "Free YouTube Channel",
+                    desc: "Practice anytime at home with easy, guided videos for pain relief, sleep, and relaxation.",
                     href: "#youtube",
-                    cta: "Watch Guided Videos →",
+                    cta: "Watch Free Videos →",
                 },
             ],
         },
         onlineClasses: {
-            badge: "Pillar 01 • Highest Personal Impact",
-            title: "Dedicated 1-on-1 Online Yoga Therapy",
-            subtitle: `With ${years}+ years of clinical yoga therapy experience since 2014, every session is crafted exclusively around your medical history, lifestyle, and recovery pace.`,
-            languagesBadge: "Sessions Conducted in English, Hindi & Marathi",
-            specialtiesTitle: "Conditions & Goals We Nurture",
+            badge: "01 • Most Impactful",
+            title: "1-on-1 Personal Online Yoga Classes",
+            subtitle: `With ${years}+ years of experience since 2014, every class is 100% customized to your body, health goals, and comfort level.`,
+            languagesBadge: "Classes in English, Hindi & Marathi",
+            specialtiesTitle: "What We Help You Heal",
             specialties: [
                 {
                     icon: "spine",
-                    title: "Chronic Back, Neck & Joint Pain",
-                    desc: "Gentle biomechanically sound sequences for cervical spondylosis, sciatica, knee stiffness, and desk posture recovery.",
+                    title: "Back, Neck & Knee Pain",
+                    desc: "Relieve daily stiffness, slip disc, sciatica, and desk-job pain with gentle, safe movements.",
                 },
                 {
                     icon: "lotus",
-                    title: "PCOS, Thyroid & Hormonal Balance",
-                    desc: "Targeted therapeutic asanas and metabolic breathwork to regulate cycles, support endocrine health, and manage weight naturally.",
+                    title: "PCOS, Thyroid & Weight Loss",
+                    desc: "Regularize periods, balance hormones, and lose weight naturally without harsh workouts.",
                 },
                 {
                     icon: "heart",
-                    title: "Prenatal & Postnatal Care",
-                    desc: "Safe, trimester-specific prenatal movement, pelvic floor preparation, and calming guided relaxation for expecting mothers.",
+                    title: "Pregnancy (Prenatal & Postnatal)",
+                    desc: "Safe yoga for every trimester to stay active, ease body aches, and prepare for a smooth delivery.",
                 },
                 {
                     icon: "breath",
-                    title: "Stress, Anxiety & Sleep Recovery",
-                    desc: "Nervous-system resetting pranayama, vagus nerve toning, and restorative stillness for deep sleep and emotional steadiness.",
+                    title: "Stress, Anxiety & Better Sleep",
+                    desc: "Calm an overthinking mind, lower stress, and sleep deeply with easy breathing practices.",
                 },
             ],
-            processTitle: "How 1-on-1 Therapy Works",
+            processTitle: "How 1-on-1 Classes Work",
             processSteps: [
                 {
                     num: "1",
-                    title: "Personal Health Assessment",
-                    desc: "We begin by understanding your health concerns, lifestyle, pain triggers, and daily schedule.",
+                    title: "Share Your Health Goals",
+                    desc: "Tell us about your pain, health conditions, and preferred class timings on WhatsApp.",
                 },
                 {
                     num: "2",
-                    title: "Bespoke Therapeutic Plan",
-                    desc: "A custom sequence of asanas, pranayama, and relaxation created strictly for your body.",
+                    title: "Get Your Custom Plan",
+                    desc: "Latika designs a safe, step-by-step yoga and breathing routine made just for your body.",
                 },
                 {
                     num: "3",
-                    title: "Live 1-on-1 Guided Sessions",
-                    desc: "Real-time posture correction, gentle pacing, and flexible scheduling that adapts to your life.",
+                    title: "Practice Live 1-on-1",
+                    desc: "Get full personal attention, posture guidance, and flexible timings that fit your busy day.",
                 },
             ],
-            ctaPrimary: "Book Your 1-on-1 Consultation on WhatsApp",
-            ctaNote: "Flexible global timings • Personalized attention",
+            ctaPrimary: "Book 1-on-1 Class on WhatsApp",
+            ctaNote: "Flexible timings • 100% personal attention",
             reviewsHeader: {
-                badge: "5.0 ★ Rated on Google Maps",
-                title: "Heartfelt Stories from 1-on-1 Students",
+                badge: "5.0 ★ Rating on Google Maps",
+                title: "Real Results from 1-on-1 Students",
                 subtitle:
-                    "Real feedback from practitioners who transformed their health through dedicated 1-on-1 sessions.",
-                readAllCta: "Read All Verified Reviews on Google Maps",
+                    "Read how personal yoga therapy helped students overcome pain, stress, and health challenges.",
+                readAllCta: "Read All 5★ Reviews on Google Maps",
             },
         },
         tulaa: {
-            badge: "Pillar 02 • All-in-One Wellness App",
+            badge: "02 • Free Daily Wellness App",
             title: "Find Daily Balance with Tulaa",
             lead: "An all-in-one wellness companion combining guided yoga, mindfulness, and private health habit trackers.",
             sublead:
                 "Designed for consistent daily routines without subscriptions, mandatory accounts, or data tracking.",
             langAvailability: "Available in English & हिन्दी (Hindi)",
             highlights: [
-                "No Account Needed",
-                "100% On-Device Privacy",
-                "Offline Practice",
-                "30+ Calming Themes",
-                "Zero Subscriptions",
+                "No Login Needed",
+                "100% Private on Phone",
+                "Works Offline",
+                "30+ Calm Themes",
+                "100% Free (No Subscriptions)",
             ],
             categories: [
                 {
                     id: "yoga",
-                    tag: "Movement",
+                    tag: "Daily Movement",
                     title: "Guided Yoga & Movement",
                     items: [
                         {
@@ -204,7 +209,7 @@ export function getEnglishContent(years = getYearsOfExperience()) {
                 },
                 {
                     id: "pranayama",
-                    tag: "Mindfulness",
+                    tag: "Calm & Breath",
                     title: "Mindful Pranayama & Relaxation",
                     items: [
                         {
@@ -219,7 +224,7 @@ export function getEnglishContent(years = getYearsOfExperience()) {
                 },
                 {
                     id: "privacy",
-                    tag: "Privacy & Focus",
+                    tag: "100% Private",
                     title: "Built for Privacy & Focus",
                     items: [
                         {
@@ -248,22 +253,24 @@ export function getEnglishContent(years = getYearsOfExperience()) {
                 "Disclaimer: Tulaa offers general health, movement, and wellness guidance. It is not intended to diagnose, treat, or replace professional medical care.",
         },
         youtube: {
-            badge: "Pillar 03 • Free Guided Library",
-            subscribersBadge: "21,000+ Subscribers Strong",
-            title: "Practice Together on YouTube",
-            subtitle:
-                "Join a warm community of nearly 21,000 practitioners. Explore free, science-backed sessions for pain relief, prenatal care, pranayama, and restful sleep.",
-            watchLabel: "Watch Session",
+            badge: "03 • Free Guided Videos",
+            subscribersBadge: `${ytSubs} Subscribers on YouTube`,
+            title: "Practice Free with Us on YouTube",
+            subtitle: `Join ${ytSubs} subscribers practicing simple, effective yoga at home for back pain, pregnancy, knee stiffness, and deep sleep.`,
+            watchLabel: "Watch Video",
             channelCta: "Subscribe on YouTube (@yogawithlatika)",
-            exploreMore: "Explore 100+ Free Therapeutic Videos",
+            moreCardTitle: "Explore 100+ Free Yoga Videos",
+            moreCardDesc:
+                "Browse full playlists for back pain, PCOS, pregnancy, pranayama, and daily stretching on our official YouTube channel.",
+            moreCardCta: "Open @yogawithlatika Channel →",
         },
         footer: {
-            eyebrow: "Begin Your Healing Journey",
-            title: "Ready for a Calm, Pain-Free Body?",
+            eyebrow: "Start Today",
+            title: "Ready to Feel Lighter, Stronger & Pain-Free?",
             subtitle:
-                "Whether you want dedicated 1-on-1 therapeutic care, a private daily wellness app, or gentle free practices—I would love to guide you.",
-            whatsappCta: "Chat with Latika on WhatsApp",
-            secondaryCta: "Download Tulaa App",
+                "Message Latika on WhatsApp to book your personal 1-on-1 yoga class, or start today with the free Tulaa app.",
+            whatsappCta: "Chat on WhatsApp for 1-on-1 Class",
+            secondaryCta: "Download Free Tulaa App",
             copyright: `© ${new Date().getFullYear()} YogaWithLatika • Latika Bissa (M.Sc Yoga Therapy). All rights reserved.`,
             languagePrompt: "Language / भाषा:",
         },

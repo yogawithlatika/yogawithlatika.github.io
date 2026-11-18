@@ -53,31 +53,14 @@ const whatsappHref = isHindi
                 <img
                     src="/images/yogawithlatika_logo_128.webp"
                     alt="YogaWithLatika"
-                    width="32"
-                    height="32"
+                    width="36"
+                    height="36"
                     loading="lazy"
                 />
                 <p class="copyright-text">{t.footer.copyright}</p>
             </div>
 
             <div class="footer-right-controls">
-                <div class="footer-lang-links">
-                    <span class="footer-lang-label"
-                        >{t.footer.languagePrompt}</span
-                    >
-                    <a
-                        href="/"
-                        data-set-lang="en"
-                        class={!isHindi ? "is-active" : ""}>English</a
-                    >
-                    <span aria-hidden="true">·</span>
-                    <a
-                        href="/hi/"
-                        data-set-lang="hi"
-                        class={isHindi ? "is-active" : ""}>हिन्दी</a
-                    >
-                </div>
-
                 <div class="social-dock" aria-label="Social Media Links">
                     <a
                         href={SITE_CONFIG.links.youtube}
@@ -118,6 +101,23 @@ const whatsappHref = isHindi
                             ></path>
                         </svg>
                     </a>
+                </div>
+
+                <div class="footer-lang-links">
+                    <span class="footer-lang-label"
+                        >{t.footer.languagePrompt}</span
+                    >
+                    <a
+                        href="/"
+                        data-set-lang="en"
+                        class={!isHindi ? "is-active" : ""}>English</a
+                    >
+                    <span aria-hidden="true">·</span>
+                    <a
+                        href="/hi/"
+                        data-set-lang="hi"
+                        class={isHindi ? "is-active" : ""}>हिन्दी</a
+                    >
                 </div>
             </div>
         </div>
