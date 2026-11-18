@@ -9,11 +9,14 @@ export function getHindiContent(
     return {
         lang: "hi",
         locale: "hi_IN",
+        skipToContent: "मुख्य सामग्री पर जाएं",
         meta: {
-            title: `YogaWithLatika | 1-on-1 ऑनलाइन योग क्लासेस और Tulaa वेलनेस ऐप`,
-            description: `लतिका बिस्सा (M.Sc योग थेरेपी, गोल्ड मेडलिस्ट, 2014 से ${years}+ वर्षों का अनुभव) के साथ दर्द-मुक्त और स्वस्थ जीवन पाएं। पीठ दर्द, PCOS, प्रेग्नेंसी और तनाव के लिए 1-on-1 ऑनलाइन योग क्लासेस और फ्री Tulaa ऐप।`,
+            title: `YogaWithLatika | पीठ दर्द, PCOS और प्रेग्नेंसी के लिए 1-on-1 ऑनलाइन योग क्लासेस`,
+            description: `लतिका बिस्सा (M.Sc योग थेरेपी, गोल्ड मेडलिस्ट, 2014 से ${years}+ वर्षों का अनुभव) के साथ दर्द-मुक्त और स्वस्थ जीवन पाएं। पीठ व गर्दन दर्द, PCOS, थायरॉइड, प्रेग्नेंसी और तनाव के लिए 5★ Google-रेटेड 1-on-1 ऑनलाइन योग क्लासेस और फ्री Tulaa ऐप।`,
             keywords:
-                "ऑनलाइन योग क्लासेस, 1-on-1 योग थेरेपी, लतिका बिस्सा, Tulaa योग ऐप, प्रीनेटल योग, PCOS योग, पीठ दर्द योग, तनाव मुक्ति, YogaWithLatika",
+                "ऑनलाइन योग क्लासेस, 1-on-1 योग थेरेपी, लतिका बिस्सा, Tulaa योग ऐप, प्रीनेटल योग, प्रेग्नेंसी योग, PCOS योग, पीठ दर्द योग, तनाव मुक्ति, YogaWithLatika",
+            imageAlt:
+                "लतिका बिस्सा - प्रमाणित योग थेरेपिस्ट (M.Sc गोल्ड मेडलिस्ट) - YogaWithLatika",
         },
         nav: {
             brandSub: "1-on-1 योग व वेलनेस",
@@ -43,7 +46,7 @@ export function getHindiContent(
                 },
                 {
                     value: "5.0 ★",
-                    label: "Google Maps रेटिंग",
+                    label: "Google रेटिंग",
                     isExperience: false,
                 },
                 {
@@ -133,11 +136,12 @@ export function getHindiContent(
             ctaPrimary: "WhatsApp पर 1-on-1 क्लास बुक करें",
             ctaNote: "लचीला समय • 100% व्यक्तिगत ध्यान",
             reviewsHeader: {
-                badge: "Google Maps पर 5.0 ★ रेटिंग",
+                badge: "Google पर 5.0 ★ रेटिंग",
                 title: "हमारे स्टूडेंट्स के सच्चे अनुभव",
                 subtitle:
                     "जानिए कैसे 1-on-1 योग क्लासेस ने लोगों को पुराने दर्द और तनाव से बाहर निकलने में मदद की।",
-                readAllCta: "Google Maps पर सभी 5★ रिव्यू पढ़ें",
+                verifiedLabel: "Google रिव्यू",
+                readAllCta: "Google पर सभी 5★ रिव्यू पढ़ें",
             },
         },
         tulaa: {

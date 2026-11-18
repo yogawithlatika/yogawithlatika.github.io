@@ -10,11 +10,14 @@ export function getEnglishContent(
     return {
         lang: "en" as SupportedLocale,
         locale: "en_IN" as "en_IN" | "hi_IN",
+        skipToContent: "Skip to main content",
         meta: {
-            title: `YogaWithLatika | 1-on-1 Online Yoga Classes & Tulaa Wellness App`,
-            description: `Feel pain-free and calm with Latika Bissa (M.Sc Yoga Therapy, Gold Medalist, ${years}+ yrs experience since 2014). Personal 1-on-1 online yoga classes for Back Pain, PCOS, Pregnancy & Stress, plus the free Tulaa App.`,
+            title: `YogaWithLatika | 1-on-1 Online Yoga Classes for Back Pain, PCOS & Pregnancy`,
+            description: `Live pain-free and calm with Latika Bissa (M.Sc Yoga Therapy, Gold Medalist, ${years}+ yrs experience since 2014). 5★ Google-rated 1-on-1 online yoga classes for Back & Neck Pain, PCOS, Thyroid, Pregnancy & Stress, plus the free Tulaa Wellness App.`,
             keywords:
-                "Online Yoga Classes, 1-on-1 Yoga Therapy, Latika Bissa, Tulaa Yoga App, Prenatal Yoga, PCOS Yoga, Back Pain Relief, Yoga for Stress, Personal Yoga Trainer",
+                "Online Yoga Classes, 1-on-1 Yoga Therapy, Latika Bissa, YogaWithLatika, Prenatal Yoga Online, PCOS Yoga Therapy, Back Pain Relief Yoga, Neck Pain Yoga, Thyroid Yoga, Personal Yoga Trainer India, Tulaa Yoga App",
+            imageAlt:
+                "Latika Bissa - Certified Yoga Therapist (M.Sc Gold Medalist) at YogaWithLatika",
         },
         nav: {
             brandSub: "1-on-1 Yoga & Wellness",
@@ -44,7 +47,7 @@ export function getEnglishContent(
                 },
                 {
                     value: "5.0 ★",
-                    label: "Rated on Google Maps",
+                    label: "Rated on Google",
                     isExperience: false,
                 },
                 {
@@ -134,11 +137,12 @@ export function getEnglishContent(
             ctaPrimary: "Book 1-on-1 Class on WhatsApp",
             ctaNote: "Flexible timings • 100% personal attention",
             reviewsHeader: {
-                badge: "5.0 ★ Rating on Google Maps",
+                badge: "5.0 ★ Rating on Google",
                 title: "Real Results from 1-on-1 Students",
                 subtitle:
                     "Read how personal yoga therapy helped students overcome pain, stress, and health challenges.",
-                readAllCta: "Read All 5★ Reviews on Google Maps",
+                verifiedLabel: "Google Review",
+                readAllCta: "Read All 5★ Reviews on Google",
             },
         },
         tulaa: {

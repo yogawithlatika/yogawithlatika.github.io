@@ -1,7 +1,7 @@
 ---
 // src/layouts/Layout.astro
 import "../styles/global.css";
-import { SITE_CONFIG, getYearsOfExperience } from "../config/site";
+import { GOOGLE_REVIEWS, SITE_CONFIG, getYearsOfExperience } from "../config/site";
 import type { SiteTranslations } from "../i18n";
 
 interface Props {
@@ -20,33 +20,121 @@ const canonicalUrl = isHindi
     : `${SITE_CONFIG.siteUrl}/`;
 const yearsExp = getYearsOfExperience();
 
+// Load only the needed font families per locale to maximize Lighthouse speed
+const googleFontsUrl = isHindi
+    ? "https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Serif+Devanagari:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    : "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap";
+
 const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "HealthAndWellnessBusiness",
-    name: SITE_CONFIG.name,
-    founder: {
-        "@type": "Person",
-        name: SITE_CONFIG.therapistName,
-        jobTitle: "Certified Yoga Therapist (M.Sc, B.Sc, Gold Medalist)",
-    },
-    url: canonicalUrl,
-    logo: `${SITE_CONFIG.siteUrl}/images/yogawithlatika_logo_512x512.png`,
-    image,
-    sameAs: [
-        SITE_CONFIG.links.instagram,
-        SITE_CONFIG.links.youtube,
-        SITE_CONFIG.links.linkedin,
-        SITE_CONFIG.links.tulaaWeb,
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": `${SITE_CONFIG.siteUrl}/#website`,
+            url: `${SITE_CONFIG.siteUrl}/`,
+            name: SITE_CONFIG.name,
+            inLanguage: ["en", "hi"],
+            publisher: {
+                "@id": `${SITE_CONFIG.siteUrl}/#business`,
+            },
+        },
+        {
+            "@type": "Person",
+            "@id": `${SITE_CONFIG.siteUrl}/#latika`,
+            name: SITE_CONFIG.therapistName,
+            jobTitle: "Certified Yoga Therapist (M.Sc, B.Sc, Gold Medalist)",
+            url: `${SITE_CONFIG.siteUrl}/`,
+            image: `${SITE_CONFIG.siteUrl}/images/latika.png`,
+            knowsLanguage: ["en", "hi", "mr"],
+            knowsAbout: [
+                "Yoga Therapy",
+                "Prenatal Yoga",
+                "PCOS & Hormonal Balance",
+                "Back & Neck Pain Rehabilitation",
+                "Pranayama & Stress Management",
+            ],
+            sameAs: [
+                SITE_CONFIG.links.youtube,
+                SITE_CONFIG.links.instagram,
+                SITE_CONFIG.links.linkedin,
+            ],
+        },
+        {
+            "@type": "HealthAndWellnessBusiness",
+            "@id": `${SITE_CONFIG.siteUrl}/#business`,
+            name: SITE_CONFIG.name,
+            url: canonicalUrl,
+            logo: `${SITE_CONFIG.siteUrl}/images/yogawithlatika_logo_512x512.png`,
+            image,
+            description: t.meta.description,
+            founder: {
+                "@id": `${SITE_CONFIG.siteUrl}/#latika`,
+            },
+            foundingDate: "2014",
+            areaServed: "Worldwide",
+            availableLanguage: ["English", "Hindi", "Marathi"],
+            priceRange: "$$",
+            sameAs: [
+                SITE_CONFIG.links.instagram,
+                SITE_CONFIG.links.youtube,
+                SITE_CONFIG.links.linkedin,
+                SITE_CONFIG.links.tulaaWeb,
+            ],
+            aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "5.0",
+                bestRating: "5",
+                worstRating: "1",
+                ratingCount: "50",
+            },
+            review: GOOGLE_REVIEWS.map((r) => ({
+                "@type": "Review",
+                author: {
+                    "@type": "Person",
+                    name: r.name,
+                },
+                reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                    bestRating: "5",
+                },
+                reviewBody: isHindi ? r.textHi : r.textEn,
+            })),
+            hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "1-on-1 Online Yoga Therapy Classes",
+                itemListElement: t.onlineClasses.specialties.map((s) => ({
+                    "@type": "Offer",
+                    itemOffered: {
+                        "@type": "Service",
+                        name: s.title,
+                        description: s.desc,
+                    },
+                })),
+            },
+        },
+        {
+            "@type": "MobileApplication",
+            "@id": `${SITE_CONFIG.siteUrl}/#tulaa-app`,
+            name: "Tulaa — Yoga & Private Wellness Tracker",
+            operatingSystem: "Android, iOS",
+            applicationCategory: "HealthApplication",
+            url: SITE_CONFIG.links.tulaaWeb,
+            installUrl: [
+                SITE_CONFIG.links.tulaaPlayStore,
+                SITE_CONFIG.links.tulaaAppStore,
+            ],
+            inLanguage: ["en", "hi"],
+            offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "INR",
+            },
+            author: {
+                "@id": `${SITE_CONFIG.siteUrl}/#latika`,
+            },
+        },
     ],
-    aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        bestRating: "5",
-        ratingCount: "50",
-    },
-    description: t.meta.description,
-    availableLanguage: ["en", "hi", "mr"],
-    priceRange: "$$",
 };
 ---
 
@@ -55,10 +143,23 @@ const jsonLd = {
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#F7F5F0" />
+        <meta
+            name="robots"
+            content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
+        <meta
+            name="googlebot"
+            content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
+        <meta name="theme-color" content="#FAF8F5" />
+        <meta name="author" content="Latika Bissa" />
+        <meta name="publisher" content="YogaWithLatika" />
+        <meta name="application-name" content="YogaWithLatika" />
+        <meta name="apple-mobile-web-app-title" content="YogaWithLatika" />
+        <meta name="format-detection" content="telephone=no" />
 
         <link rel="icon" type="image/webp" href="/favicon.webp" />
+        <link rel="apple-touch-icon" href="/images/yogawithlatika_logo_512x512.png" />
 
         <title>{t.meta.title}</title>
         <meta name="title" content={t.meta.title} />
@@ -74,7 +175,17 @@ const jsonLd = {
         />
         <link
             rel="alternate"
+            hreflang="en-IN"
+            href={`${SITE_CONFIG.siteUrl}/`}
+        />
+        <link
+            rel="alternate"
             hreflang="hi"
+            href={`${SITE_CONFIG.siteUrl}/hi/`}
+        />
+        <link
+            rel="alternate"
+            hreflang="hi-IN"
             href={`${SITE_CONFIG.siteUrl}/hi/`}
         />
         <link
@@ -83,8 +194,9 @@ const jsonLd = {
             href={`${SITE_CONFIG.siteUrl}/`}
         />
 
-        <!-- OpenGraph / Social Sharing -->
+        <!-- OpenGraph / Facebook / WhatsApp / LinkedIn -->
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="YogaWithLatika" />
         <meta property="og:locale" content={t.locale} />
         <meta
             property="og:locale:alternate"
@@ -94,14 +206,45 @@ const jsonLd = {
         <meta property="og:title" content={t.meta.title} />
         <meta property="og:description" content={t.meta.description} />
         <meta property="og:image" content={image} />
+        <meta property="og:image:secure_url" content={image} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:image:alt" content={t.meta.imageAlt} />
 
-        <!-- Typography: Lora & Plus Jakarta Sans + Noto Sans/Serif Devanagari -->
+        <!-- Twitter / X Cards -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t.meta.title} />
+        <meta name="twitter:description" content={t.meta.description} />
+        <meta name="twitter:image" content={image} />
+        <meta name="twitter:image:alt" content={t.meta.imageAlt} />
+
+        <!-- Preload LCP Hero Portrait & Preconnect Critical Origins -->
+        <link
+            rel="preload"
+            as="image"
+            href="/images/latika.png"
+            fetchpriority="high"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="dns-prefetch" href="https://i.ytimg.com" />
+
+        <!-- Non-Render-Blocking Google Fonts for Optimal Lighthouse FCP/LCP -->
         <link
-            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Devanagari:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            as="style"
+            href={googleFontsUrl}
         />
+        <link
+            rel="stylesheet"
+            href={googleFontsUrl}
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link rel="stylesheet" href={googleFontsUrl} />
+        </noscript>
 
         <!-- Immediate Browser Language Detection (Runs before paint) -->
         <script is:inline>
@@ -113,7 +256,6 @@ const jsonLd = {
                     var isCurrentlyHindi =
                         path === "/hi" || path.startsWith("/hi/");
 
-                    // Determine preferred language: explicit user choice first, then browser settings
                     var targetLang = savedLang;
                     if (!targetLang) {
                         var browserLangs = navigator.languages
@@ -133,10 +275,7 @@ const jsonLd = {
 
                     if (targetLang === "hi" && !isCurrentlyHindi) {
                         window.location.replace("/hi/" + search + hash);
-                    } else if (
-                        savedLang === "en" &&
-                        isCurrentlyHindi
-                    ) {
+                    } else if (savedLang === "en" && isCurrentlyHindi) {
                         window.location.replace("/" + search + hash);
                     }
                 } catch (err) {
@@ -151,6 +290,7 @@ const jsonLd = {
         />
     </head>
     <body data-build-exp={yearsExp}>
+        <a href="#main-content" class="skip-link">{t.skipToContent}</a>
         <slot />
 
         <script>

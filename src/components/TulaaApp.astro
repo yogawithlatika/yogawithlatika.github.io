@@ -44,10 +44,10 @@ const categoryIcons: Record<string, string> = {
                 </div>
 
                 <!-- Privacy & Feature Highlight Pills -->
-                <div class="tulaa-highlights-strip" role="list">
+                <ul class="tulaa-highlights-strip">
                     {
                         t.tulaa.highlights.map((pill) => (
-                            <span class="tulaa-highlight-chip" role="listitem">
+                            <li class="tulaa-highlight-chip">
                                 <svg
                                     viewBox="0 0 16 16"
                                     fill="none"
@@ -63,10 +63,10 @@ const categoryIcons: Record<string, string> = {
                                     />
                                 </svg>
                                 {pill}
-                            </span>
+                            </li>
                         ))
                     }
-                </div>
+                </ul>
             </div>
 
             <!-- 4-Category Bento Grid (Directly from Play Store Copy) -->
