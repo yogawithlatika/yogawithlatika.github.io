@@ -10,6 +10,14 @@ export function getYearsOfExperience(currentYear = new Date().getFullYear()): nu
     return Math.max(12, currentYear - EXPERIENCE_START_YEAR);
 }
 
+const WHATSAPP_PHONE = "919663201627";
+
+// Plain, human-readable WhatsApp messages (automatically URL-encoded below)
+export const WHATSAPP_MESSAGES = {
+    en: "Hi Latika, I want to enquire about 1-on-1 Online Yoga Classes",
+    hi: "नमस्ते लतिका, मैं 1-on-1 ऑनलाइन योग क्लासेस के बारे में जानना चाहता/चाहती हूँ",
+} as const;
+
 export const SITE_CONFIG = {
     name: "YogaWithLatika",
     therapistName: "Latika Bissa",
@@ -18,10 +26,8 @@ export const SITE_CONFIG = {
     defaultYoutubeSubscribers: "21K+",
     googleRating: "5.0",
     links: {
-        whatsapp:
-            "https://api.whatsapp.com/send?phone=919663201627&text=Hi%20Latika%2C%20I%20want%20to%20enquire%20about%201-on-1%20Online%20Yoga%20Classes%20%F0%9F%99%8F",
-        whatsappHindi:
-            "https://api.whatsapp.com/send?phone=919663201627&text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%20%E0%A4%B2%E0%A4%A4%E0%A4%BF%E0%A4%95%E0%A4%BE%20%E0%A4%9C%E0%A5%80%2C%20%E0%A4%AE%E0%A5%88%E0%A4%82%201-on-1%20%E0%A4%91%E0%A4%A8%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%A8%20%E0%A4%AF%E0%A5%8B%E0%A4%97%20%E0%A4%95%E0%A5%8D%E0%A4%B2%E0%A4%BE%E0%A4%B8%E0%A5%87%E0%A4%B8%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A4%A8%E0%A4%BE%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE%2F%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A5%82%E0%A4%81%20%F0%9F%99%8F",
+        whatsapp: `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(WHATSAPP_MESSAGES.en)}`,
+        whatsappHindi: `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(WHATSAPP_MESSAGES.hi)}`,
         googleReviews:
             "https://search.google.com/local/reviews?placeid=ChIJSzE0eJ8TrjsR5ztFN99WUic",
         tulaaWeb: "https://tulaa.app",

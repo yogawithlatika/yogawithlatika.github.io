@@ -17,7 +17,7 @@ Dedicated, live 1-on-1 yoga therapy sessions designed specifically around your b
 - **Languages:** Sessions are conducted in **English, Hindi, and Marathi**.
 - **Rated 5.0 ★ on Google:** Trusted by students worldwide for personal attention and lasting results.
 
-👉 **[Book Your 1-on-1 Class on WhatsApp](https://api.whatsapp.com/send?phone=919663201627&text=Hi%20Latika%2C%20I%20want%20to%20enquire%20about%201-on-1%20Online%20Yoga%20Classes%20%F0%9F%99%8F)** · **[Read 5★ Google Reviews](https://search.google.com/local/reviews?placeid=ChIJSzE0eJ8TrjsR5ztFN99WUic)**
+👉 **[Book Your 1-on-1 Class on WhatsApp](https://api.whatsapp.com/send?phone=919663201627&text=Hi%20Latika%2C%20I%20want%20to%20enquire%20about%201-on-1%20Online%20Yoga%20Classes)** · **[Read 5★ Google Reviews](https://search.google.com/local/reviews?placeid=ChIJSzE0eJ8TrjsR5ztFN99WUic)**
 
 ---
 
