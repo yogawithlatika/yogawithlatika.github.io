@@ -1,0 +1,194 @@
+---
+// src/components/OnlineTherapy.astro
+import { GOOGLE_REVIEWS, SITE_CONFIG } from "../config/site";
+import type { SiteTranslations } from "../i18n";
+
+interface Props {
+    t: SiteTranslations;
+}
+
+const { t } = Astro.props;
+const isHindi = t.lang === "hi";
+const whatsappHref = isHindi
+    ? SITE_CONFIG.links.whatsappHindi
+    : SITE_CONFIG.links.whatsapp;
+
+const iconPaths: Record<string, string> = {
+    spine: `<path d="M12 3v18M9 6c1.5-1 4.5-1 6 0M8 10c2-1 6-1 8 0M8.5 14c1.8-1 5.2-1 7 0M9.5 18c1.2-.8 3.8-.8 5 0" stroke-linecap="round" stroke-linejoin="round"/>`,
+    lotus: `<path d="M12 4c-2.5 3.5-3.5 6.5-3.5 9.5a3.5 3.5 0 0 0 7 0C15.5 10.5 14.5 7.5 12 4Z"/><path d="M8.5 13.5C5.5 11.5 3 11 2 12c0 3.5 3 6.5 7.5 6.5M15.5 13.5c3-2 5.5-2.5 6.5-1.5 0 3.5-3 6.5-7.5 6.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+    heart: `<path d="M12 20.5s-7-4.35-7-10a4.2 4.2 0 0 1 7-3.1 4.2 4.2 0 0 1 7 3.1c0 5.65-7 10-7 10Z" stroke-linecap="round" stroke-linejoin="round"/>`,
+    breath: `<path d="M3 10h11a3 3 0 1 0-3-3M3 14h14a3 3 0 1 1-3 3M3 18h7" stroke-linecap="round" stroke-linejoin="round"/>`,
+};
+---
+
+<section id="online-classes" class="therapy-section">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal-on-scroll">
+            <span class="section-badge">{t.onlineClasses.badge}</span>
+            <h2 class="section-title">{t.onlineClasses.title}</h2>
+            <p
+                class="section-subtitle"
+                data-exp-therapy-sub={t.lang}
+            >
+                {t.onlineClasses.subtitle}
+            </p>
+            <div class="language-chip">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    class="chip-icon"
+                    aria-hidden="true"
+                >
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path>
+                </svg>
+                <span>{t.onlineClasses.languagesBadge}</span>
+            </div>
+        </div>
+
+        <!-- 4 Core Therapeutic Specialties Grid -->
+        <div class="specialties-grid reveal-on-scroll">
+            {
+                t.onlineClasses.specialties.map((item) => (
+                    <article class="specialty-card">
+                        <div class="specialty-icon-box" aria-hidden="true">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                class="specialty-svg"
+                                set:html={iconPaths[item.icon] || iconPaths.lotus}
+                            />
+                        </div>
+                        <h3 class="specialty-title">{item.title}</h3>
+                        <p class="specialty-desc">{item.desc}</p>
+                    </article>
+                ))
+            }
+        </div>
+
+        <!-- 3-Step Process + Direct Booking Banner -->
+        <div class="therapy-journey-box reveal-on-scroll">
+            <div class="journey-header">
+                <h3>{t.onlineClasses.processTitle}</h3>
+            </div>
+            <div class="journey-steps">
+                {
+                    t.onlineClasses.processSteps.map((step) => (
+                        <div class="journey-step">
+                            <span class="step-circle" aria-hidden="true">
+                                {step.num}
+                            </span>
+                            <div class="step-text">
+                                <h4>{step.title}</h4>
+                                <p>{step.desc}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="journey-cta-row">
+                <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-whatsapp"
+                >
+                    <svg
+                        class="whatsapp-icon"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.458h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                        ></path>
+                    </svg>
+                    <span>{t.onlineClasses.ctaPrimary}</span>
+                </a>
+                <span class="journey-cta-note">{t.onlineClasses.ctaNote}</span>
+            </div>
+        </div>
+
+        <!-- Integrated 5-Star Google Reviews Subsection -->
+        <div id="reviews" class="reviews-subsection reveal-on-scroll">
+            <div class="reviews-header">
+                <div class="google-rating-pill">
+                    <span class="stars-gold" aria-hidden="true">★★★★★</span>
+                    <span>{t.onlineClasses.reviewsHeader.badge}</span>
+                </div>
+                <h3 class="reviews-title">
+                    {t.onlineClasses.reviewsHeader.title}
+                </h3>
+                <p class="reviews-subtitle">
+                    {t.onlineClasses.reviewsHeader.subtitle}
+                </p>
+            </div>
+
+            <div class="reviews-grid">
+                {
+                    GOOGLE_REVIEWS.map((review) => (
+                        <blockquote class="review-card">
+                            <div class="review-card-top">
+                                <span
+                                    class="review-stars"
+                                    aria-label="5 out of 5 stars"
+                                >
+                                    ★★★★★
+                                </span>
+                                <span class="review-tag">
+                                    {isHindi ? review.tagHi : review.tagEn}
+                                </span>
+                            </div>
+                            <p class="review-quote">
+                                “{isHindi ? review.textHi : review.textEn}”
+                            </p>
+                            <footer class="review-author">
+                                <span class="author-avatar" aria-hidden="true">
+                                    {review.name.charAt(0)}
+                                </span>
+                                <div class="author-meta">
+                                    <cite class="author-name">
+                                        {review.name}
+                                    </cite>
+                                    <span class="verified-google">
+                                        Google Maps Review
+                                    </span>
+                                </div>
+                            </footer>
+                        </blockquote>
+                    ))
+                }
+            </div>
+
+            <div class="reviews-cta-wrap">
+                <a
+                    href={SITE_CONFIG.links.googleReviews}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    <span>{t.onlineClasses.reviewsHeader.readAllCta}</span>
+                    <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        class="btn-icon"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M7 13l6-6M8 7h5v5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

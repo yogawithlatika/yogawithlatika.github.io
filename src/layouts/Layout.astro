@@ -1,114 +1,272 @@
 ---
 // src/layouts/Layout.astro
 import "../styles/global.css";
+import { SITE_CONFIG, getYearsOfExperience } from "../config/site";
+import type { SiteTranslations } from "../i18n";
 
 interface Props {
-    title?: string;
-    description?: string;
+    t: SiteTranslations;
     image?: string;
 }
 
 const {
-    title = "YogaWithLatika | Online Yoga Therapy for PCOS, Prenatal & Back Pain",
-    description = "Heal naturally with Latika (M.Sc Yoga Therapy, Gold Medalist). Specialized online sessions for PCOS, Pregnancy, Thyroid, Chronic Pain, Stress and Anxiety relief. Download the free Tulaa app today.",
-    image = "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
+    t,
+    image = `${SITE_CONFIG.siteUrl}/images/yogawithlatika_logo_512x512.png`,
 } = Astro.props;
+
+const isHindi = t.lang === "hi";
+const canonicalUrl = isHindi
+    ? `${SITE_CONFIG.siteUrl}/hi/`
+    : `${SITE_CONFIG.siteUrl}/`;
+const yearsExp = getYearsOfExperience();
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HealthAndWellnessBusiness",
+    name: SITE_CONFIG.name,
+    founder: {
+        "@type": "Person",
+        name: SITE_CONFIG.therapistName,
+        jobTitle: "Certified Yoga Therapist (M.Sc, B.Sc, Gold Medalist)",
+    },
+    url: canonicalUrl,
+    logo: `${SITE_CONFIG.siteUrl}/images/yogawithlatika_logo_512x512.png`,
+    image,
+    sameAs: [
+        SITE_CONFIG.links.instagram,
+        SITE_CONFIG.links.youtube,
+        SITE_CONFIG.links.linkedin,
+        SITE_CONFIG.links.tulaaWeb,
+    ],
+    aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        bestRating: "5",
+        ratingCount: "50",
+    },
+    description: t.meta.description,
+    availableLanguage: ["en", "hi", "mr"],
+    priceRange: "$$",
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={t.lang} data-lang={t.lang}>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#F7F5F0" />
 
         <link rel="icon" type="image/webp" href="/favicon.webp" />
 
-        <title>{title}</title>
-        <meta name="title" content={title} />
-        <meta name="description" content={description} />
-        <meta
-            name="keywords"
-            content="Online Yoga Classes, Yoga Therapy, Prenatal Yoga, PCOS Yoga, Back Pain Relief, Yoga for Stress, Personal Yoga Trainer, Latika Yoga, Tulaa App"
-        />
-        <link rel="canonical" href="https://yogawithlatika.com" />
+        <title>{t.meta.title}</title>
+        <meta name="title" content={t.meta.title} />
+        <meta name="description" content={t.meta.description} />
+        <meta name="keywords" content={t.meta.keywords} />
 
+        <!-- Canonical & Localization Hreflang Links -->
+        <link rel="canonical" href={canonicalUrl} />
+        <link
+            rel="alternate"
+            hreflang="en"
+            href={`${SITE_CONFIG.siteUrl}/`}
+        />
+        <link
+            rel="alternate"
+            hreflang="hi"
+            href={`${SITE_CONFIG.siteUrl}/hi/`}
+        />
+        <link
+            rel="alternate"
+            hreflang="x-default"
+            href={`${SITE_CONFIG.siteUrl}/`}
+        />
+
+        <!-- OpenGraph / Social Sharing -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yogawithlatika.com" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta property="og:locale" content={t.locale} />
+        <meta
+            property="og:locale:alternate"
+            content={isHindi ? "en_IN" : "hi_IN"}
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={t.meta.title} />
+        <meta property="og:description" content={t.meta.description} />
         <meta property="og:image" content={image} />
 
+        <!-- Typography: Lora & Plus Jakarta Sans + Noto Sans/Serif Devanagari -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Devanagari:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
             rel="stylesheet"
         />
 
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "HealthAndWellnessBusiness",
-                "name": "YogaWithLatika",
-                "url": "https://yogawithlatika.com",
-                "logo": "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
-                "image": "https://yogawithlatika.com/images/yogawithlatika_logo_512x512.png",
-                "sameAs": [
-                    "https://www.instagram.com/yogawithlatika",
-                    "https://www.youtube.com/@yogawithlatika",
-                    "https://www.linkedin.com/in/latika-bissa-0a3084210/"
-                ],
-                "description": "Gold Medalist Yoga Therapist (M.Sc, B.Sc) providing personalized online yoga for prenatal care, PCOS, thyroid, chronic pain, stress and anxiety relief",
-                "priceRange": "$$"
-            }
+        <!-- Immediate Browser Language Detection (Runs before paint) -->
+        <script is:inline>
+            (function () {
+                try {
+                    var STORAGE_KEY = "ywl_preferred_lang";
+                    var savedLang = localStorage.getItem(STORAGE_KEY);
+                    var path = window.location.pathname;
+                    var isCurrentlyHindi =
+                        path === "/hi" || path.startsWith("/hi/");
+
+                    // Determine preferred language: explicit user choice first, then browser settings
+                    var targetLang = savedLang;
+                    if (!targetLang) {
+                        var browserLangs = navigator.languages
+                            ? Array.from(navigator.languages)
+                            : [navigator.language || "en"];
+                        var prefersHindi = browserLangs.some(function (l) {
+                            return (
+                                typeof l === "string" &&
+                                l.toLowerCase().startsWith("hi")
+                            );
+                        });
+                        targetLang = prefersHindi ? "hi" : "en";
+                    }
+
+                    var hash = window.location.hash || "";
+                    var search = window.location.search || "";
+
+                    if (targetLang === "hi" && !isCurrentlyHindi) {
+                        window.location.replace("/hi/" + search + hash);
+                    } else if (
+                        savedLang === "en" &&
+                        isCurrentlyHindi
+                    ) {
+                        window.location.replace("/" + search + hash);
+                    }
+                } catch (err) {
+                    // Fail gracefully if storage is restricted
+                }
+            })();
         </script>
+
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(jsonLd)}
+        />
     </head>
-    <body>
+    <body data-build-exp={yearsExp}>
         <slot />
 
-        <!-- PREMIUM WEB PLATFORM INTERACTION ENGINES -->
         <script>
-            // ENGINE 1: One-Way Entry Animation State Handler (Prevents exit flashing)
-            const animateContainers = document.querySelectorAll(
-                ".hero-content, .tulaa-content, .reviews-content, .video-content, .footer-content",
-            );
-
-            const contentObserver = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("is-visible");
-                            contentObserver.unobserve(entry.target); // Stop tracking once smoothly revealed
+            // 1. Language Switcher Preference Persistence
+            function bindLanguageSwitcher() {
+                const STORAGE_KEY = "ywl_preferred_lang";
+                const langLinks =
+                    document.querySelectorAll<HTMLAnchorElement>(
+                        "[data-set-lang]",
+                    );
+                langLinks.forEach((link) => {
+                    link.addEventListener("click", () => {
+                        const chosen = link.getAttribute("data-set-lang");
+                        if (chosen) {
+                            try {
+                                localStorage.setItem(STORAGE_KEY, chosen);
+                            } catch {
+                                // Ignore storage errors
+                            }
                         }
                     });
-                },
-                {
-                    root: null,
-                    threshold: 0.1,
-                },
-            );
-
-            animateContainers.forEach((container) =>
-                contentObserver.observe(container),
-            );
-
-            // ENGINE 2: Light Premium Tactical Mobile Haptic Triggers
-            function triggerPremiumTap() {
-                if ("vibrate" in navigator) {
-                    navigator.vibrate(10); // Native physical impulse link
-                }
+                });
             }
 
-            document.addEventListener("astro:page-load", () => {
-                const interactiveElements = document.querySelectorAll(
-                    ".cta-button, .store-btn, .social-minimal-item, .video-card-minimal, .button-accent",
+            // 2. Dynamic Experience Counter from 2014 (Future-proof across years)
+            function syncExperienceYears() {
+                const START_YEAR = 2014;
+                const liveYears = Math.max(
+                    12,
+                    new Date().getFullYear() - START_YEAR,
                 );
 
-                interactiveElements.forEach((element) => {
-                    element.addEventListener("click", triggerPremiumTap);
+                document
+                    .querySelectorAll<HTMLElement>("[data-exp-stat]")
+                    .forEach((el) => {
+                        const lang = el.getAttribute("data-exp-stat");
+                        el.textContent =
+                            lang === "hi"
+                                ? `${liveYears}+ वर्ष`
+                                : `${liveYears}+ Yrs`;
+                    });
+
+                document
+                    .querySelectorAll<HTMLElement>("[data-exp-therapy-sub]")
+                    .forEach((el) => {
+                        const lang = el.getAttribute("data-exp-therapy-sub");
+                        el.textContent =
+                            lang === "hi"
+                                ? `2014 से ${liveYears}+ वर्षों के योग थेरेपी अनुभव के साथ, प्रत्येक सत्र आपकी शारीरिक स्थिति, दिनचर्या और स्वास्थ्य लक्ष्यों के अनुसार विशेष रूप से तैयार किया जाता है।`
+                                : `With ${liveYears}+ years of clinical yoga therapy experience since 2014, every session is crafted exclusively around your medical history, lifestyle, and recovery pace.`;
+                    });
+
+                document
+                    .querySelectorAll<HTMLElement>("[data-exp-tulaa]")
+                    .forEach((el) => {
+                        const lang = el.getAttribute("data-exp-tulaa");
+                        el.textContent =
+                            lang === "hi"
+                                ? `${liveYears}+ वर्षों के अनुभव वाली योग विशेषज्ञ लतिका बिस्सा द्वारा तैयार रूटीन।`
+                                : `Curated by Latika Bissa (${liveYears}+ years yoga therapy experience) for all skill levels.`;
+                    });
+            }
+
+            // 3. Soft Reveal-on-Scroll Observer
+            function initScrollReveal() {
+                const revealTargets =
+                    document.querySelectorAll(".reveal-on-scroll");
+                if (!("IntersectionObserver" in window)) {
+                    revealTargets.forEach((el) =>
+                        el.classList.add("is-visible"),
+                    );
+                    return;
+                }
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        root: null,
+                        threshold: 0.08,
+                        rootMargin: "0px 0px -40px 0px",
+                    },
+                );
+
+                revealTargets.forEach((el) => observer.observe(el));
+            }
+
+            // 4. Subtle Mobile Haptic Feedback
+            function initGentleHaptics() {
+                const interactive = document.querySelectorAll(
+                    ".btn, .store-badge-btn, .lang-pill, .pillar-summary-card, .yt-video-card",
+                );
+                interactive.forEach((el) => {
+                    el.addEventListener("click", () => {
+                        if ("vibrate" in navigator) {
+                            navigator.vibrate(8);
+                        }
+                    });
                 });
-            });
+            }
+
+            function initAll() {
+                bindLanguageSwitcher();
+                syncExperienceYears();
+                initScrollReveal();
+                initGentleHaptics();
+            }
+
+            initAll();
+            document.addEventListener("astro:page-load", initAll);
         </script>
     </body>
 </html>

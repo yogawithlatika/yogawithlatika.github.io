@@ -1,66 +1,150 @@
 ---
 // src/components/Hero.astro
+import { SITE_CONFIG } from "../config/site";
+import type { SiteTranslations } from "../i18n";
+
+interface Props {
+    t: SiteTranslations;
+}
+
+const { t } = Astro.props;
+const isHindi = t.lang === "hi";
+const whatsappHref = isHindi
+    ? SITE_CONFIG.links.whatsappHindi
+    : SITE_CONFIG.links.whatsapp;
 ---
 
-<section id="home" class="section hero-section">
-    <div class="hero-content">
-        <div class="profile-avatar-container">
-            <img
-                src="/images/latika.png"
-                alt="Latika Bissa - Certified Yoga Therapist"
-                class="profile-avatar"
-                width="140"
-                height="140"
-                loading="eager"
-                decoding="async"
-            />
+<section id="home" class="hero-section">
+    <!-- Soft ambient botanical aura -->
+    <div class="ambient-aura ambient-aura--one" aria-hidden="true"></div>
+    <div class="ambient-aura ambient-aura--two" aria-hidden="true"></div>
+
+    <div class="container hero-shell">
+        <div class="hero-grid reveal-on-scroll">
+            <!-- Left Column: Editorial Introduction & CTAs -->
+            <div class="hero-copy">
+                <div class="eyebrow-pill">
+                    <span class="pulse-dot" aria-hidden="true"></span>
+                    <span>{t.hero.eyebrow}</span>
+                </div>
+
+                <h1 class="hero-heading">
+                    <span class="hero-greeting">{t.hero.greeting}</span>
+                    <span class="hero-name">{t.hero.name}</span>
+                </h1>
+
+                <p class="hero-subtitle">{t.hero.subtitle}</p>
+
+                <div class="hero-cta-group">
+                    <a
+                        href="#online-classes"
+                        class="btn btn-primary"
+                    >
+                        <span>{t.hero.primaryCta}</span>
+                        <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            class="btn-icon"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 10h12m0 0-4-4m4 4-4 4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+
+                    <a href="#tulaa" class="btn btn-secondary">
+                        <img
+                            src="/images/tulaa_logo_128.webp"
+                            alt=""
+                            width="20"
+                            height="20"
+                            class="btn-tulaa-icon"
+                        />
+                        <span>{t.hero.secondaryCta}</span>
+                    </a>
+
+                    <a href="#youtube" class="btn-text-link">
+                        <span>{t.hero.youtubeCta}</span>
+                    </a>
+                </div>
+
+                <!-- Credentials Bar -->
+                <div
+                    class="credentials-grid"
+                    aria-label="Professional credentials and community milestones"
+                >
+                    {
+                        t.hero.credentials.map((cred) => (
+                            <div class="credential-card">
+                                <span
+                                    class="credential-value"
+                                    data-exp-stat={
+                                        cred.isExperience ? t.lang : undefined
+                                    }
+                                >
+                                    {cred.value}
+                                </span>
+                                <span class="credential-label">
+                                    {cred.label}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Right Column: Serene Botanical Arch Portrait -->
+            <div class="hero-portrait-wrap">
+                <div class="portrait-arch-card">
+                    <div class="portrait-halo" aria-hidden="true"></div>
+                    <img
+                        src="/images/latika.png"
+                        alt="Latika Bissa - Certified Yoga Therapist (M.Sc Gold Medalist)"
+                        class="portrait-image"
+                        width="440"
+                        height="464"
+                        loading="eager"
+                        decoding="async"
+                    />
+                    <div class="portrait-floating-badge">
+                        <span class="badge-star" aria-hidden="true">✦</span>
+                        <span>{t.hero.portraitCaption}</span>
+                    </div>
+                </div>
+                <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="portrait-status-pill"
+                >
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span>{t.hero.portraitStatus}</span>
+                </a>
+            </div>
         </div>
 
-        <header class="profile-identity">
-            <h1>
-                <span class="title-sub"
-                    >Science-Backed <span class="text-gradient"
-                        >Yoga Therapy</span
-                    > by</span
-                >
-                <span class="profile-name">Latika Bissa</span>
-            </h1>
-
-            <div
-                class="credentials"
-                aria-label="Professional credentials and ratings"
-            >
-                <span>12 Yrs Exp</span>
-                <span class="dot" aria-hidden="true">•</span>
-                <span aria-label="5 stars on Google">5★ on Google</span>
-                <span class="dot" aria-hidden="true">•</span>
-                <span>M.Sc Yoga</span>
+        <!-- Conversion-Ordered 3 Core Pillars Strip -->
+        <div class="pillars-overview reveal-on-scroll">
+            <p class="pillars-heading">{t.hero.pillarsTitle}</p>
+            <div class="pillars-cards">
+                {
+                    t.hero.pillars.map((pillar, idx) => (
+                        <a
+                            href={pillar.href}
+                            class={`pillar-summary-card ${idx === 0 ? "pillar-summary-card--featured" : ""}`}
+                        >
+                            <span class="pillar-step">{pillar.step}</span>
+                            <h2 class="pillar-card-title">{pillar.title}</h2>
+                            <p class="pillar-card-desc">{pillar.desc}</p>
+                            <span class="pillar-card-link">{pillar.cta}</span>
+                        </a>
+                    ))
+                }
             </div>
-        </header>
-
-        <p class="profile-bio">
-            Transform your health with personalized yoga plans designed for a <strong
-                class="text-gradient">pain-free, balanced life</strong
-            >.
-        </p>
-
-        <div class="hero-actions">
-            <a
-                href="https://tulaa.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="cta-button"
-            >
-                Download Tulaa App
-            </a>
-            <a
-                href="https://www.youtube.com/@yogawithlatika"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button-accent"
-            >
-                Watch on YouTube
-            </a>
         </div>
     </div>
 </section>

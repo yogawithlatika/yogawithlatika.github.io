@@ -1,0 +1,110 @@
+---
+// src/components/YouTubeChannel.astro
+import { SITE_CONFIG, YOUTUBE_VIDEOS } from "../config/site";
+import type { SiteTranslations } from "../i18n";
+
+interface Props {
+    t: SiteTranslations;
+}
+
+const { t } = Astro.props;
+const isHindi = t.lang === "hi";
+---
+
+<section id="youtube" class="youtube-section">
+    <div class="container">
+        <div class="section-header reveal-on-scroll">
+            <div class="yt-badges-row">
+                <span class="section-badge">{t.youtube.badge}</span>
+                <span class="yt-subs-pill">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="yt-mini-icon"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+                        ></path>
+                    </svg>
+                    <span>{t.youtube.subscribersBadge}</span>
+                </span>
+            </div>
+
+            <h2 class="section-title">{t.youtube.title}</h2>
+            <p class="section-subtitle">{t.youtube.subtitle}</p>
+        </div>
+
+        <!-- Video Cards Grid -->
+        <div class="yt-videos-grid reveal-on-scroll">
+            {
+                YOUTUBE_VIDEOS.map((video) => {
+                    const title = isHindi ? video.titleHi : video.titleEn;
+                    const category = isHindi
+                        ? video.categoryHi
+                        : video.categoryEn;
+                    return (
+                        <a
+                            href={`https://www.youtube.com/watch?v=${video.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="yt-video-card"
+                            aria-label={`${t.youtube.watchLabel}: ${title}`}
+                        >
+                            <div class="yt-thumb-box">
+                                <img
+                                    src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+                                    alt={title}
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="480"
+                                    height="270"
+                                />
+                                <span class="yt-category-tag">{category}</span>
+                                <span class="yt-duration-tag">
+                                    {video.duration}
+                                </span>
+                                <div class="yt-play-btn" aria-hidden="true">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="yt-card-body">
+                                <h3 class="yt-video-title">{title}</h3>
+                                <span class="yt-watch-link">
+                                    {t.youtube.watchLabel} →
+                                </span>
+                            </div>
+                        </a>
+                    );
+                })
+            }
+        </div>
+
+        <!-- Channel CTA -->
+        <div class="yt-footer-cta reveal-on-scroll">
+            <a
+                href={SITE_CONFIG.links.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="btn-icon"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+                    ></path>
+                </svg>
+                <span>{t.youtube.channelCta}</span>
+            </a>
+        </div>
+    </div>
+</section>

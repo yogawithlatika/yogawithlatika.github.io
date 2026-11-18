@@ -1,0 +1,206 @@
+---
+// src/components/TulaaApp.astro
+import { SITE_CONFIG } from "../config/site";
+import type { SiteTranslations } from "../i18n";
+
+interface Props {
+    t: SiteTranslations;
+}
+
+const { t } = Astro.props;
+
+const categoryIcons: Record<string, string> = {
+    yoga: `<path d="M12 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-5 15 3-6 2 2 2-2 3 6M7 11c2-1.5 8-1.5 10 0" stroke-linecap="round" stroke-linejoin="round"/>`,
+    trackers: `<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/>`,
+    pranayama: `<path d="M4 12c2.5-3 5.5-3 8 0s5.5 3 8 0M4 17c2.5-2 5.5-2 8 0s5.5 2 8 0M4 7c2.5-2 5.5-2 8 0s5.5 2 8 0" stroke-linecap="round" stroke-linejoin="round"/>`,
+    privacy: `<path d="M12 3 5 6v6c0 5 3.5 8.5 7 9 3.5-.5 7-4 7-9V6l-7-3Z" stroke-linecap="round" stroke-linejoin="round"/><path d="m9.5 12 2 2 3.5-3.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+};
+---
+
+<section id="tulaa" class="tulaa-section">
+    <div class="container">
+        <div class="tulaa-showcase-shell reveal-on-scroll">
+            <!-- Top App Identity & Intro -->
+            <div class="tulaa-hero-header">
+                <div class="tulaa-logo-badge">
+                    <img
+                        src="/images/tulaa_logo.webp"
+                        alt="Tulaa Yoga & Wellness App Icon"
+                        class="tulaa-app-logo"
+                        width="72"
+                        height="72"
+                        loading="lazy"
+                    />
+                    <span class="section-badge">{t.tulaa.badge}</span>
+                </div>
+
+                <h2 class="section-title">{t.tulaa.title}</h2>
+                <p class="tulaa-lead">{t.tulaa.lead}</p>
+                <p class="tulaa-sublead">{t.tulaa.sublead}</p>
+
+                <div class="tulaa-lang-pill">
+                    <span class="lang-dot" aria-hidden="true"></span>
+                    <span>{t.tulaa.langAvailability}</span>
+                </div>
+
+                <!-- Privacy & Feature Highlight Pills -->
+                <div class="tulaa-highlights-strip" role="list">
+                    {
+                        t.tulaa.highlights.map((pill) => (
+                            <span class="tulaa-highlight-chip" role="listitem">
+                                <svg
+                                    viewBox="0 0 16 16"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    class="check-svg"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="m3.5 8.5 3 3 6-6.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                {pill}
+                            </span>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- 4-Category Bento Grid (Directly from Play Store Copy) -->
+            <div class="tulaa-bento-grid">
+                {
+                    t.tulaa.categories.map((cat) => (
+                        <article
+                            class={`tulaa-category-card tulaa-category-card--${cat.id}`}
+                        >
+                            <header class="tulaa-cat-header">
+                                <div class="tulaa-cat-icon" aria-hidden="true">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        set:html={
+                                            categoryIcons[cat.id] ||
+                                            categoryIcons.yoga
+                                        }
+                                    />
+                                </div>
+                                <div>
+                                    <span class="tulaa-cat-tag">{cat.tag}</span>
+                                    <h3 class="tulaa-cat-title">{cat.title}</h3>
+                                </div>
+                            </header>
+
+                            <ul class="tulaa-feature-list">
+                                {cat.items.map((item) => (
+                                    <li class="tulaa-feature-item">
+                                        <span
+                                            class="feature-bullet"
+                                            aria-hidden="true"
+                                        />
+                                        <div class="feature-item-copy">
+                                            <strong>{item.title}:</strong>{" "}
+                                            <span
+                                                data-exp-tulaa={
+                                                    "hasExp" in item &&
+                                                    item.hasExp
+                                                        ? t.lang
+                                                        : undefined
+                                                }
+                                            >
+                                                {item.desc}
+                                            </span>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </article>
+                    ))
+                }
+            </div>
+
+            <!-- App Store & Play Store Download Dock -->
+            <div class="tulaa-download-dock">
+                <p class="tulaa-cta-headline">{t.tulaa.ctaHeadline}</p>
+
+                <div class="store-buttons-row">
+                    <a
+                        href={SITE_CONFIG.links.tulaaPlayStore}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="store-badge-btn"
+                        aria-label="Get Tulaa on Google Play"
+                    >
+                        <img
+                            src="/images/playstore.svg"
+                            alt=""
+                            class="store-icon"
+                            width="22"
+                            height="22"
+                        />
+                        <div class="store-text-group">
+                            <span class="store-text-small"
+                                >{t.tulaa.playStoreSmall}</span
+                            >
+                            <span class="store-text-large"
+                                >{t.tulaa.playStoreLarge}</span
+                            >
+                        </div>
+                    </a>
+
+                    <a
+                        href={SITE_CONFIG.links.tulaaAppStore}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="store-badge-btn"
+                        aria-label="Download Tulaa on the App Store"
+                    >
+                        <img
+                            src="/images/appstore.svg"
+                            alt=""
+                            class="store-icon"
+                            width="22"
+                            height="22"
+                        />
+                        <div class="store-text-group">
+                            <span class="store-text-small"
+                                >{t.tulaa.appStoreSmall}</span
+                            >
+                            <span class="store-text-large"
+                                >{t.tulaa.appStoreLarge}</span
+                            >
+                        </div>
+                    </a>
+
+                    <a
+                        href={SITE_CONFIG.links.tulaaWeb}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary tulaa-web-btn"
+                    >
+                        <span>{t.tulaa.visitWebsite}</span>
+                        <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            class="btn-icon"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M7 13l6-6M8 7h5v5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <p class="tulaa-disclaimer">{t.tulaa.disclaimer}</p>
+            </div>
+        </div>
+    </div>
+</section>

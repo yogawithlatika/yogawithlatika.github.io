@@ -1,0 +1,29 @@
+---
+// src/components/LandingPage.astro
+import Layout from "../layouts/Layout.astro";
+import Navbar from "./Navbar.astro";
+import Hero from "./Hero.astro";
+import OnlineTherapy from "./OnlineTherapy.astro";
+import TulaaApp from "./TulaaApp.astro";
+import YouTubeChannel from "./YouTubeChannel.astro";
+import Footer from "./Footer.astro";
+import { getTranslations, type SupportedLocale } from "../i18n";
+
+interface Props {
+    lang: SupportedLocale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<Layout t={t}>
+    <Navbar t={t} />
+    <main id="main-content">
+        <Hero t={t} />
+        <OnlineTherapy t={t} />
+        <TulaaApp t={t} />
+        <YouTubeChannel t={t} />
+    </main>
+    <Footer t={t} />
+</Layout>
