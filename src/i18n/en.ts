@@ -20,7 +20,7 @@ export function getEnglishContent(
                 "Latika Bissa - Certified Yoga Therapist (M.Sc Gold Medalist) at YogaWithLatika",
         },
         nav: {
-            brandSub: "1-on-1 Yoga & Wellness",
+            brandSub: "Yoga Therapy & Wellness",
             classes: "1-on-1 Classes",
             reviews: "Reviews (5★)",
             tulaa: "Tulaa App",
@@ -33,7 +33,7 @@ export function getEnglishContent(
         hero: {
             eyebrow: `Personal Yoga Therapy • Helping Since 2014`,
             greeting: "Live pain-free, calm & healthy with",
-            name: "Latika Bissa",
+            name: "YogaWithLatika",
             credentials: [
                 {
                     value: `${years}+ Yrs`,
@@ -59,7 +59,7 @@ export function getEnglishContent(
             subtitle:
                 "Personal 1-on-1 online yoga classes tailored to your body to relieve back pain, manage PCOS & thyroid, support safe pregnancy, and calm daily stress.",
             primaryCta: "Book Your 1-on-1 Class",
-            secondaryCta: "Get Free Tulaa App",
+            secondaryCta: "Get Free Yoga App",
             youtubeCta: "Watch Free Videos",
             portraitCaption: "M.Sc & B.Sc Yoga Therapy • Gold Medalist",
             portraitStatus: "Open for new 1-on-1 online students",
@@ -74,8 +74,8 @@ export function getEnglishContent(
                 },
                 {
                     step: "02 • Free Daily Routine",
-                    title: "Tulaa Yoga & Habit App",
-                    desc: "100% private, free app with daily yoga videos, period diary, water & fasting trackers. No login needed.",
+                    title: "Tulaa Free Yoga App",
+                    desc: "100% private, free yoga & wellness app with period, mood, water & fasting trackers. No login needed.",
                     href: "#tulaa",
                     cta: "Explore Tulaa App →",
                 },
@@ -148,9 +148,8 @@ export function getEnglishContent(
         tulaa: {
             badge: "02 • Free Daily Wellness App",
             title: "Find Daily Balance with Tulaa",
-            lead: "An all-in-one wellness companion combining guided yoga, mindfulness, and private health habit trackers.",
-            sublead:
-                "Designed for consistent daily routines without subscriptions, mandatory accounts, or data tracking.",
+            lead: "An all-in-one wellness companion combining guided yoga, mindfulness, and private wellness trackers.",
+            sublead: "No login, No ads, 100% private.",
             langAvailability: "Available in English & हिन्दी (Hindi)",
             highlights: [
                 "No Login Needed",
@@ -167,7 +166,7 @@ export function getEnglishContent(
                     items: [
                         {
                             title: "Expert-Led Routines",
-                            desc: `Curated by Latika Bissa (${years}+ years yoga therapy experience) for all skill levels.`,
+                            desc: `Curated by Latika (${years}+ years yoga therapy experience) for all skill levels.`,
                             hasExp: true,
                         },
                         {
