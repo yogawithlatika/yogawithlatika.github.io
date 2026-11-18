@@ -38,8 +38,22 @@ export const SITE_CONFIG = {
 let cachedSubscriberCount: string | null = null;
 
 /**
+ * Converts a compact subscriber string like "20.8K", "21K", or "1.2M" into an exact number.
+ */
+function parseSubscriberCountValue(raw: string): number {
+    const normalized = raw.trim().replace(/,/g, ".").toUpperCase();
+    const num = parseFloat(normalized);
+    if (Number.isNaN(num)) return 0;
+    if (normalized.endsWith("M")) return num * 1_000_000;
+    if (normalized.endsWith("K")) return num * 1_000;
+    return num;
+}
+
+/**
  * Fetches the current YouTube subscriber count from @yogawithlatika at build time.
- * Parses YouTube's initial metadata and falls back to "21K+" if offline or blocked.
+ * Targets YouTube's channel header metadata (pageHeaderViewModel / c4TabbedHeaderRenderer)
+ * and validates the count is >= 20,000 so older milestone mentions (e.g. "5K subscribers"
+ * in descriptions or videos) are never picked up by mistake.
  */
 export async function getYoutubeSubscriberCount(): Promise<string> {
     if (cachedSubscriberCount) {
@@ -63,20 +77,40 @@ export async function getYoutubeSubscriberCount(): Promise<string> {
 
         if (response.ok) {
             const html = await response.text();
-            // Look for patterns like "21.1K subscribers" or "21K subscribers" in ytInitialData
-            const match =
-                html.match(/"subscriberCountText":\s*\{\s*"simpleText":\s*"([^"]+)"/) ||
-                html.match(/"subscriberCountText":\s*"([^"]+)"/) ||
-                html.match(/([0-9]+(?:\.[0-9]+)?[KM]?)\s+subscribers/i);
 
-            if (match && match[1]) {
-                const rawCount = match[1]
-                    .replace(/subscribers/i, "")
-                    .trim();
-                if (rawCount) {
-                    cachedSubscriberCount = rawCount.endsWith("+")
-                        ? rawCount
-                        : `${rawCount}+`;
+            // Collect candidate matches specifically from YouTube's structured channel header JSON
+            const candidates: string[] = [];
+
+            // 1. Modern YouTube pageHeaderViewModel (metadataParts right after @yogawithlatika)
+            const headerRegex =
+                /@yogawithlatika[\s\S]{1,350}?"content":\s*"([0-9]+(?:[.,][0-9]+)?\s*[KMkm]?)\s+subscribers"/gi;
+            for (const m of html.matchAll(headerRegex)) {
+                if (m[1]) candidates.push(m[1]);
+            }
+
+            // 2. Classic subscriberCountText JSON field
+            const subTextRegex =
+                /"subscriberCountText":\s*(?:\{\s*"simpleText":\s*)?"([0-9]+(?:[.,][0-9]+)?\s*[KMkm]?)\s+subscribers"/gi;
+            for (const m of html.matchAll(subTextRegex)) {
+                if (m[1]) candidates.push(m[1]);
+            }
+
+            // 3. Any JSON "content": "XXK subscribers" in ytInitialData
+            const contentSubRegex =
+                /"content":\s*"([0-9]+(?:[.,][0-9]+)?\s*[KMkm]?)\s+subscribers"/gi;
+            for (const m of html.matchAll(contentSubRegex)) {
+                if (m[1]) candidates.push(m[1]);
+            }
+
+            // Pick the first candidate that represents the actual channel total (>= 20,000)
+            for (const candidate of candidates) {
+                const numericValue = parseSubscriberCountValue(candidate);
+                if (numericValue >= 20_000) {
+                    const cleanLabel = candidate
+                        .replace(/\s+/g, "")
+                        .replace(/,/g, ".")
+                        .toUpperCase();
+                    cachedSubscriberCount = `${cleanLabel}+`;
                     return cachedSubscriberCount;
                 }
             }
