@@ -769,16 +769,25 @@ html[lang="hi"] .hero-greeting {
 .portrait-image {
     position: relative;
     z-index: 1;
-    width: 92%;
-    height: 94%;
+    width: 96%;
+    height: 96%;
     object-fit: contain;
     object-position: bottom center;
-    filter: drop-shadow(0 12px 24px rgba(31, 36, 32, 0.1));
-    transition: transform 0.6s var(--ease-calm);
+    /* Subtle zoom anchored near the face so her expression is closer & bottom cuff tucks cleanly */
+    transform: scale(1.14);
+    transform-origin: center 18%;
+    /* Portrait-safe warm editorial grade: softens the bright pink shirt while keeping skin tones natural */
+    filter: saturate(0.82) contrast(0.97) sepia(0.08) brightness(0.99)
+        drop-shadow(0 12px 24px rgba(31, 36, 32, 0.1));
+    transition:
+        transform 0.6s var(--ease-calm),
+        filter 0.5s var(--ease-calm);
 }
 
 .portrait-arch-card:hover .portrait-image {
-    transform: scale(1.02);
+    transform: scale(1.17);
+    filter: saturate(0.88) contrast(0.99) sepia(0.05) brightness(1)
+        drop-shadow(0 14px 28px rgba(31, 36, 32, 0.12));
 }
 
 .portrait-floating-badge {
